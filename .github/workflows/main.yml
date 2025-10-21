@@ -24,5 +24,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
+      - name: Verify package.json presence
+        run: ls -la
+
+      - name: Run WebdriverIO tests
         run: npm test
+
+      - name: Upload Test Reports (optional)
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-reports
+          path: ./test-results/  # Adjust this path if your test reports are stored elsewhere
