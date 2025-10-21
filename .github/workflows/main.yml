@@ -16,6 +16,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Check current directory and files
+        run: |
+          pwd
+          ls -la
+
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -24,8 +29,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Verify package.json presence
-        run: ls -la
+      - name: Verify package.json existence and scripts
+        run: cat package.json
 
       - name: Run WebdriverIO tests
-        run: npm test
+        run: npm run wdio
