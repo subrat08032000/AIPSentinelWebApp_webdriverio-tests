@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      MOCHA_TIMEOUT: 180000   # Increase Mocha test timeout to 3 minutes
+      MOCHA_TIMEOUT: 180000
 
     steps:
       - name: Checkout code
@@ -29,5 +29,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run WebdriverIO tests with increased timeout
-        run: npm run wdio -- --timeout 180000
+      - name: Run WebdriverIO tests
+        run: npm run wdio
