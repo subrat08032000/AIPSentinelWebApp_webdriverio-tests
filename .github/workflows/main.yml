@@ -28,4 +28,5 @@ jobs:
         run: npm install
 
       - name: Run WebdriverIO tests
-        run: npm run wdio
+        run: npx wdio run ./wdio.conf.ts
+
