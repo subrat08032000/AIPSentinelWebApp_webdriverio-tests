@@ -1,25 +1,23 @@
-name: WebdriverIO Test Workflow
+name: WebdriverIO Test Suite
 
 on:
   push:
     branches:
       - main
+      - new-branch
   pull_request:
     branches:
       - main
+      - new-branch
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
 
-      - name: Check current directory and files
-        run: |
-          pwd
-          ls -la
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -27,10 +25,8 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm ci
-
-      - name: Verify package.json existence and scripts
-        run: cat package.json
+        run: npm install
 
       - name: Run WebdriverIO tests
-        run: npm run wdio
+        run: npx wdio run ./wdio.conf.ts
+
