@@ -1,2 +1,0 @@
-invalid element state: WebDriverError: invalid element state: Element is not currently interactable and may not be manipulated
-  (Session info: chrome=141.0.7390.66) when running "element/f.F7834D8773684BEA4A98612E86DED442.d.B33E4EB34691E1EEAC014ED396CC680C.e.10/clear" with method "POST"

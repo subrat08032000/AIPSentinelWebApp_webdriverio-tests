@@ -1,9 +1,0 @@
-{
-  "fileName": "flashAlert-firefox-1294x741-dpr-1.25.png",
-  "folders": {
-    "actual": ".tmp\\actual\\flashAlert-firefox-1294x741-dpr-1.25.png",
-    "baseline": "C:\\Users\\subra\\Desktop\\AIP Sentinel Automation 05-10-2025\\test\\specs\\__snapshots__\\flashAlert-firefox-1294x741-dpr-1.25.png",
-    "diff": ".tmp\\diff\\flashAlert-firefox-1294x741-dpr-1.25.png"
-  },
-  "misMatchPercentage": 0.004
-}

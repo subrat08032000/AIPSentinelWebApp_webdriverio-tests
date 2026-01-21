@@ -1,4 +1,0 @@
-{
-  "using": "xpath",
-  "value": "//button[@aria-label=\"Select your role\"]"
-}
