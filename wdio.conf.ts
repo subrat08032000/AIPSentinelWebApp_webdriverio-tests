@@ -23,8 +23,10 @@ export const config: WebdriverIO.Config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        // './test/specs/**/*.ts',
-        './test/specs/LoginPage_test.e2e.ts'
+         //'./test/specs/**/*.ts',
+        //'./test/specs/LoginPage_test.e2e.ts',
+        './test/specs/SignupPage_test.e2e.ts',
+        './test/specs/dashboardpage_test.e2e.ts'
     ],
     // Patterns to exclude.
     exclude: [

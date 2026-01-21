@@ -4,5 +4,12 @@
     "Manager_password": "Bubun@1245",
     "Admin_Username":"aip.admin@niairport.in",
     "Admin_Password":"MSI@Admin123",
-    "UnregisteredEmail":"ABC231@gmail.com"
+    "UnregisteredEmail":"ABC231@gmail.com",
+    "User_Username":"venkat@sourceintegreta.com",
+    "User_Password":"Saikumar@979",
+    "Fullname":"Testing API Sentinal",
+    "Designation":"Test",
+    "Phone":"9000600012",
+    "Email":"9000600012@yopmail.com",
+    "SetPassword":"TEST@123"
   }
