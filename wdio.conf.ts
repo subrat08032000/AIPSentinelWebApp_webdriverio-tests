@@ -23,10 +23,7 @@ export const config: WebdriverIO.Config = {
     // of the config file unless it's absolute.
     //
     specs: [
-         //'./test/specs/**/*.ts',
-        //'./test/specs/LoginPage_test.e2e.ts',
-        //'./test/specs/SignupPage_test.e2e.ts',
-        './test/specs/dashboardpage_test.e2e.ts'
+        './test/specs/**/*.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -56,13 +53,13 @@ export const config: WebdriverIO.Config = {
     //
     capabilities: [{
         browserName: 'chrome',
-        acceptInsecureCerts: true
-    },
-    //     {
-    //     browserName: 'MicrosoftEdge',
-    //     acceptInsecureCerts: true
-    //  }
-    ],
+        acceptInsecureCerts: true,
+        'goog:chromeOptions': {
+            args: process.env.HEADLESS === 'true' 
+                ? ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080'] 
+                : []
+        }
+    }],
 
     //
     // ===================
@@ -134,9 +131,20 @@ export const config: WebdriverIO.Config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
-
-    //reporters: ['spec', 'junit', ['allure', { outputDir: 'allure-results' }]],
+    reporters: [
+        'spec',
+        ['junit', {
+            outputDir: './test_logs/junit',
+            outputFileFormat: function(options: any) {
+                return `results-${options.cid}.xml`
+            }
+        }],
+        ['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: false,
+        }]
+    ],
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
