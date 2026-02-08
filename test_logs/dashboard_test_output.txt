@@ -1,0 +1,245 @@
+﻿2026-02-08T11:08:38.939Z INFO @wdio/cli:launcher: Run onPrepare hook
+
+Execution of 1 workers started at 2026-02-08T11:08:38.944Z
+
+2026-02-08T11:08:38.945Z INFO @wdio/utils: Setting up browser driver for: chrome@stable
+2026-02-08T11:08:38.947Z INFO @wdio/utils: Setting up browser binaries for: chrome@stable
+2026-02-08T11:08:38.956Z INFO webdriver: Using Chromedriver v144.0.7559.133 from cache directory C:\Users\subra\AppData\Local\Temp
+2026-02-08T11:08:38.963Z INFO @wdio/cli:launcher: Run onWorkerStart hook
+2026-02-08T11:08:38.964Z INFO @wdio/xvfb: XvfbManager.init() called
+2026-02-08T11:08:38.964Z INFO @wdio/xvfb: Xvfb not needed on current platform
+2026-02-08T11:08:38.967Z INFO @wdio/local-runner: Start worker 0-0 with arg: run ./wdio.conf.ts --spec test/specs/dashboardpage_test.e2e.ts
+2026-02-08T11:08:39.066Z INFO @wdio/xvfb:ProcessFactory: xvfb-run not found, falling back to regular fork
+2026-02-08T11:08:39.067Z INFO @wdio/xvfb:ProcessFactory: ProcessFactory: shouldRun=false, isAvailable=false
+2026-02-08T11:08:39.067Z INFO @wdio/xvfb:ProcessFactory: Creating worker process with regular fork
+[0-0] 2026-02-08T11:08:42.465Z INFO @wdio/local-runner: Run worker command: run
+[0-0] RUNNING in chrome - file:///C:/Users/subra/OneDrive%20-%20ICAD%20Airports%20Pvt%20Ltd/Desktop/AIP%20Sentinel%20Automation%2005-10-2025/test/specs/dashboardpage_test.e2e.ts
+[0-0] 2026-02-08T11:08:45.215Z INFO webdriver: Initiate new session using the WebDriver protocol
+[0-0] 2026-02-08T11:08:45.908Z INFO webdriver: Using Chromedriver v144.0.7559.133 from cache directory C:\Users\subra\AppData\Local\Temp
+[0-0] 2026-02-08T11:08:46.295Z INFO chromedriver: Starting ChromeDriver 144.0.7559.133 (7da823b1d594d1b49797911900e003ec96a8c0e7-refs/branch-heads/7559@{#4253}) on port 53086
+[0-0] 2026-02-08T11:08:46.295Z INFO chromedriver: Remote connections are allowed by an allowlist (0.0.0.0).
+[0-0] 2026-02-08T11:08:46.296Z INFO chromedriver: Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+[0-0] 2026-02-08T11:08:46.307Z INFO chromedriver: ChromeDriver was started successfully on port 53086.
+[0-0] 2026-02-08T11:08:46.401Z INFO @wdio/utils: Started Chromedriver v144.0.7559.133 with params --port=53086 --allowed-origins=* --allowed-ips=0.0.0.0 in 543ms on port 53086
+[0-0] 2026-02-08T11:08:46.408Z INFO webdriver: [POST] http://localhost:53086/session
+[0-0] 2026-02-08T11:08:49.002Z INFO webdriver: Register BiDi handler for session with id a5d69a8c39ba31ab6b929aec6120e67a
+[0-0] 2026-02-08T11:08:49.006Z INFO webdriver: Connecting to webSocketUrl ws://127.0.0.1:53086/session/a5d69a8c39ba31ab6b929aec6120e67a
+[0-0] 2026-02-08T11:08:49.182Z INFO webdriver: Connected to Bidi protocol at ws://127.0.0.1:53086/session/a5d69a8c39ba31ab6b929aec6120e67a
+[0-0] 2026-02-08T11:08:49.183Z INFO webdriver: Connected to WebDriver Bidi interface at ws://127.0.0.1:53086/session/a5d69a8c39ba31ab6b929aec6120e67a
+[0-0] 2026-02-08T11:08:49.186Z INFO webdriver: COMMAND getWindowHandle()
+[0-0] 2026-02-08T11:08:49.189Z INFO webdriver: BIDI COMMAND browsingContext.getTree {}
+[0-0] 2026-02-08T11:08:49.203Z INFO webdriver: BIDI COMMAND session.subscribe {"events":["browsingContext.contextCreated"]}
+[0-0] 2026-02-08T11:08:49.205Z INFO webdriver: BIDI COMMAND session.subscribe {"events":["log.entryAdded","browsingContext.navigationStarted"]}
+[0-0] 2026-02-08T11:08:49.206Z INFO webdriver: BIDI COMMAND script.addPreloadScript { functionDeclaration: <PreloadScript[1319 bytes]>, contexts: undefined }
+[0-0] 2026-02-08T11:08:49.207Z INFO webdriver: BIDI COMMAND session.subscribe {"events":["browsingContext.navigationStarted","browsingContext.fragmentNavigated","network.responseCompleted","network.beforeRequestSent","network.fetchError"]}
+[0-0] 2026-02-08T11:08:49.208Z INFO webdriver: BIDI COMMAND session.subscribe {"events":["browsingContext.userPromptOpened"]}
+[0-0] 2026-02-08T11:08:49.208Z INFO webdriver: BIDI COMMAND session.subscribe {"events":["browsingContext.navigationStarted"]}
+[0-0] 2026-02-08T11:08:49.209Z INFO webdriver: [GET] http://localhost:53086/session/a5d69a8c39ba31ab6b929aec6120e67a/window
+[0-0] 2026-02-08T11:08:49.227Z INFO webdriver: RESULT BE42A72CCEEDF3439827322B659DA8B4
+[0-0] 2026-02-08T11:08:49.282Z INFO webdriver: BIDI RESULT {"id":1,"result":{"contexts":[{"children":[],"clientWindow":"449381579","context":"BE42A72CCEEDF3439827322B659DA8B4","originalOpener":null,"parent":null,"url":"about:blank","userContext":"default"}]},"type":"success"}
+[0-0] 2026-02-08T11:08:49.285Z INFO webdriverio:PolyfillManager: Adding polyfill script to context with id BE42A72CCEEDF3439827322B659DA8B4
+[0-0] 2026-02-08T11:08:49.286Z INFO webdriver: BIDI COMMAND script.callFunction {"functionDeclaration":"<Function[443 bytes] webdriverioPolyfill>","target":{"children":[],"clientWindow":"449381579","context":"BE42A72CCEEDF3439827322B659DA8B4","originalOpener":null,"parent":null,"url":"about:blank","userContext":"default"},"awaitPromise":false}
+[0-0] 2026-02-08T11:08:49.288Z INFO webdriver: BIDI COMMAND script.addPreloadScript { functionDeclaration: <PreloadScript[443 bytes]>, contexts: ["BE42A72CCEEDF3439827322B659DA8B4"] }
+[0-0] 2026-02-08T11:08:49.294Z INFO webdriver: BIDI RESULT {"id":2,"result":{"subscription":"45556034-e099-483c-adc3-f7c92e4a4650"},"type":"success"}
+[0-0] 2026-02-08T11:08:49.296Z INFO webdriver: BIDI RESULT {"id":3,"result":{"subscription":"962912d6-d47b-4386-b951-63d9007ba7a1"},"type":"success"}
+[0-0] 2026-02-08T11:08:49.298Z INFO webdriver: BIDI RESULT {"id":5,"result":{"subscription":"404ac002-c937-4baf-a3f2-a0694a62891e"},"type":"success"}
+[0-0] 2026-02-08T11:08:49.299Z INFO webdriver: BIDI RESULT {"id":6,"result":{"subscription":"502b57c1-6581-402f-9b5a-8c65f3463b07"},"type":"success"}
+[0-0] 2026-02-08T11:08:49.301Z INFO webdriver: BIDI RESULT {"id":7,"result":{"subscription":"77077a66-2e40-4f75-995c-64fc6a27f7de"},"type":"success"}
+[0-0] 2026-02-08T11:08:49.305Z INFO webdriver: BIDI RESULT {"id":4,"result":{"script":"65b86d49-c888-4e6d-8085-ec0785707f95"},"type":"success"}
+[0-0] 2026-02-08T11:08:49.307Z INFO webdriver: BIDI RESULT {"id":8,"result":{"realm":"3607501969177485871.6682363693490120105","result":{"type":"undefined"},"type":"success"},"type":"success"}
+[0-0] 2026-02-08T11:08:49.309Z INFO webdriver: BIDI RESULT {"id":9,"result":{"script":"e5ffc08a-4d0e-4d6b-9cb7-e11649456fea"},"type":"success"}
+[0-0] 2026-02-08T11:08:49.312Z INFO @wdio/visual-service: Adding commands to global browser
+[0-0] 2026-02-08T11:08:49.317Z INFO webdriver: BIDI COMMAND script.callFunction {"functionDeclaration":"<Function[161 bytes] anonymous>","awaitPromise":true,"arguments":[],"target":{"context":"BE42A72CCEEDF3439827322B659DA8B4"}}
+[0-0] 2026-02-08T11:08:49.329Z INFO webdriver: BIDI RESULT {"id":10,"result":{"realm":"3607501969177485871.6682363693490120105","result":{"type":"number","value":1.25},"type":"success"},"type":"success"}
+[0-0] 2026-02-08T11:08:49.331Z INFO @wdio/visual-service: Adding element command "saveElement" to browser object
+[0-0] 2026-02-08T11:08:49.333Z INFO @wdio/visual-service: Adding element command "checkElement" to browser object
+[0-0] 2026-02-08T11:08:49.333Z INFO @wdio/visual-service: Adding browser command "saveScreen" to browser object
+[0-0] 2026-02-08T11:08:49.333Z INFO @wdio/visual-service: Adding browser command "saveFullPageScreen" to browser object
+[0-0] 2026-02-08T11:08:49.334Z INFO @wdio/visual-service: Adding browser command "saveTabbablePage" to browser object
+[0-0] 2026-02-08T11:08:49.334Z INFO @wdio/visual-service: Adding browser command "checkScreen" to browser object
+[0-0] 2026-02-08T11:08:49.334Z INFO @wdio/visual-service: Adding browser command "checkFullPageScreen" to browser object
+[0-0] 2026-02-08T11:08:49.335Z INFO @wdio/visual-service: Adding browser command "checkTabbablePage" to browser object
+[0-0] 2026-02-08T11:08:49.335Z INFO @wdio/visual-service: Adding browser command "waitForStorybookComponentToBeLoaded" to browser object
+[0-0] 2026-02-08T11:08:49.364Z INFO webdriver: BIDI COMMAND browsingContext.navigate {"context":"BE42A72CCEEDF3439827322B659DA8B4","url":"https://10.35.84.85:9443","wait":"complete"}
+[0-0] 2026-02-08T11:08:50.014Z INFO webdriver: BIDI RESULT {"id":11,"result":{"navigation":"787eae06-0bb8-402c-892a-752b0d8f3428","url":"https://10.35.84.85:9443/"},"type":"success"}
+[0-0] 2026-02-08T11:08:50.018Z INFO webdriver: COMMAND maximizeWindow()
+[0-0] 2026-02-08T11:08:50.019Z INFO webdriver: [POST] http://localhost:53086/session/a5d69a8c39ba31ab6b929aec6120e67a/window/maximize
+[0-0] 2026-02-08T11:08:50.019Z INFO webdriver: DATA {}
+[0-0] 2026-02-08T11:08:50.454Z INFO webdriver: RESULT { height: 832, width: 1552, x: -7, y: -7 }
+[0-0] 2026-02-08T11:08:50.469Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//option[@value=\"ADMIN\"]"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:50.509Z INFO webdriver: BIDI RESULT {"id":12,"result":{"nodes":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.12","type":"node","value":{"attributes":{"value":"ADMIN"},"childNodeCount":1,"localName":"option","namespaceURI":"http://www.w3.org/1999/xhtml","nodeType":1,"shadowRoot":{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.13","type":"node","value":{"childNodeCount":2,"mode":"closed","nodeType":11}}}}]},"type":"success"}
+[0-0] 2026-02-08T11:08:50.560Z INFO webdriver: COMMAND elementClick("f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.12")
+[0-0] 2026-02-08T11:08:50.565Z INFO webdriver: [POST] http://localhost:53086/session/a5d69a8c39ba31ab6b929aec6120e67a/element/f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.12/click
+[0-0] 2026-02-08T11:08:50.566Z INFO webdriver: DATA {}
+[0-0] 2026-02-08T11:08:50.697Z INFO webdriver: RESULT null
+[0-0] 2026-02-08T11:08:50.701Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//input[@id=\"email\"]"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:50.728Z INFO webdriver: BIDI RESULT {"id":13,"result":{"nodes":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.4","type":"node","value":{"attributes":{"aria-label":"Email or username","class":"flex h-10 rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm w-full","id":"email","placeholder":"you@example.com","required":"","type":"text","value":""},"childNodeCount":0,"localName":"input","namespaceURI":"http://www.w3.org/1999/xhtml","nodeType":1,"shadowRoot":{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.14","type":"node","value":{"childNodeCount":2,"mode":"closed","nodeType":11}}}}]},"type":"success"}
+[0-0] 2026-02-08T11:08:50.751Z INFO webdriver: COMMAND elementClear("f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.4")
+[0-0] 2026-02-08T11:08:50.754Z INFO webdriver: [POST] http://localhost:53086/session/a5d69a8c39ba31ab6b929aec6120e67a/element/f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.4/clear
+[0-0] 2026-02-08T11:08:50.754Z INFO webdriver: DATA {}
+[0-0] 2026-02-08T11:08:51.007Z INFO webdriver: RESULT null
+[0-0] 2026-02-08T11:08:51.009Z INFO webdriver: COMMAND elementSendKeys("f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.4", "aip.admin@niairport.in")
+[0-0] 2026-02-08T11:08:51.012Z INFO webdriver: [POST] http://localhost:53086/session/a5d69a8c39ba31ab6b929aec6120e67a/element/f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.4/value
+[0-0] 2026-02-08T11:08:51.012Z INFO webdriver: DATA {"text":"aip.admin@niairport.in"}
+[0-0] 2026-02-08T11:08:51.546Z INFO webdriver: RESULT null
+[0-0] 2026-02-08T11:08:51.550Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//input[@id=\"password\"]"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:51.567Z INFO webdriver: BIDI RESULT {"id":14,"result":{"nodes":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.5","type":"node","value":{"attributes":{"aria-label":"Password","class":"flex h-10 rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm w-full","id":"password","placeholder":"********","required":"","type":"password","value":""},"childNodeCount":0,"localName":"input","namespaceURI":"http://www.w3.org/1999/xhtml","nodeType":1,"shadowRoot":{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.18","type":"node","value":{"childNodeCount":2,"mode":"closed","nodeType":11}}}}]},"type":"success"}
+[0-0] 2026-02-08T11:08:51.579Z INFO webdriver: COMMAND elementClear("f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.5")
+[0-0] 2026-02-08T11:08:51.581Z INFO webdriver: [POST] http://localhost:53086/session/a5d69a8c39ba31ab6b929aec6120e67a/element/f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.5/clear
+[0-0] 2026-02-08T11:08:51.582Z INFO webdriver: DATA {}
+[0-0] 2026-02-08T11:08:51.681Z INFO webdriver: RESULT null
+[0-0] 2026-02-08T11:08:51.685Z INFO webdriver: COMMAND elementSendKeys("f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.5", "MSI@Admin123")
+[0-0] 2026-02-08T11:08:51.687Z INFO webdriver: [POST] http://localhost:53086/session/a5d69a8c39ba31ab6b929aec6120e67a/element/f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.5/value
+[0-0] 2026-02-08T11:08:51.687Z INFO webdriver: DATA {"text":"MSI@Admin123"}
+[0-0] 2026-02-08T11:08:52.081Z INFO webdriver: RESULT null
+[0-0] 2026-02-08T11:08:52.083Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//a[text()=\"Forgot password?\"]"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:52.099Z INFO webdriver: BIDI RESULT {"id":15,"result":{"nodes":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.19","type":"node","value":{"attributes":{"aria-label":"Forgot password","class":"text-primary hover:text-primary/80 underline","href":"/forgot-password"},"childNodeCount":1,"localName":"a","namespaceURI":"http://www.w3.org/1999/xhtml","nodeType":1,"shadowRoot":null}}]},"type":"success"}
+[0-0] 2026-02-08T11:08:52.118Z INFO webdriver: BIDI COMMAND script.callFunction {"functionDeclaration":"<Function[478 bytes] anonymous>","awaitPromise":true,"arguments":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.19"}],"target":{"context":"BE42A72CCEEDF3439827322B659DA8B4"}}
+[0-0] 2026-02-08T11:08:52.120Z INFO webdriver: BIDI COMMAND script.callFunction {"functionDeclaration":"<Function[279 bytes] checkVisibility>","awaitPromise":true,"arguments":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.19"},{"type":"object","value":[["withinViewport",{"type":"boolean","value":false}],["contentVisibilityAuto",{"type":"boolean","value":true}],["opacityProperty",{"type":"boolean","value":true}],["visibilityProperty",{"type":"boolean","value":true}]]}],"target":{"context":"BE42A72CCEEDF3439827322B659DA8B4"}}
+[0-0] 2026-02-08T11:08:52.210Z INFO webdriver: BIDI RESULT {"id":16,"result":{"realm":"-4884706895577681142.4981234472479139527","result":{"type":"object","value":[["value",{"type":"string","value":"inline"}]]},"type":"success"},"type":"success"}
+[0-0] 2026-02-08T11:08:52.218Z INFO webdriver: BIDI RESULT {"id":17,"result":{"realm":"-4884706895577681142.4981234472479139527","result":{"type":"boolean","value":true},"type":"success"},"type":"success"}
+[0-0] 2026-02-08T11:08:52.225Z INFO webdriver: BIDI COMMAND script.callFunction {"functionDeclaration":"<Function[4336 bytes] isElementClickable>","awaitPromise":true,"arguments":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.19"}],"target":{"context":"BE42A72CCEEDF3439827322B659DA8B4"}}
+[0-0] 2026-02-08T11:08:52.254Z INFO webdriver: BIDI RESULT {"id":18,"result":{"realm":"-4884706895577681142.4981234472479139527","result":{"type":"boolean","value":true},"type":"success"},"type":"success"}
+[0-0] 2026-02-08T11:08:52.256Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//a[text()=\"Sign up\"]"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:52.268Z INFO webdriver: BIDI RESULT {"id":19,"result":{"nodes":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.20","type":"node","value":{"attributes":{"class":"text-primary hover:text-primary/80 underline font-medium","href":"/signup"},"childNodeCount":1,"localName":"a","namespaceURI":"http://www.w3.org/1999/xhtml","nodeType":1,"shadowRoot":null}}]},"type":"success"}
+[0-0] 2026-02-08T11:08:52.282Z INFO webdriver: BIDI COMMAND script.callFunction {"functionDeclaration":"<Function[478 bytes] anonymous>","awaitPromise":true,"arguments":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.20"}],"target":{"context":"BE42A72CCEEDF3439827322B659DA8B4"}}
+[0-0] 2026-02-08T11:08:52.285Z INFO webdriver: BIDI COMMAND script.callFunction {"functionDeclaration":"<Function[279 bytes] checkVisibility>","awaitPromise":true,"arguments":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.20"},{"type":"object","value":[["withinViewport",{"type":"boolean","value":false}],["contentVisibilityAuto",{"type":"boolean","value":true}],["opacityProperty",{"type":"boolean","value":true}],["visibilityProperty",{"type":"boolean","value":true}]]}],"target":{"context":"BE42A72CCEEDF3439827322B659DA8B4"}}
+[0-0] 2026-02-08T11:08:52.358Z INFO webdriver: BIDI RESULT {"id":20,"result":{"realm":"-4884706895577681142.4981234472479139527","result":{"type":"object","value":[["value",{"type":"string","value":"inline"}]]},"type":"success"},"type":"success"}
+[0-0] 2026-02-08T11:08:52.370Z INFO webdriver: BIDI RESULT {"id":21,"result":{"realm":"-4884706895577681142.4981234472479139527","result":{"type":"boolean","value":true},"type":"success"},"type":"success"}
+[0-0] 2026-02-08T11:08:52.372Z INFO webdriver: BIDI COMMAND script.callFunction {"functionDeclaration":"<Function[4336 bytes] isElementClickable>","awaitPromise":true,"arguments":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.20"}],"target":{"context":"BE42A72CCEEDF3439827322B659DA8B4"}}
+[0-0] 2026-02-08T11:08:52.389Z INFO webdriver: BIDI RESULT {"id":22,"result":{"realm":"-4884706895577681142.4981234472479139527","result":{"type":"boolean","value":true},"type":"success"},"type":"success"}
+[0-0] 2026-02-08T11:08:52.390Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//button[text()=\"Continue\"]"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:52.404Z INFO webdriver: BIDI RESULT {"id":23,"result":{"nodes":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.7","type":"node","value":{"attributes":{"aria-label":"Log in","class":"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm hover:shadow-md h-11 rounded-md px-8 w-full","type":"submit"},"childNodeCount":1,"localName":"button","namespaceURI":"http://www.w3.org/1999/xhtml","nodeType":1,"shadowRoot":null}}]},"type":"success"}
+[0-0] 2026-02-08T11:08:52.422Z INFO webdriver: COMMAND isElementEnabled("f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.7")
+[0-0] 2026-02-08T11:08:52.424Z INFO webdriver: [GET] http://localhost:53086/session/a5d69a8c39ba31ab6b929aec6120e67a/element/f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.7/enabled
+[0-0] 2026-02-08T11:08:52.469Z INFO webdriver: RESULT true
+[0-0] 2026-02-08T11:08:52.484Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//div[text()=\"Don't have an account?\"]"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:52.499Z INFO webdriver: BIDI RESULT {"id":24,"result":{"nodes":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.21","type":"node","value":{"attributes":{"class":"text-muted-foreground"},"childNodeCount":3,"localName":"div","namespaceURI":"http://www.w3.org/1999/xhtml","nodeType":1,"shadowRoot":null}}]},"type":"success"}
+[0-0] 2026-02-08T11:08:52.512Z INFO webdriver: COMMAND getElementText("f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.21")
+[0-0] 2026-02-08T11:08:52.514Z INFO webdriver: [GET] http://localhost:53086/session/a5d69a8c39ba31ab6b929aec6120e67a/element/f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.21/text
+[0-0] 2026-02-08T11:08:52.595Z INFO webdriver: RESULT Don't have an account? Sign up
+[0-0] 2026-02-08T11:08:52.609Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//button[text()=\"Continue\"]"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:52.623Z INFO webdriver: BIDI RESULT {"id":25,"result":{"nodes":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.7","type":"node","value":{"attributes":{"aria-label":"Log in","class":"inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm hover:shadow-md h-11 rounded-md px-8 w-full","type":"submit"},"childNodeCount":1,"localName":"button","namespaceURI":"http://www.w3.org/1999/xhtml","nodeType":1,"shadowRoot":null}}]},"type":"success"}
+[0-0] 2026-02-08T11:08:52.635Z INFO webdriver: COMMAND elementClick("f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.7")
+[0-0] 2026-02-08T11:08:52.637Z INFO webdriver: [POST] http://localhost:53086/session/a5d69a8c39ba31ab6b929aec6120e67a/element/f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.7/click
+[0-0] 2026-02-08T11:08:52.638Z INFO webdriver: DATA {}
+[0-0] 2026-02-08T11:08:52.901Z INFO webdriver: RESULT null
+[0-0] 2026-02-08T11:08:52.904Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//h1[@class=\"text-3xl font-bold text-foreground\"]"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:52.915Z INFO webdriver: BIDI RESULT {"id":26,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:52.925Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//h1[@class=\"text-3xl font-bold text-foreground\"]"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:52.949Z INFO webdriver: BIDI RESULT {"id":27,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:52.957Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//h1[@class=\"text-3xl font-bold text-foreground\"]"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:52.969Z INFO webdriver: BIDI RESULT {"id":28,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:52.980Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//h1[@class=\"text-3xl font-bold text-foreground\"]"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:52.989Z INFO webdriver: BIDI RESULT {"id":29,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:53.079Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//h1[@class=\"text-3xl font-bold text-foreground\"]"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:53.087Z INFO webdriver: BIDI RESULT {"id":30,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:53.183Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//h1[@class=\"text-3xl font-bold text-foreground\"]"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:53.334Z INFO webdriver: BIDI RESULT {"id":31,"result":{"nodes":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.22","type":"node","value":{"attributes":{"class":"text-3xl font-bold text-foreground"},"childNodeCount":1,"localName":"h1","namespaceURI":"http://www.w3.org/1999/xhtml","nodeType":1,"shadowRoot":null}}]},"type":"success"}
+[0-0] 2026-02-08T11:08:53.348Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//h1[@class=\"text-3xl font-bold text-foreground\"]"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:53.383Z INFO webdriver: BIDI RESULT {"id":32,"result":{"nodes":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.22","type":"node","value":{"attributes":{"class":"text-3xl font-bold text-foreground"},"childNodeCount":1,"localName":"h1","namespaceURI":"http://www.w3.org/1999/xhtml","nodeType":1,"shadowRoot":null}}]},"type":"success"}
+[0-0] 2026-02-08T11:08:53.403Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//h1[@class=\"text-3xl font-bold text-foreground\"]"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:53.423Z INFO webdriver: BIDI RESULT {"id":33,"result":{"nodes":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.22","type":"node","value":{"attributes":{"class":"text-3xl font-bold text-foreground"},"childNodeCount":1,"localName":"h1","namespaceURI":"http://www.w3.org/1999/xhtml","nodeType":1,"shadowRoot":null}}]},"type":"success"}
+[0-0] 2026-02-08T11:08:53.433Z INFO webdriver: COMMAND getElementText("f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.22")
+[0-0] 2026-02-08T11:08:53.434Z INFO webdriver: [GET] http://localhost:53086/session/a5d69a8c39ba31ab6b929aec6120e67a/element/f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.22/text
+[0-0] 2026-02-08T11:08:53.480Z INFO webdriver: RESULT Dashboard
+[0-0] 2026-02-08T11:08:53.486Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//span[text()=\"ADMIN\"]"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:53.496Z INFO webdriver: BIDI RESULT {"id":34,"result":{"nodes":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.23","type":"node","value":{"attributes":{},"childNodeCount":1,"localName":"span","namespaceURI":"http://www.w3.org/1999/xhtml","nodeType":1,"shadowRoot":null}}]},"type":"success"}
+[0-0] 2026-02-08T11:08:53.504Z INFO webdriver: COMMAND getElementText("f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.23")
+[0-0] 2026-02-08T11:08:53.505Z INFO webdriver: [GET] http://localhost:53086/session/a5d69a8c39ba31ab6b929aec6120e67a/element/f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.23/text
+[0-0] 2026-02-08T11:08:53.539Z INFO webdriver: RESULT ADMIN
+[0-0] 2026-02-08T11:08:53.542Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//img[@alt='AIP Sentinel']"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:53.554Z INFO webdriver: BIDI RESULT {"id":35,"result":{"nodes":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.24","type":"node","value":{"attributes":{"alt":"AIP Sentinel","class":"h-10 w-auto","src":"/uploads/406e044e-e65a-48a5-a512-fbb07f57a290.png"},"childNodeCount":0,"localName":"img","namespaceURI":"http://www.w3.org/1999/xhtml","nodeType":1,"shadowRoot":null}}]},"type":"success"}
+[0-0] 2026-02-08T11:08:53.565Z INFO webdriver: BIDI COMMAND script.callFunction {"functionDeclaration":"<Function[478 bytes] anonymous>","awaitPromise":true,"arguments":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.24"}],"target":{"context":"BE42A72CCEEDF3439827322B659DA8B4"}}
+[0-0] 2026-02-08T11:08:53.567Z INFO webdriver: BIDI COMMAND script.callFunction {"functionDeclaration":"<Function[279 bytes] checkVisibility>","awaitPromise":true,"arguments":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.24"},{"type":"object","value":[["withinViewport",{"type":"boolean","value":false}],["contentVisibilityAuto",{"type":"boolean","value":true}],["opacityProperty",{"type":"boolean","value":true}],["visibilityProperty",{"type":"boolean","value":true}]]}],"target":{"context":"BE42A72CCEEDF3439827322B659DA8B4"}}
+[0-0] 2026-02-08T11:08:53.658Z INFO webdriver: BIDI RESULT {"id":36,"result":{"realm":"-4884706895577681142.4981234472479139527","result":{"type":"object","value":[["value",{"type":"string","value":"block"}]]},"type":"success"},"type":"success"}
+[0-0] 2026-02-08T11:08:53.667Z INFO webdriver: BIDI RESULT {"id":37,"result":{"realm":"-4884706895577681142.4981234472479139527","result":{"type":"boolean","value":true},"type":"success"},"type":"success"}
+[0-0] 2026-02-08T11:08:53.669Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//img[@alt='AIP Sentinel']"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:53.682Z INFO webdriver: BIDI RESULT {"id":38,"result":{"nodes":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.24","type":"node","value":{"attributes":{"alt":"AIP Sentinel","class":"h-10 w-auto","src":"/uploads/406e044e-e65a-48a5-a512-fbb07f57a290.png"},"childNodeCount":0,"localName":"img","namespaceURI":"http://www.w3.org/1999/xhtml","nodeType":1,"shadowRoot":null}}]},"type":"success"}
+[0-0] 2026-02-08T11:08:53.689Z INFO webdriver: BIDI COMMAND script.callFunction {"functionDeclaration":"<Function[478 bytes] anonymous>","awaitPromise":true,"arguments":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.24"}],"target":{"context":"BE42A72CCEEDF3439827322B659DA8B4"}}
+[0-0] 2026-02-08T11:08:53.691Z INFO webdriver: BIDI COMMAND script.callFunction {"functionDeclaration":"<Function[279 bytes] checkVisibility>","awaitPromise":true,"arguments":[{"sharedId":"f.BE42A72CCEEDF3439827322B659DA8B4.d.EF011BB5918C4C5EBABE977E56F9C377.e.24"},{"type":"object","value":[["withinViewport",{"type":"boolean","value":false}],["contentVisibilityAuto",{"type":"boolean","value":true}],["opacityProperty",{"type":"boolean","value":true}],["visibilityProperty",{"type":"boolean","value":true}]]}],"target":{"context":"BE42A72CCEEDF3439827322B659DA8B4"}}
+[0-0] 2026-02-08T11:08:53.739Z INFO webdriver: BIDI RESULT {"id":39,"result":{"realm":"-4884706895577681142.4981234472479139527","result":{"type":"object","value":[["value",{"type":"string","value":"block"}]]},"type":"success"},"type":"success"}
+[0-0] 2026-02-08T11:08:53.741Z INFO webdriver: BIDI RESULT {"id":40,"result":{"realm":"-4884706895577681142.4981234472479139527","result":{"type":"boolean","value":true},"type":"success"},"type":"success"}
+[0-0] 2026-02-08T11:08:53.745Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//p[normalize-space()='Queue Managers']/preceding-sibling::div"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:53.757Z INFO webdriver: BIDI RESULT {"id":41,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:53.765Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//p[normalize-space()='Queue Managers']/preceding-sibling::div"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:53.774Z INFO webdriver: BIDI RESULT {"id":42,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:53.883Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//p[normalize-space()='Queue Managers']/preceding-sibling::div"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:53.891Z INFO webdriver: BIDI RESULT {"id":43,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:54.007Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//p[normalize-space()='Queue Managers']/preceding-sibling::div"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:54.018Z INFO webdriver: BIDI RESULT {"id":44,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:54.132Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//p[normalize-space()='Queue Managers']/preceding-sibling::div"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:54.142Z INFO webdriver: BIDI RESULT {"id":45,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:54.260Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//p[normalize-space()='Queue Managers']/preceding-sibling::div"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:54.275Z INFO webdriver: BIDI RESULT {"id":46,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:54.387Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//p[normalize-space()='Queue Managers']/preceding-sibling::div"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:54.398Z INFO webdriver: BIDI RESULT {"id":47,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:54.514Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//p[normalize-space()='Queue Managers']/preceding-sibling::div"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:54.527Z INFO webdriver: BIDI RESULT {"id":48,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:54.641Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//p[normalize-space()='Queue Managers']/preceding-sibling::div"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:54.652Z INFO webdriver: BIDI RESULT {"id":49,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:54.775Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//p[normalize-space()='Queue Managers']/preceding-sibling::div"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:54.786Z INFO webdriver: BIDI RESULT {"id":50,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:54.900Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//p[normalize-space()='Queue Managers']/preceding-sibling::div"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:54.910Z INFO webdriver: BIDI RESULT {"id":51,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:55.027Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//p[normalize-space()='Queue Managers']/preceding-sibling::div"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:55.040Z INFO webdriver: BIDI RESULT {"id":52,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:55.152Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//p[normalize-space()='Queue Managers']/preceding-sibling::div"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:55.163Z INFO webdriver: BIDI RESULT {"id":53,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:55.274Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//p[normalize-space()='Queue Managers']/preceding-sibling::div"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:55.284Z INFO webdriver: BIDI RESULT {"id":54,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:55.393Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//p[normalize-space()='Queue Managers']/preceding-sibling::div"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:55.406Z INFO webdriver: BIDI RESULT {"id":55,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:55.521Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//p[normalize-space()='Queue Managers']/preceding-sibling::div"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:55.532Z INFO webdriver: BIDI RESULT {"id":56,"result":{"nodes":[]},"type":"success"}
+[0-0] 2026-02-08T11:08:55.646Z INFO webdriver: BIDI COMMAND browsingContext.locateNodes {"locator":{"type":"xpath","value":"//p[normalize-space()='Queue Managers']/preceding-sibling::div"},"context":"BE42A72CCEEDF3439827322B659DA8B4"}
+[0-0] 2026-02-08T11:08:55.657Z INFO webdriver: BIDI RESULT {"id":57,"result":{"nodes":[]},"type":"success"}
+[0-0] Error in "Dashboard Page Test Suite.should verify dashboard elements are displayed after login"
+Error: Expect $(`//p[normalize-space()='Queue Managers']/preceding-sibling::div`) to be displayed
+
+Expected: "displayed"
+Received: "not displayed"
+    at DashboardPage.validateDashboardElementsDisplayed (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\test\pageobjects\dashboard.page.ts:90:47)
+    at Context.<anonymous> (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\test\specs\dashboardpage_test.e2e.ts:18:29)
+    at async Context.executeAsync (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:1108:20)
+    at async Context.testFrameworkFnWrapper (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:1188:14)
+[0-0] 2026-02-08T11:08:55.844Z INFO webdriver: COMMAND deleteSession()
+[0-0] 2026-02-08T11:08:55.845Z INFO webdriver: [DELETE] http://localhost:53086/session/a5d69a8c39ba31ab6b929aec6120e67a
+[0-0] 2026-02-08T11:08:57.355Z INFO webdriver: RESULT null
+[0-0] 2026-02-08T11:08:57.356Z INFO webdriver: Close Bidi connection to ws://127.0.0.1:53086/session/a5d69a8c39ba31ab6b929aec6120e67a
+[0-0] 2026-02-08T11:08:57.358Z INFO webdriver: Kill driver process with PID 27012
+[0-0] FAILED in chrome - file:///C:/Users/subra/OneDrive%20-%20ICAD%20Airports%20Pvt%20Ltd/Desktop/AIP%20Sentinel%20Automation%2005-10-2025/test/specs/dashboardpage_test.e2e.ts
+2026-02-08T11:08:57.832Z INFO @wdio/cli:launcher: Run onWorkerEnd hook
+
+ "spec" Reporter:
+------------------------------------------------------------------
+[chrome 144.0.7559.133 windows #0-0] Running: chrome (v144.0.7559.133) on windows
+[chrome 144.0.7559.133 windows #0-0] Session ID: a5d69a8c39ba31ab6b929aec6120e67a
+[chrome 144.0.7559.133 windows #0-0]
+[chrome 144.0.7559.133 windows #0-0] ┬╗ test\specs\dashboardpage_test.e2e.ts
+[chrome 144.0.7559.133 windows #0-0] Dashboard Page Test Suite
+[chrome 144.0.7559.133 windows #0-0]    Γ£û should verify dashboard elements are displayed after login
+[chrome 144.0.7559.133 windows #0-0]
+[chrome 144.0.7559.133 windows #0-0] 1 failing (8s)
+[chrome 144.0.7559.133 windows #0-0]
+[chrome 144.0.7559.133 windows #0-0] 1) Dashboard Page Test Suite should verify dashboard elements are displayed after login
+[chrome 144.0.7559.133 windows #0-0] Expect $(`//p[normalize-space()='Queue Managers']/preceding-sibling::div`) to be displayed
+
+Expected: "displayed"
+Received: "not displayed"
+[chrome 144.0.7559.133 windows #0-0] Error: Expect $(`//p[normalize-space()='Queue Managers']/preceding-sibling::div`) to be displayed
+[chrome 144.0.7559.133 windows #0-0]
+[chrome 144.0.7559.133 windows #0-0] Expected: "displayed"
+[chrome 144.0.7559.133 windows #0-0] Received: "not displayed"
+[chrome 144.0.7559.133 windows #0-0]     at DashboardPage.validateDashboardElementsDisplayed (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\test\pageobjects\dashboard.page.ts:90:47)
+[chrome 144.0.7559.133 windows #0-0]     at Context.<anonymous> (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\test\specs\dashboardpage_test.e2e.ts:18:29)
+[chrome 144.0.7559.133 windows #0-0]     at async Context.executeAsync (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:1108:20)
+[chrome 144.0.7559.133 windows #0-0]     at async Context.testFrameworkFnWrapper (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:1188:14)
+
+
+Spec Files:	 0 passed, 1 failed, 1 total (100% completed) in 00:00:18  
+
+2026-02-08T11:08:57.843Z INFO @wdio/local-runner: Shutting down spawned worker
+2026-02-08T11:08:58.101Z INFO @wdio/local-runner: Waiting for 0 to shut down gracefully
+2026-02-08T11:08:58.101Z INFO @wdio/local-runner: shutting down
+2026-02-08T11:08:58.102Z INFO @wdio/cli:launcher: Run onComplete hook

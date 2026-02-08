@@ -8,7 +8,7 @@ export const getTestData = () => {
     ...testdata,
     Fullname: `Test User ${randomSuffix}`,
     Designation: `Tester ${randomSuffix}`,
-    Phone: `9${timestamp.toString().slice(-9)}`, // Generates a 10-digit number starting with 9
+    Phone: `+91 9${timestamp.toString().slice(-9)}`,
     Email: `auto_${timestamp}@yopmail.com`,
   };
 };

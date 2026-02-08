@@ -1,0 +1,115 @@
+﻿
+> test
+> wdio run ./wdio.conf.ts
+
+2026-02-08T10:25:52.426Z INFO @wdio/cli:launcher: Run onPrepare hook
+
+Execution of 1 workers started at 2026-02-08T10:25:52.449Z
+
+2026-02-08T10:25:52.450Z INFO @wdio/utils: Setting up browser driver for: chrome@stable
+2026-02-08T10:25:52.452Z INFO @wdio/utils: Setting up browser binaries for: chrome@stable
+2026-02-08T10:25:52.457Z INFO webdriver: Using Chromedriver v144.0.7559.133 from cache directory C:\Users\subra\AppData\Local\Temp
+2026-02-08T10:25:52.462Z INFO @wdio/cli:launcher: Run onWorkerStart hook
+2026-02-08T10:25:52.463Z INFO @wdio/xvfb: XvfbManager.init() called
+2026-02-08T10:25:52.463Z INFO @wdio/xvfb: Xvfb not needed on current platform
+2026-02-08T10:25:52.466Z INFO @wdio/local-runner: Start worker 0-0 with arg: run ./wdio.conf.ts
+2026-02-08T10:25:52.517Z INFO @wdio/xvfb:ProcessFactory: xvfb-run not found, falling back to regular fork
+2026-02-08T10:25:52.518Z INFO @wdio/xvfb:ProcessFactory: ProcessFactory: shouldRun=false, isAvailable=false
+2026-02-08T10:25:52.518Z INFO @wdio/xvfb:ProcessFactory: Creating worker process with regular fork
+[0-0] 2026-02-08T10:25:55.919Z INFO @wdio/local-runner: Run worker command: run
+[0-0] RUNNING in chrome - file:///C:/Users/subra/OneDrive%20-%20ICAD%20Airports%20Pvt%20Ltd/Desktop/AIP%20Sentinel%20Automation%2005-10-2025/test/specs/dashboardpage_test.e2e.ts
+[0-0] 2026-02-08T10:25:57.889Z INFO webdriver: Initiate new session using the WebDriver protocol
+[0-0] 2026-02-08T10:25:58.834Z INFO webdriver: Using Chromedriver v144.0.7559.133 from cache directory C:\Users\subra\AppData\Local\Temp
+[0-0] 2026-02-08T10:25:58.902Z INFO chromedriver: Starting ChromeDriver 144.0.7559.133 (7da823b1d594d1b49797911900e003ec96a8c0e7-refs/branch-heads/7559@{#4253}) on port 56946
+[0-0] 2026-02-08T10:25:58.903Z INFO chromedriver: Remote connections are allowed by an allowlist (0.0.0.0).
+[0-0] 2026-02-08T10:25:58.903Z INFO chromedriver: Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+[0-0] 2026-02-08T10:25:58.913Z INFO chromedriver: ChromeDriver was started successfully on port 56946.
+[0-0] 2026-02-08T10:25:59.010Z INFO @wdio/utils: Started Chromedriver v144.0.7559.133 with params --port=56946 --allowed-origins=* --allowed-ips=0.0.0.0 in 202ms on port 56946
+[0-0] 2026-02-08T10:25:59.017Z INFO webdriver: [POST] http://localhost:56946/session
+[0-0] 2026-02-08T10:26:01.001Z INFO webdriver: Register BiDi handler for session with id 9a5a788fd3a5fa2809d269b8b51567c4
+[0-0] 2026-02-08T10:26:01.003Z INFO webdriver: Connecting to webSocketUrl ws://127.0.0.1:56946/session/9a5a788fd3a5fa2809d269b8b51567c4
+[0-0] 2026-02-08T10:26:01.061Z INFO webdriver: Connected to Bidi protocol at ws://127.0.0.1:56946/session/9a5a788fd3a5fa2809d269b8b51567c4
+[0-0] 2026-02-08T10:26:01.062Z INFO webdriver: Connected to WebDriver Bidi interface at ws://127.0.0.1:56946/session/9a5a788fd3a5fa2809d269b8b51567c4
+[0-0] 2026-02-08T10:26:01.066Z INFO webdriver: COMMAND getWindowHandle()
+[0-0] 2026-02-08T10:26:01.069Z INFO webdriver: BIDI COMMAND browsingContext.getTree {}
+[0-0] 2026-02-08T10:26:01.074Z INFO webdriver: BIDI COMMAND session.subscribe {"events":["browsingContext.contextCreated"]}
+[0-0] 2026-02-08T10:26:01.077Z INFO webdriver: BIDI COMMAND session.subscribe {"events":["log.entryAdded","browsingContext.navigationStarted"]}
+[0-0] 2026-02-08T10:26:01.081Z INFO webdriver: BIDI COMMAND script.addPreloadScript { functionDeclaration: <PreloadScript[1319 bytes]>, contexts: undefined }
+[0-0] 2026-02-08T10:26:01.082Z INFO webdriver: BIDI COMMAND session.subscribe {"events":["browsingContext.navigationStarted","browsingContext.fragmentNavigated","network.responseCompleted","network.beforeRequestSent","network.fetchError"]}
+[0-0] 2026-02-08T10:26:01.083Z INFO webdriver: BIDI COMMAND session.subscribe {"events":["browsingContext.userPromptOpened"]}
+[0-0] 2026-02-08T10:26:01.084Z INFO webdriver: BIDI COMMAND session.subscribe {"events":["browsingContext.navigationStarted"]}
+[0-0] 2026-02-08T10:26:01.085Z INFO webdriver: [GET] http://localhost:56946/session/9a5a788fd3a5fa2809d269b8b51567c4/window
+[0-0] 2026-02-08T10:26:01.109Z INFO webdriver: RESULT DA0C87D8DABA5A4027566FF0813B1C69
+[0-0] 2026-02-08T10:26:01.123Z INFO webdriver: BIDI RESULT {"id":1,"result":{"contexts":[{"children":[],"clientWindow":"1999232229","context":"DA0C87D8DABA5A4027566FF0813B1C69","originalOpener":null,"parent":null,"url":"about:blank","userContext":"default"}]},"type":"success"}
+[0-0] 2026-02-08T10:26:01.130Z INFO webdriverio:PolyfillManager: Adding polyfill script to context with id DA0C87D8DABA5A4027566FF0813B1C69
+[0-0] 2026-02-08T10:26:01.131Z INFO webdriver: BIDI COMMAND script.callFunction {"functionDeclaration":"<Function[443 bytes] webdriverioPolyfill>","target":{"children":[],"clientWindow":"1999232229","context":"DA0C87D8DABA5A4027566FF0813B1C69","originalOpener":null,"parent":null,"url":"about:blank","userContext":"default"},"awaitPromise":false}
+[0-0] 2026-02-08T10:26:01.133Z INFO webdriver: BIDI COMMAND script.addPreloadScript { functionDeclaration: <PreloadScript[443 bytes]>, contexts: ["DA0C87D8DABA5A4027566FF0813B1C69"] }
+[0-0] 2026-02-08T10:26:01.139Z INFO webdriver: BIDI RESULT {"id":2,"result":{"subscription":"c92b5a50-8bf5-4c8b-b228-8d0c2358c853"},"type":"success"}
+[0-0] 2026-02-08T10:26:01.145Z INFO webdriver: BIDI RESULT {"id":3,"result":{"subscription":"b0cda05f-0fa6-47f5-927a-ff859b03d2dc"},"type":"success"}
+[0-0] 2026-02-08T10:26:01.148Z INFO webdriver: BIDI RESULT {"id":4,"result":{"script":"5695e11a-6c72-43a5-8e2f-6cb0acb849ce"},"type":"success"}
+[0-0] 2026-02-08T10:26:01.151Z INFO webdriver: BIDI RESULT {"id":5,"result":{"subscription":"f99339c2-7417-4d74-9fc7-e22d5e692392"},"type":"success"}
+[0-0] 2026-02-08T10:26:01.153Z INFO webdriver: BIDI RESULT {"id":6,"result":{"subscription":"5d19c4ae-6634-458a-8694-5e43a9728313"},"type":"success"}
+[0-0] 2026-02-08T10:26:01.155Z INFO webdriver: BIDI RESULT {"id":7,"result":{"subscription":"9e1765b1-030e-4315-a930-3d8588cba5f0"},"type":"success"}
+[0-0] 2026-02-08T10:26:01.159Z INFO webdriver: BIDI RESULT {"id":8,"result":{"realm":"-7877951216132007953.4397021429409517309","result":{"type":"undefined"},"type":"success"},"type":"success"}
+[0-0] 2026-02-08T10:26:01.161Z INFO webdriver: BIDI RESULT {"id":9,"result":{"script":"a25e7de4-7a37-4038-a74b-95ffa363aecd"},"type":"success"}
+[0-0] 2026-02-08T10:26:01.163Z INFO @wdio/visual-service: Adding commands to global browser
+[0-0] 2026-02-08T10:26:01.166Z INFO webdriver: BIDI COMMAND script.callFunction {"functionDeclaration":"<Function[161 bytes] anonymous>","awaitPromise":true,"arguments":[],"target":{"context":"DA0C87D8DABA5A4027566FF0813B1C69"}}
+[0-0] 2026-02-08T10:26:01.177Z INFO webdriver: BIDI RESULT {"id":10,"result":{"realm":"-7877951216132007953.4397021429409517309","result":{"type":"number","value":1.25},"type":"success"},"type":"success"}
+[0-0] 2026-02-08T10:26:01.180Z INFO @wdio/visual-service: Adding element command "saveElement" to browser object
+[0-0] 2026-02-08T10:26:01.181Z INFO @wdio/visual-service: Adding element command "checkElement" to browser object
+[0-0] 2026-02-08T10:26:01.181Z INFO @wdio/visual-service: Adding browser command "saveScreen" to browser object
+[0-0] 2026-02-08T10:26:01.181Z INFO @wdio/visual-service: Adding browser command "saveFullPageScreen" to browser object
+[0-0] 2026-02-08T10:26:01.182Z INFO @wdio/visual-service: Adding browser command "saveTabbablePage" to browser object
+[0-0] 2026-02-08T10:26:01.182Z INFO @wdio/visual-service: Adding browser command "checkScreen" to browser object
+[0-0] 2026-02-08T10:26:01.182Z INFO @wdio/visual-service: Adding browser command "checkFullPageScreen" to browser object
+[0-0] 2026-02-08T10:26:01.183Z INFO @wdio/visual-service: Adding browser command "checkTabbablePage" to browser object
+[0-0] 2026-02-08T10:26:01.183Z INFO @wdio/visual-service: Adding browser command "waitForStorybookComponentToBeLoaded" to browser object
+[0-0] 2026-02-08T10:26:01.215Z INFO webdriver: BIDI COMMAND session.subscribe {"events":["network.beforeRequestSent","network.responseStarted"]}
+[0-0] 2026-02-08T10:26:01.223Z INFO webdriver: BIDI RESULT {"id":11,"result":{"subscription":"24351b9a-c92c-402a-87e4-fd9063df3472"},"type":"success"}
+[0-0] 2026-02-08T10:26:01.224Z INFO WebDriverInterception: subscribed to network events
+[0-0] TypeError in "Dashboard Page Test Suite.should verify dashboard elements after login and match API response with UI"
+TypeError: Cannot read properties of undefined (reading 'includes')
+    at getPatternParam (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\webdriverio\build\node.js:4002:30)
+    at Function.initiate (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\webdriverio\build\node.js:4049:19)
+    at async Browser.mock (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\webdriverio\build\node.js:4401:31)
+    at async Browser.wrapCommandFn (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:982:23)
+    at async Context.<anonymous> (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\test\specs\dashboardpage_test.e2e.ts:11:22)
+    at async Context.executeAsync (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:1108:20)
+    at async Context.testFrameworkFnWrapper (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:1188:14)
+[0-0] 2026-02-08T10:26:01.504Z INFO webdriver: COMMAND deleteSession()
+[0-0] 2026-02-08T10:26:01.506Z INFO webdriver: [DELETE] http://localhost:56946/session/9a5a788fd3a5fa2809d269b8b51567c4
+[0-0] 2026-02-08T10:26:02.516Z INFO webdriver: RESULT null
+[0-0] 2026-02-08T10:26:02.517Z INFO webdriver: Close Bidi connection to ws://127.0.0.1:56946/session/9a5a788fd3a5fa2809d269b8b51567c4
+[0-0] 2026-02-08T10:26:02.519Z INFO webdriver: Kill driver process with PID 27964
+[0-0] FAILED in chrome - file:///C:/Users/subra/OneDrive%20-%20ICAD%20Airports%20Pvt%20Ltd/Desktop/AIP%20Sentinel%20Automation%2005-10-2025/test/specs/dashboardpage_test.e2e.ts
+2026-02-08T10:26:02.704Z INFO @wdio/cli:launcher: Run onWorkerEnd hook
+
+ "spec" Reporter:
+------------------------------------------------------------------
+[chrome 144.0.7559.133 windows #0-0] Running: chrome (v144.0.7559.133) on windows
+[chrome 144.0.7559.133 windows #0-0] Session ID: 9a5a788fd3a5fa2809d269b8b51567c4
+[chrome 144.0.7559.133 windows #0-0]
+[chrome 144.0.7559.133 windows #0-0] ┬╗ test\specs\dashboardpage_test.e2e.ts
+[chrome 144.0.7559.133 windows #0-0] Dashboard Page Test Suite
+[chrome 144.0.7559.133 windows #0-0]    Γ£û should verify dashboard elements after login and match API response with UI
+[chrome 144.0.7559.133 windows #0-0]
+[chrome 144.0.7559.133 windows #0-0] 1 failing (1.3s)
+[chrome 144.0.7559.133 windows #0-0]
+[chrome 144.0.7559.133 windows #0-0] 1) Dashboard Page Test Suite should verify dashboard elements after login and match API response with UI
+[chrome 144.0.7559.133 windows #0-0] Cannot read properties of undefined (reading 'includes')
+[chrome 144.0.7559.133 windows #0-0] TypeError: Cannot read properties of undefined (reading 'includes')
+[chrome 144.0.7559.133 windows #0-0]     at getPatternParam (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\webdriverio\build\node.js:4002:30)
+[chrome 144.0.7559.133 windows #0-0]     at Function.initiate (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\webdriverio\build\node.js:4049:19)
+[chrome 144.0.7559.133 windows #0-0]     at async Browser.mock (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\webdriverio\build\node.js:4401:31)
+[chrome 144.0.7559.133 windows #0-0]     at async Browser.wrapCommandFn (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:982:23)
+[chrome 144.0.7559.133 windows #0-0]     at async Context.<anonymous> (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\test\specs\dashboardpage_test.e2e.ts:11:22)
+[chrome 144.0.7559.133 windows #0-0]     at async Context.executeAsync (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:1108:20)
+[chrome 144.0.7559.133 windows #0-0]     at async Context.testFrameworkFnWrapper (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:1188:14)
+
+
+Spec Files:	 0 passed, 1 failed, 1 total (100% completed) in 00:00:10  
+
+2026-02-08T10:26:02.709Z INFO @wdio/local-runner: Shutting down spawned worker
+2026-02-08T10:26:02.962Z INFO @wdio/local-runner: Waiting for 0 to shut down gracefully
+2026-02-08T10:26:02.962Z INFO @wdio/local-runner: shutting down
+2026-02-08T10:26:02.963Z INFO @wdio/cli:launcher: Run onComplete hook
