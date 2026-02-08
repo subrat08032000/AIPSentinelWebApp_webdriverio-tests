@@ -2,7 +2,7 @@ import LoginPage from "../pageobjects/login.page.js";
 import { getTestData } from "../utils/dynamicTestData.js";
 import SignupPage from "../pageobjects/signup.page.js";
 
-describe("[TS_Sign_01] Verify the sign-up Page", () => {
+describe("Verify the sign-up Page", () => {
   it("Signup As manager and check inline error message if any filed is missing", async () => {
     const testdata = getTestData();
 

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="2" failures="2" errors="0" skipped="0">
+  <testsuite name="TS Sign 01 Verify the sign up Page" timestamp="2026-02-08T21:06:45" time="36.875" tests="2" failures="2" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="[TS_Sign_01] Verify the sign-up Page"/>
+      <property name="capabilities" value="chrome.144_0_7559_133.windows"/>
+      <property name="file" value="file:///C:/Users/subra/OneDrive%20-%20ICAD%20Airports%20Pvt%20Ltd/Desktop/AIP%20Sentinel%20Automation%2005-10-2025/test/specs/SignupPage_test.e2e.ts"/>
+    </properties>
+    <testcase classname="chrome.144_0_7559_133.windows.[TS_Sign_01]_Verify_the_sign-up_Page" name="Signup As manager and check inline error message if any filed is missing" time="24.584">
+      <failure message="element (&quot;//h3[text()=&quot;Account Created Successfully!&quot;]&quot;) still not displayed after 10000ms"/>
+      <system-out><![CDATA[
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/window/maximize - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.087A255865D4DE600105306A95350CFA.e.14/click - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.087A255865D4DE600105306A95350CFA.e.19/click - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/actions - {"actions":[{"id":"key1","type":"key","parameters":{},"actions":[{"type":"keyDown","value":"M"},{"type":"keyDown","value":""},{"type":"pause","duration":10},{"type":"keyUp","value":"M"},{"type":"keyUp","value":""}]}]}
+RESULT: {"actions":[{"id":"key1","type":"key","parameters":{},"actions":[{"type":"keyDown","value":"M"},{"type":"keyDown","value":""},{"type":"pause","duration":10},{"type":"keyUp","value":"M"},{"type":"keyUp","value":""}]}]}
+COMMAND: GET /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.087A255865D4DE600105306A95350CFA.e.32/text - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.087A255865D4DE600105306A95350CFA.e.25/clear - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.087A255865D4DE600105306A95350CFA.e.25/value - {"text":"Test User 5773"}
+RESULT: {"text":"Test User 5773"}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.087A255865D4DE600105306A95350CFA.e.26/clear - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.087A255865D4DE600105306A95350CFA.e.26/value - {"text":"Tester 5773"}
+RESULT: {"text":"Tester 5773"}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.087A255865D4DE600105306A95350CFA.e.39/click - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/actions - {"actions":[{"id":"key2","type":"key","parameters":{},"actions":[{"type":"keyDown","value":"A"},{"type":"keyDown","value":""},{"type":"pause","duration":10},{"type":"keyUp","value":"A"},{"type":"keyUp","value":""}]}]}
+RESULT: {"actions":[{"id":"key2","type":"key","parameters":{},"actions":[{"type":"keyDown","value":"A"},{"type":"keyDown","value":""},{"type":"pause","duration":10},{"type":"keyUp","value":"A"},{"type":"keyUp","value":""}]}]}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.087A255865D4DE600105306A95350CFA.e.27/clear - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.087A255865D4DE600105306A95350CFA.e.27/value - {"text":"+91 9565005626"}
+RESULT: {"text":"+91 9565005626"}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.087A255865D4DE600105306A95350CFA.e.28/clear - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.087A255865D4DE600105306A95350CFA.e.28/value - {"text":"auto_1770565005626@yopmail.com"}
+RESULT: {"text":"auto_1770565005626@yopmail.com"}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.087A255865D4DE600105306A95350CFA.e.29/clear - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.087A255865D4DE600105306A95350CFA.e.29/value - {"text":"TEST@123"}
+RESULT: {"text":"TEST@123"}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.087A255865D4DE600105306A95350CFA.e.30/clear - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.087A255865D4DE600105306A95350CFA.e.30/value - {"text":"TEST@123"}
+RESULT: {"text":"TEST@123"}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.087A255865D4DE600105306A95350CFA.e.23/click - {}
+RESULT: {}
+]]></system-out>
+      <system-err><![CDATA[
+Error: element ("//h3[text()="Account Created Successfully!"]") still not displayed after 10000ms
+    at <anonymous> (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\webdriverio\build\node.js:5829:15)
+    at async Element.wrapCommandFn (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:982:23)
+    at async Element.elementErrorHandlerCallbackFn (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\webdriverio\build\node.js:8602:24)
+    at async Element.wrapCommandFn (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:982:23)
+    at async Element.wrapCommandFn (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:982:23)
+    at async Element.elementErrorHandlerCallbackFn (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\webdriverio\build\node.js:8602:24)
+    at async Element.wrapCommandFn (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:982:23)
+    at async SignupPage.SignUp_Manager (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\test\pageobjects\signup.page.ts:164:5)
+    at async Context.<anonymous> (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\test\specs\SignupPage_test.e2e.ts:11:5)
+    at async Context.executeAsync (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:1108:20)
+]]></system-err>
+    </testcase>
+    <testcase classname="chrome.144_0_7559_133.windows.[TS_Sign_01]_Verify_the_sign-up_Page" name="Signup As User and check inline error message if any filed is missing" time="12.282">
+      <failure message="element (&quot;//h3[text()=&quot;Account Created Successfully!&quot;]&quot;) still not displayed after 10000ms"/>
+      <system-out><![CDATA[
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/window/maximize - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.964A1EBB0A207206667554A97A7D07F3.e.46/click - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.964A1EBB0A207206667554A97A7D07F3.e.57/click - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/actions - {"actions":[{"id":"key3","type":"key","parameters":{},"actions":[{"type":"keyDown","value":"U"},{"type":"keyDown","value":""},{"type":"pause","duration":10},{"type":"keyUp","value":"U"},{"type":"keyUp","value":""}]}]}
+RESULT: {"actions":[{"id":"key3","type":"key","parameters":{},"actions":[{"type":"keyDown","value":"U"},{"type":"keyDown","value":""},{"type":"pause","duration":10},{"type":"keyUp","value":"U"},{"type":"keyUp","value":""}]}]}
+COMMAND: GET /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.964A1EBB0A207206667554A97A7D07F3.e.69/text - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.964A1EBB0A207206667554A97A7D07F3.e.62/clear - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.964A1EBB0A207206667554A97A7D07F3.e.62/value - {"text":"Test User 6465"}
+RESULT: {"text":"Test User 6465"}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.964A1EBB0A207206667554A97A7D07F3.e.63/clear - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.964A1EBB0A207206667554A97A7D07F3.e.63/value - {"text":"Tester 6465"}
+RESULT: {"text":"Tester 6465"}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.964A1EBB0A207206667554A97A7D07F3.e.74/click - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/actions - {"actions":[{"id":"key4","type":"key","parameters":{},"actions":[{"type":"keyDown","value":"A"},{"type":"keyDown","value":""},{"type":"pause","duration":10},{"type":"keyUp","value":"A"},{"type":"keyUp","value":""}]}]}
+RESULT: {"actions":[{"id":"key4","type":"key","parameters":{},"actions":[{"type":"keyDown","value":"A"},{"type":"keyDown","value":""},{"type":"pause","duration":10},{"type":"keyUp","value":"A"},{"type":"keyUp","value":""}]}]}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.964A1EBB0A207206667554A97A7D07F3.e.64/clear - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.964A1EBB0A207206667554A97A7D07F3.e.64/value - {"text":"+91 9565030016"}
+RESULT: {"text":"+91 9565030016"}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.964A1EBB0A207206667554A97A7D07F3.e.65/clear - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.964A1EBB0A207206667554A97A7D07F3.e.65/value - {"text":"auto_1770565030016@yopmail.com"}
+RESULT: {"text":"auto_1770565030016@yopmail.com"}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.964A1EBB0A207206667554A97A7D07F3.e.66/clear - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.964A1EBB0A207206667554A97A7D07F3.e.66/value - {"text":"TEST@123"}
+RESULT: {"text":"TEST@123"}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.964A1EBB0A207206667554A97A7D07F3.e.67/clear - {}
+RESULT: {}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.964A1EBB0A207206667554A97A7D07F3.e.67/value - {"text":"TEST@123"}
+RESULT: {"text":"TEST@123"}
+COMMAND: POST /session/87b0e425d5c3d4a78907597b7daa72dd/element/f.2C8DCCB965E5BECD783A4B599118CF54.d.964A1EBB0A207206667554A97A7D07F3.e.60/click - {}
+RESULT: {}
+COMMAND: DELETE /session/87b0e425d5c3d4a78907597b7daa72dd - {}
+RESULT: {}
+]]></system-out>
+      <system-err><![CDATA[
+Error: element ("//h3[text()="Account Created Successfully!"]") still not displayed after 10000ms
+    at <anonymous> (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\webdriverio\build\node.js:5829:15)
+    at async Element.wrapCommandFn (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:982:23)
+    at async Element.elementErrorHandlerCallbackFn (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\webdriverio\build\node.js:8602:24)
+    at async Element.wrapCommandFn (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:982:23)
+    at async Element.wrapCommandFn (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:982:23)
+    at async Element.elementErrorHandlerCallbackFn (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\webdriverio\build\node.js:8602:24)
+    at async Element.wrapCommandFn (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:982:23)
+    at async SignupPage.SignUp_User (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\test\pageobjects\signup.page.ts:206:5)
+    at async Context.<anonymous> (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\test\specs\SignupPage_test.e2e.ts:24:5)
+    at async Context.executeAsync (C:\Users\subra\OneDrive - ICAD Airports Pvt Ltd\Desktop\AIP Sentinel Automation 05-10-2025\node_modules\@wdio\utils\build\index.js:1108:20)
+]]></system-err>
+    </testcase>
+  </testsuite>
+</testsuites>
