@@ -4,7 +4,7 @@ import SignupPage from "../pageobjects/signup.page.js";
 import managePage from "../pageobjects/manage.page.js";
 
 describe("Verify the sign-up Page", () => {
-  it.only("Signup As manager and check inline error message if any filed is missing", async () => {
+  it("Signup As manager and check inline error message if any filed is missing", async () => {
     const testdata = getTestData();
 
     await LoginPage.open(testdata.URL);
@@ -31,7 +31,7 @@ describe("Verify the sign-up Page", () => {
     await managePage.rejectManagersStartingWithPrefix(testdata.Fullname);
   });
 
-  it("Signup As User and check inline error message if any filed is missing", async () => {
+  it.only("Signup As User and check inline error message if any filed is missing", async () => {
     const testdata = getTestData();
     await LoginPage.open(testdata.URL);
     await browser.maximizeWindow();
@@ -41,6 +41,7 @@ describe("Verify the sign-up Page", () => {
       testdata.Phone,
       testdata.Email,
       testdata.SetPassword,
+      testdata.manager_username
     );
     await LoginPage.login_Admin(
       testdata.Admin_Username,

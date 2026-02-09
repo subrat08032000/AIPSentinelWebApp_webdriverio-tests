@@ -41,7 +41,7 @@ class ManagePage extends Page {
     }
 
     public getStatusByText(text: string) {
-        // Status is the 7th column based on the screenshot
+        // Status is the 7th column
         return $(`//table/tbody/tr[contains(., '${text}')]//td[7]`);
     }
 

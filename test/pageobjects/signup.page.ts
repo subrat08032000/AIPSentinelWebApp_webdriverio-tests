@@ -46,6 +46,9 @@ class SignupPage extends Page {
     public get SignupSubmit_Btn(){
         return $(`//button[text()="Create Account"]`)
     }
+    public get selectManager_DDButton(){
+        return $(`//button[@id='manager_id']//*[name()='svg'] | //button[@id='manager']//*[name()='svg']`)
+    }
 
     public inputById(id: string) {
     return $(`//input[@id="${id}"]`);
@@ -174,7 +177,8 @@ public async SignUp_User(
     Designation: string,
     PhoneNum: string,
     Email: string,
-    SetPassword: string
+    SetPassword: string,
+    managerEmail: string
 ): Promise<void> {
 
     await this.Signup_link.waitForClickable();
@@ -183,8 +187,25 @@ public async SignUp_User(
     // Select User role
     await this.selectRole_DDButton.waitForClickable();
     await this.selectRole_DDButton.click();
-    await browser.keys(['U', 'Enter']);
-    await expect(this.User_Role).toHaveText('User');
+    await browser.pause(1000); // Wait for dropdown animation
+    
+    // Improved selector: find span with text User specifically under a listbox or similar container if possible
+    // or just use a more specific xpath
+    const userOption = $(`//span[text()='User'] | //div[@role='option']//span[text()='User']`);
+    await userOption.waitForClickable({ timeout: 5000 });
+    await userOption.click();
+    
+    // Brief wait to ensure selection is processed
+    await browser.pause(500);
+    // Select Manager
+    await this.selectManager_DDButton.waitForClickable({ timeout: 10000 });
+    await this.selectManager_DDButton.click();
+    await browser.pause(1000);
+    const managerOption = $(`//span[text()='${managerEmail}'] | //div[@role='option']//span[text()='${managerEmail}']`);
+    await managerOption.waitForClickable({ timeout: 5000 });
+    await managerOption.click();
+    await browser.pause(500);
+
     await expect(this.getLabelByText('Name')).toBeDisplayed();
 
     // Prepare data object
