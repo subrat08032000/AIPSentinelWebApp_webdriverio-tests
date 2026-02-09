@@ -1,5 +1,6 @@
 import { $, browser } from '@wdio/globals'
 import Page from './page.js';
+import ManagePage from "./manage.page.js";
 
 
 class SignupPage extends Page {
@@ -58,9 +59,9 @@ public get accountCreatedSuccessfully() {
 public get SigninToAIPHeader(){
         return $(`//h3[text()='Sign in to AIP Dashboard']`)
     }
-
-
-
+    public get AIPLogo() {
+        return $(`//img[@alt='AIP Sentinel']`);
+    }
 
 
 
@@ -206,6 +207,7 @@ public async SignUp_User(
     await this.accountCreatedSuccessfully.waitForDisplayed();
     await expect(this.accountCreatedSuccessfully).toBeDisplayed();
     await this.SigninToAIPHeader.waitForDisplayed();
+    await expect(this.SigninToAIPHeader).toBeDisplayed();
     await expect(this.SigninToAIPHeader).toBeDisplayed();
 }
 

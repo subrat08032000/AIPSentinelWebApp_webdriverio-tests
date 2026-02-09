@@ -92,7 +92,10 @@ class LoginPage extends Page {
    * TC-Login Page
    */
   public async login_Manager(username: string, password: string) {
-    await this.managerRole.click();
+    await this.selectrole.waitForDisplayed({ timeout: 10000 });
+    await this.selectrole.waitForClickable({ timeout: 10000 });
+    await this.selectrole.click();
+    await this.getRole("Manager").click();
     await this.userName.setValue(username);
     await this.loginPassword.setValue(password);
     await this.forgotpwd_link.isClickable();
@@ -107,7 +110,10 @@ class LoginPage extends Page {
     await expect(this.getRole("MANAGER")).toHaveText("MANAGER");
   }
   public async login_Admin(username: string, password: string) {
-    await this.AdminRole.click();
+    await this.selectrole.waitForDisplayed({ timeout: 10000 });
+    await this.selectrole.waitForClickable({ timeout: 10000 });
+    await this.selectrole.click();
+    await this.getRole("Admin").click();
     await this.userName.setValue(username);
     await this.loginPassword.setValue(password);
     await this.forgotpwd_link.isClickable();
@@ -139,6 +145,8 @@ class LoginPage extends Page {
     );
   }
   public async login_User(username: string, password: string) {
+    await this.selectrole.waitForDisplayed({ timeout: 10000 });
+    await this.selectrole.waitForClickable({ timeout: 10000 });
     await this.selectrole.click();
     await this.UserRole.click();
     await this.userName.setValue(username);

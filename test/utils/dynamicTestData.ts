@@ -8,7 +8,7 @@ export const getTestData = () => {
     ...testdata,
     Fullname: `Test User ${randomSuffix}`,
     Designation: `Tester ${randomSuffix}`,
-    Phone: `+91 9${timestamp.toString().slice(-9)}`,
+    Phone: `+919${timestamp.toString().slice(-9)}`,
     Email: `auto_${timestamp}@yopmail.com`,
   };
 };

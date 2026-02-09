@@ -23,7 +23,10 @@ export const config: WebdriverIO.Config = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './test/specs/**/*.ts'
+        //'./test/specs/**/*.ts',
+        //'./test/specs/LoginPage_test.e2e.ts',
+         './test/specs/SignupPage_test.e2e.ts',
+        // './test/specs/dashboardpage_test.e2e.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -247,11 +250,11 @@ export const config: WebdriverIO.Config = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: async function (test, context, { error, result, duration, passed, retries }) {
-    //     if (!passed) {
-    //         await browser.takeScreenshot();
-    //     }
-    // },
+    afterTest: async function (test, context, { error, result, duration, passed, retries }) {
+        if (!passed) {
+            await browser.saveScreenshot(`./test_logs/error_${test.title.replace(/\s+/g, '_')}.png`);
+        }
+    },
 
 
     /**
