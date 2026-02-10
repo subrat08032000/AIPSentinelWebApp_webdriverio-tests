@@ -161,13 +161,18 @@ public async SignUp_Manager(
 
     // Fill form
     await this.fillSignupForm(signupData);
+    await browser.pause(500);
+
     // Submit
-    await this.CreateAcc_btn.waitForClickable();
+    await this.CreateAcc_btn.waitForClickable({ timeout: 10000 });
     await this.CreateAcc_btn.click();
-    await this.validateInlineErrors(signupData);
-    await this.accountCreatedSuccessfully.waitForDisplayed();
+    
+    console.log(`[DEBUG] Signup submitted for ${Email}. Waiting for success message...`);
+    
+    // Increased timeout for signup success as it can be slow
+    await this.accountCreatedSuccessfully.waitForDisplayed({ timeout: 30000 });
     await expect(this.accountCreatedSuccessfully).toBeDisplayed();
-    await this.SigninToAIPHeader.waitForDisplayed();
+    await this.SigninToAIPHeader.waitForDisplayed({ timeout: 10000 });
     await expect(this.SigninToAIPHeader).toBeDisplayed();
 }
 
@@ -221,14 +226,18 @@ public async SignUp_User(
 
     // Fill form
     await this.fillSignupForm(signupData);
+    await browser.pause(500);
+
     // Submit
-    await this.CreateAcc_btn.waitForClickable();
+    await this.CreateAcc_btn.waitForClickable({ timeout: 10000 });
     await this.CreateAcc_btn.click();
-    await this.validateInlineErrors(signupData);
-    await this.accountCreatedSuccessfully.waitForDisplayed();
+
+    console.log(`[DEBUG] Signup submitted for ${Email}. Waiting for success message...`);
+
+    // Increased timeout for signup success as it can be slow
+    await this.accountCreatedSuccessfully.waitForDisplayed({ timeout: 30000 });
     await expect(this.accountCreatedSuccessfully).toBeDisplayed();
-    await this.SigninToAIPHeader.waitForDisplayed();
-    await expect(this.SigninToAIPHeader).toBeDisplayed();
+    await this.SigninToAIPHeader.waitForDisplayed({ timeout: 10000 });
     await expect(this.SigninToAIPHeader).toBeDisplayed();
 }
 

@@ -228,7 +228,7 @@ class DashboardPage extends Page {
             if (downCount === 0) {
                 // Construct a more robust relative selector. 
                 // We search for the text within the ancestor that likely contains the whole card.
-                const cardContainer = headerElem.parentElement().parentElement();
+                const cardContainer = headerElem.parent().parent();
                 const allSysOp = cardContainer.$(`.//div[text()='All systems operational']`);
                 
                 // Check if it exists first to avoid exception logs from waitForDisplayed

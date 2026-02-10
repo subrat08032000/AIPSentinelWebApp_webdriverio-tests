@@ -140,9 +140,7 @@ class LoginPage extends Page {
 
     await profileButton.click();
     await this.LogoutBtn.click();
-    await this.SigninToAIPHeader.isElementDisplayed(
-      "Sign in to AIP DashboardSign in to AIP Dashboard",
-    );
+    await this.SigninToAIPHeader.waitForDisplayed({ timeout: 10000 });
   }
   public async login_User(username: string, password: string) {
     await this.selectrole.waitForDisplayed({ timeout: 10000 });

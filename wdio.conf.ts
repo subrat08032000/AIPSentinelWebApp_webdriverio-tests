@@ -137,13 +137,13 @@ export const config: WebdriverIO.Config = {
     reporters: [
         'spec',
         ['junit', {
-            outputDir: './test_logs/junit',
+            outputDir: './TestResults/junit',
             outputFileFormat: function(options: any) {
                 return `results-${options.cid}.xml`
             }
         }],
         ['allure', {
-            outputDir: 'allure-results',
+            outputDir: './TestResults/allure-results',
             disableWebdriverStepsReporting: true,
             disableWebdriverScreenshotsReporting: false,
         }]
@@ -252,7 +252,7 @@ export const config: WebdriverIO.Config = {
      */
     afterTest: async function (test, context, { error, result, duration, passed, retries }) {
         if (!passed) {
-            await browser.saveScreenshot(`./test_logs/error_${test.title.replace(/\s+/g, '_')}.png`);
+            await browser.saveScreenshot(`./TestResults/error_${test.title.replace(/\s+/g, '_')}.png`);
         }
     },
 
