@@ -1,6 +1,6 @@
 import { $, browser } from '@wdio/globals'
 import Page from './page.js';
-import ManagePage from "./manage.page.js";
+//import ManagePage from "./manage.page.js";
 
 
 class SignupPage extends Page {

@@ -29,7 +29,7 @@ class LoginPage extends Page {
     return $(`//button[text()="Continue"]`);
   }
   public get Dashboardtxt() {
-    return $(`//h1[@class="text-3xl font-bold text-foreground"]`);
+    return $(`//h1[normalize-space()='Dashboard']`);
   }
   public getRole(roleName: string) {
     return $(`//span[text()="${roleName}"]`);
