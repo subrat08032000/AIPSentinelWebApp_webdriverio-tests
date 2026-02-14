@@ -4,7 +4,7 @@ import managePage from "../pageobjects/manage.page.js";
 import { getTestData } from "../utils/dynamicTestData.js";
 
 describe("Signup and manage approvals", () => {
-    it("Signup As Manager and check manager rejection flow", async () => {
+    it("Signup As Manager and check manager rejection flow as Admin", async () => {
         const testdata = getTestData();
         
         await LoginPage.open(testdata.URL);
@@ -34,7 +34,7 @@ describe("Signup and manage approvals", () => {
         await LoginPage.logout("Admin");
     });
 
-    it("Signup As User and check user rejection flow", async () => {
+    it("Signup As User and check user rejection flow as Admin", async () => {
         const testdata = getTestData();
         await LoginPage.open(testdata.URL);
         await browser.maximizeWindow();
@@ -65,7 +65,7 @@ describe("Signup and manage approvals", () => {
         await LoginPage.logout("Admin");
     });
 
-    it("Signup As Manager and check manager approval flow", async () => {
+    it("Signup As Manager and check manager approval flow as Admin", async () => {
         const testdata = getTestData();
         await LoginPage.open(testdata.URL);
         await browser.maximizeWindow();
@@ -90,7 +90,7 @@ describe("Signup and manage approvals", () => {
         await LoginPage.logout("Admin");
     });
 
-    it("Signup As User and check user approval flow", async () => {
+    it("Signup As User and check user approval flow as Admin", async () => {
         const testdata = getTestData();
         await LoginPage.open(testdata.URL);
         await browser.maximizeWindow();
@@ -120,7 +120,7 @@ describe("Signup and manage approvals", () => {
         await LoginPage.logout("Admin");
     });
 
-    it("Signup As Manager and check manager approval flow and delete manager functionality", async () => {
+    it("Signup As Manager and check manager approval flow and delete manager functionality as Admin", async () => {
         const testdata = getTestData();
         await LoginPage.open(testdata.URL);
         await browser.maximizeWindow();
@@ -149,7 +149,7 @@ describe("Signup and manage approvals", () => {
         await LoginPage.logout("Admin");
     });
 
-    it("Signup As User and check user approval flow and delete User functionality", async () => {
+    it("Signup As User and check user approval flow and delete User functionality as Admin", async () => {
         const testdata = getTestData();
         await LoginPage.open(testdata.URL);
         await browser.maximizeWindow();
@@ -175,10 +175,69 @@ describe("Signup and manage approvals", () => {
         // Finally Approve the specific user we just created
         await managePage.approveUsersStartingWithPrefix(testdata.Fullname, true);
         console.log("--- END MULTI-USER APPROVAL ---");
-        
         // Navigate to Manage Organization and verify/delete the approved user
         await managePage.DeleteUserFromManageOrganization(testdata.Fullname);
-
         await LoginPage.logout("Admin");
     });
+    it("Signup As User and check user rejection flow as Manager", async () => {
+        const testdata = getTestData();
+        await LoginPage.open(testdata.URL);
+        await browser.maximizeWindow();
+        
+        await SignupPage.SignUp_User(
+            testdata.Fullname,
+            testdata.Designation,
+            testdata.Phone,
+            testdata.Email,
+            testdata.SetPassword,
+            testdata.manager_username
+        );
+        
+        await LoginPage.login_Manager(
+            testdata.manager_username,
+            testdata.Manager_password,
+        );
+        
+        await managePage.clickManageApprovalsAsManager();
+
+        console.log("--- START MULTI-USER REJECTION (MANAGER) ---");
+        // This will reject users using Manager-view locators
+        await managePage.rejectUsersAsManagerStartingWithPrefix("Test", false);
+        await managePage.rejectUsersAsManagerStartingWithPrefix(testdata.Fullname, true);
+        console.log("--- END MULTI-USER REJECTION (MANAGER) ---");
+
+        await LoginPage.logout("Manager");
+    });
+
+    it("Signup As User and check user approval flow as Manager", async () => {
+        const testdata = getTestData();
+        await LoginPage.open(testdata.URL);
+        await browser.maximizeWindow();
+        
+        await SignupPage.SignUp_User(
+            testdata.Fullname,
+            testdata.Designation,
+            testdata.Phone,
+            testdata.Email,
+            testdata.SetPassword,
+            testdata.manager_username
+        );
+        
+        await LoginPage.login_Manager(
+            testdata.manager_username,
+            testdata.Manager_password,
+        );
+        
+        await managePage.clickManageApprovalsAsManager();
+
+        console.log("--- START MULTI-USER APPROVAL (MANAGER) ---");
+        // This will approve users using Manager-view locators
+        await managePage.ApproveUsersAsManagerStartingWithPrefix("Test", false);
+        await managePage.ApproveUsersAsManagerStartingWithPrefix(testdata.Fullname, true);
+        console.log("--- END MULTI-USER APPROVAL (MANAGER) ---");
+
+        await LoginPage.logout("Manager");
+    });
+    
+
 });

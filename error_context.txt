@@ -1,0 +1,1720 @@
+﻿
+  [0-0] 2026-02-14T10
+:41:42.954Z INFO 
+webdriver: BIDI 
+COMMAND 
+session.subscribe {"e
+vents":["log.entryAdd
+ed","browsingContext.
+navigationStarted"]}
+  [0-0] 2026-02-14T10
+:41:42.954Z INFO 
+webdriver: BIDI 
+COMMAND script.addPre
+loadScript { 
+functionDeclaration: 
+<PreloadScript[1319 
+bytes]>, contexts: 
+undefined }
+> [0-0] 2026-02-14T10
+:41:42.955Z INFO 
+webdriver: BIDI 
+COMMAND 
+session.subscribe {"e
+vents":["browsingCont
+ext.navigationStarted
+","browsingContext.fr
+agmentNavigated","net
+work.responseComplete
+d","network.beforeReq
+uestSent","network.fe
+tchError"]}
+  [0-0] 2026-02-14T10
+:41:42.955Z INFO 
+webdriver: BIDI 
+COMMAND 
+session.subscribe {"e
+vents":["browsingCont
+ext.userPromptOpened"
+]}
+  [0-0] 2026-02-14T10
+:41:42.955Z INFO 
+webdriver: BIDI 
+COMMAND 
+session.subscribe {"e
+vents":["browsingCont
+ext.navigationStarted
+"]}
+  [0-0] 2026-02-14T10
+:41:42.955Z INFO 
+webdriver: [GET] http
+://localhost:55209/se
+ssion/1abd13ccdc8a239
+3a8c0c9fe48e76433/win
+dow
+  [0-0] 2026-02-14T10
+:41:42.964Z INFO 
+webdriver: RESULT 01B
+881FADF613CBB2C5C0A81
+28380246
+  [0-0] 2026-02-14T10
+:41:42.969Z INFO 
+webdriver: BIDI 
+RESULT {"id":1,"resul
+t":{"contexts":[{"chi
+ldren":[],"clientWind
+ow":"867828905","cont
+ext":"01B881FADF613CB
+B2C5C0A8128380246","o
+riginalOpener":null,"
+parent":null,"url":"a
+bout:blank","userCont
+ext":"default"}]},"ty
+pe":"success"}
+  [0-0] 2026-02-14T10
+:41:42.970Z INFO webd
+riverio:PolyfillManag
+er: Adding polyfill 
+script to context 
+with id 01B881FADF613
+CBB2C5C0A8128380246
+  [0-0] 2026-02-14T10
+:41:42.970Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[443 
+bytes] webdriverioPol
+yfill>","target":{"ch
+ildren":[],"clientWin
+dow":"867828905","con
+text":"01B881FADF613C
+BB2C5C0A8128380246","
+originalOpener":null,
+"parent":null,"url":"
+about:blank","userCon
+text":"default"},"awa
+itPromise":false}
+  [0-0] 2026-02-14T10
+:41:42.971Z INFO 
+webdriver: BIDI 
+COMMAND script.addPre
+loadScript { 
+functionDeclaration: 
+<PreloadScript[443 
+bytes]>, contexts: ["
+01B881FADF613CBB2C5C0
+A8128380246"] }
+  [0-0] 2026-02-14T10
+:41:42.973Z INFO 
+webdriver: BIDI 
+RESULT {"id":2,"resul
+t":{"subscription":"2
+09fe822-8949-487e-b65
+9-83917c6aaa7b"},"typ
+e":"success"}
+  [0-0] 2026-02-14T10
+:41:42.974Z INFO 
+webdriver: BIDI 
+RESULT {"id":3,"resul
+t":{"subscription":"7
+b160060-76a2-48d6-83d
+5-2bb8ca9e36b8"},"typ
+e":"success"}
+  [0-0] 2026-02-14T10
+:41:42.976Z INFO 
+webdriver: BIDI 
+RESULT {"id":4,"resul
+t":{"script":"861fe74
+e-d078-45c7-8358-7ffe
+0bc8fb22"},"type":"su
+ccess"}
+  [0-0] 2026-02-14T10
+:41:42.976Z INFO 
+webdriver: BIDI 
+RESULT {"id":5,"resul
+t":{"subscription":"f
+f0e717a-88d4-41cc-a0e
+b-111d838cac6d"},"typ
+e":"success"}
+  [0-0] 2026-02-14T10
+:41:42.977Z INFO 
+webdriver: BIDI 
+RESULT {"id":6,"resul
+t":{"subscription":"2
+08b9323-1c9d-4b60-b9c
+2-a80008ab5d78"},"typ
+e":"success"}
+  [0-0] 2026-02-14T10
+:41:42.978Z INFO 
+webdriver: BIDI 
+RESULT {"id":7,"resul
+t":{"subscription":"3
+3fd6d99-3aa8-4335-a01
+6-25c45c95e533"},"typ
+e":"success"}
+  [0-0] 2026-02-14T10
+:41:42.979Z INFO 
+webdriver: BIDI 
+RESULT {"id":8,"resul
+t":{"realm":"-4487777
+149681927172.-4386972
+933075938990","result
+":{"type":"undefined"
+},"type":"success"},"
+type":"success"}
+  [0-0] 2026-02-14T10
+:41:42.980Z INFO 
+webdriver: BIDI 
+RESULT {"id":9,"resul
+t":{"script":"a533097
+4-fca4-4624-af83-86d1
+83c7efc8"},"type":"su
+ccess"}
+  [0-0] 2026-02-14T10
+:41:42.980Z INFO @wdi
+o/visual-service: 
+Adding commands to 
+global browser
+  [0-0] 2026-02-14T10
+:41:42.982Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[161 
+bytes] anonymous>","a
+waitPromise":true,"ar
+guments":[],"target":
+{"context":"01B881FAD
+F613CBB2C5C0A81283802
+46"}}
+  [0-0] 2026-02-14T10
+:41:42.986Z INFO 
+webdriver: BIDI 
+RESULT {"id":10,"resu
+lt":{"realm":"-448777
+7149681927172.-438697
+2933075938990","resul
+t":{"type":"number","
+value":1.25},"type":"
+success"},"type":"suc
+cess"}
+  [0-0] 2026-02-14T10
+:41:42.987Z INFO @wdi
+o/visual-service: 
+Adding element 
+command 
+"saveElement" to 
+browser object
+  [0-0] 2026-02-14T10
+:41:42.988Z INFO @wdi
+o/visual-service: 
+Adding element 
+command 
+"checkElement" to 
+browser object
+  [0-0] 2026-02-14T10
+:41:42.988Z INFO @wdi
+o/visual-service: 
+Adding browser 
+command "saveScreen" 
+to browser object
+  [0-0] 2026-02-14T10
+:41:42.988Z INFO @wdi
+o/visual-service: 
+Adding browser 
+command 
+"saveFullPageScreen" 
+to browser object
+  [0-0] 2026-02-14T10
+:41:42.988Z INFO @wdi
+o/visual-service: 
+Adding browser 
+command 
+"saveTabbablePage" 
+to browser object
+  [0-0] 2026-02-14T10
+:41:42.988Z INFO @wdi
+o/visual-service: 
+Adding browser 
+command 
+"checkScreen" to 
+browser object
+  [0-0] 2026-02-14T10
+:41:51.169Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[478 
+bytes] anonymous>","a
+waitPromise":true,"ar
+guments":[{}],"target
+":{"context":"01B881F
+ADF613CBB2C5C0A812838
+0246"}}
+  [0-0] 2026-02-14T10
+:41:51.169Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[279 
+bytes] checkVisibilit
+y>","awaitPromise":tr
+ue,"arguments":[{},{"
+type":"object","value
+":[["withinViewport",
+{"type":"boolean","va
+lue":false}],["conten
+tVisibilityAuto",{"ty
+pe":"boolean","value"
+:true}],["opacityProp
+erty",{"type":"boolea
+n","value":true}],["v
+isibilityProperty",{"
+type":"boolean","valu
+e":true}]]}],"target"
+:{"context":"01B881FA
+DF613CBB2C5C0A8128380
+246"}}
+> [0-0] 2026-02-14T10
+:41:51.173Z INFO 
+webdriver: BIDI 
+RESULT 
+{"error":"invalid arg
+ument","id":68,"messa
+ge":"Invalid input 
+in \"arguments\"/0.",
+"type":"error"}
+> [0-0] 2026-02-14T10
+:41:51.185Z INFO 
+webdriver: BIDI 
+RESULT 
+{"error":"invalid arg
+ument","id":69,"messa
+ge":"Invalid input 
+in \"arguments\"/0.",
+"type":"error"}
+  [0-0] 2026-02-14T10
+:41:51.263Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[478 
+bytes] anonymous>","a
+waitPromise":true,"ar
+guments":[{"sharedId"
+:"f.01B881FADF613CBB2
+C5C0A8128380246.d.207
+1DD73BEA79E05858CE131
+FD6661CB.e.50"}],"tar
+get":{"context":"01B8
+81FADF613CBB2C5C0A812
+8380246"}}
+  [0-0] 2026-02-14T10
+:41:51.264Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[279 
+bytes] checkVisibilit
+y>","awaitPromise":tr
+ue,"arguments":[{"sha
+redId":"f.01B881FADF6
+13CBB2C5C0A8128380246
+.d.2071DD73BEA79E0585
+8CE131FD6661CB.e.50"}
+,{"type":"object","va
+lue":[["withinViewpor
+t",{"type":"boolean",
+"value":false}],["con
+tentVisibilityAuto",{
+"type":"boolean","val
+ue":true}],["opacityP
+roperty",{"type":"boo
+lean","value":true}],
+["visibilityProperty"
+,{"type":"boolean","v
+alue":true}]]}],"targ
+et":{"context":"01B88
+1FADF613CBB2C5C0A8128
+380246"}}
+  [0-0] 2026-02-14T10
+:41:51.286Z INFO 
+webdriver: BIDI 
+RESULT {"id":70,"resu
+lt":{"realm":"7485290
+407469393629.44427450
+28590500104","result"
+:{"type":"object","va
+lue":[["value",{"type
+":"string","value":"b
+lock"}]]},"type":"suc
+cess"},"type":"succes
+s"}
+  [0-0] 2026-02-14T10
+:41:51.287Z INFO 
+webdriver: BIDI 
+RESULT {"id":71,"resu
+lt":{"realm":"7485290
+407469393629.44427450
+28590500104","result"
+:{"type":"boolean","v
+alue":true},"type":"s
+uccess"},"type":"succ
+ess"}
+  [0-0] 2026-02-14T10
+:41:51.288Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"xpath",
+"value":"//h3[text()=
+\"Account Created Suc
+cessfully!\"]"},"cont
+ext":"01B881FADF613CB
+B2C5C0A8128380246"}
+  [0-0] 2026-02-14T10
+:41:51.294Z INFO 
+webdriver: BIDI 
+RESULT {"id":72,"resu
+lt":{"nodes":[{"share
+dId":"f.01B881FADF613
+CBB2C5C0A8128380246.d
+.2071DD73BEA79E05858C
+E131FD6661CB.e.50","t
+ype":"node","value":{
+"attributes":{"class"
+:"text-2xl 
+font-semibold text-ca
+rd-foreground"},"chil
+dNodeCount":1,"localN
+ame":"h3","namespaceU
+RI":"http://www.w3.or
+g/1999/xhtml","nodeTy
+pe":1,"shadowRoot":nu
+ll}}]},"type":"succes
+s"}
+  [0-0] 2026-02-14T10
+:41:51.297Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[478 
+bytes] anonymous>","a
+waitPromise":true,"ar
+guments":[{"sharedId"
+:"f.01B881FADF613CBB2
+C5C0A8128380246.d.207
+1DD73BEA79E05858CE131
+FD6661CB.e.50"}],"tar
+get":{"context":"01B8
+81FADF613CBB2C5C0A812
+8380246"}}
+  [0-0] 2026-02-14T10
+:41:51.298Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[279 
+bytes] checkVisibilit
+y>","awaitPromise":tr
+ue,"arguments":[{"sha
+redId":"f.01B881FADF6
+13CBB2C5C0A8128380246
+.d.2071DD73BEA79E0585
+8CE131FD6661CB.e.50"}
+,{"type":"object","va
+lue":[["withinViewpor
+t",{"type":"boolean",
+"value":false}],["con
+tentVisibilityAuto",{
+"type":"boolean","val
+ue":true}],["opacityP
+roperty",{"type":"boo
+lean","value":true}],
+["visibilityProperty"
+,{"type":"boolean","v
+alue":true}]]}],"targ
+et":{"context":"01B88
+1FADF613CBB2C5C0A8128
+380246"}}
+  [0-0] 2026-02-14T10
+:41:51.314Z INFO 
+webdriver: BIDI 
+RESULT {"id":73,"resu
+lt":{"realm":"7485290
+407469393629.44427450
+28590500104","result"
+:{"type":"object","va
+lue":[["value",{"type
+":"string","value":"b
+lock"}]]},"type":"suc
+cess"},"type":"succes
+s"}
+  [0-0] 2026-02-14T10
+:41:51.316Z INFO 
+webdriver: BIDI 
+RESULT {"id":74,"resu
+lt":{"realm":"7485290
+407469393629.44427450
+28590500104","result"
+:{"type":"boolean","v
+alue":true},"type":"s
+uccess"},"type":"succ
+ess"}
+  [0-0] 2026-02-14T10
+:41:51.317Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"xpath",
+"value":"//h3[text()=
+'Sign in to AIP Dashb
+oard']"},"context":"0
+1B881FADF613CBB2C5C0A
+8128380246"}
+  [0-0] 2026-02-14T10
+:41:51.322Z INFO 
+webdriver: BIDI 
+RESULT {"id":75,"resu
+lt":{"nodes":[]},"typ
+e":"success"}
+  [0-0] 2026-02-14T10
+:41:51.328Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"xpath",
+"value":"//h3[text()=
+'Sign in to AIP Dashb
+oard']"},"context":"0
+1B881FADF613CBB2C5C0A
+8128380246"}
+  [0-0] 2026-02-14T10
+:41:51.333Z INFO 
+webdriver: BIDI 
+RESULT {"id":76,"resu
+lt":{"nodes":[]},"typ
+e":"success"}
+  [0-0] 2026-02-14T10
+:41:51.435Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"xpath",
+"value":"//h3[text()=
+'Sign in to AIP Dashb
+oard']"},"context":"0
+1B881FADF613CBB2C5C0A
+8128380246"}
+  [0-0] 2026-02-14T10
+:41:51.440Z INFO 
+webdriver: BIDI 
+RESULT {"id":77,"resu
+lt":{"nodes":[]},"typ
+e":"success"}
+  [0-0] 2026-02-14T10
+:41:51.531Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"xpath",
+"value":"//h3[text()=
+'Sign in to AIP Dashb
+oard']"},"context":"0
+1B881FADF613CBB2C5C0A
+8128380246"}
+  [0-0] 2026-02-14T10
+:41:51.537Z INFO 
+webdriver: BIDI 
+RESULT {"id":78,"resu
+lt":{"nodes":[]},"typ
+e":"success"}
+  [0-0] 2026-02-14T10
+:41:51.643Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"xpath",
+"value":"//h3[text()=
+'Sign in to AIP Dashb
+oard']"},"context":"0
+1B881FADF613CBB2C5C0A
+8128380246"}
+  [0-0] 2026-02-14T10
+:41:51.649Z INFO 
+webdriver: BIDI 
+RESULT {"id":79,"resu
+lt":{"nodes":[]},"typ
+e":"success"}
+  [0-0] 2026-02-14T10
+:41:51.737Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"xpath",
+"value":"//h3[text()=
+'Sign in to AIP Dashb
+oard']"},"context":"0
+1B881FADF613CBB2C5C0A
+8128380246"}
+  [0-0] 2026-02-14T10
+:41:51.746Z INFO 
+webdriver: BIDI 
+RESULT {"id":80,"resu
+lt":{"nodes":[]},"typ
+e":"success"}
+  [0-0] 2026-02-14T10
+:41:51.833Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"xpath",
+"value":"//h3[text()=
+'Sign in to AIP Dashb
+oard']"},"context":"0
+1B881FADF613CBB2C5C0A
+8128380246"}
+  [0-0] 2026-02-14T10
+:41:51.841Z INFO 
+webdriver: BIDI 
+RESULT {"id":81,"resu
+lt":{"nodes":[]},"typ
+e":"success"}
+  [0-0] 2026-02-14T10
+:41:51.945Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"xpath",
+"value":"//h3[text()=
+'Sign in to AIP Dashb
+oard']"},"context":"0
+1B881FADF613CBB2C5C0A
+8128380246"}
+  [0-0] 2026-02-14T10
+:41:53.160Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[478 
+bytes] anonymous>","a
+waitPromise":true,"ar
+guments":[{}],"target
+":{"context":"01B881F
+ADF613CBB2C5C0A812838
+0246"}}
+  [0-0] 2026-02-14T10
+:41:53.163Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[279 
+bytes] checkVisibilit
+y>","awaitPromise":tr
+ue,"arguments":[{},{"
+type":"object","value
+":[["withinViewport",
+{"type":"boolean","va
+lue":false}],["conten
+tVisibilityAuto",{"ty
+pe":"boolean","value"
+:true}],["opacityProp
+erty",{"type":"boolea
+n","value":true}],["v
+isibilityProperty",{"
+type":"boolean","valu
+e":true}]]}],"target"
+:{"context":"01B881FA
+DF613CBB2C5C0A8128380
+246"}}
+> [0-0] 2026-02-14T10
+:41:53.169Z INFO 
+webdriver: BIDI 
+RESULT 
+{"error":"invalid arg
+ument","id":95,"messa
+ge":"Invalid input 
+in \"arguments\"/0.",
+"type":"error"}
+> [0-0] 2026-02-14T10
+:41:53.183Z INFO 
+webdriver: BIDI 
+RESULT 
+{"error":"invalid arg
+ument","id":96,"messa
+ge":"Invalid input 
+in \"arguments\"/0.",
+"type":"error"}
+  [0-0] 2026-02-14T10
+:41:53.229Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[478 
+bytes] anonymous>","a
+waitPromise":true,"ar
+guments":[{"sharedId"
+:"f.01B881FADF613CBB2
+C5C0A8128380246.d.207
+1DD73BEA79E05858CE131
+FD6661CB.e.58"}],"tar
+get":{"context":"01B8
+81FADF613CBB2C5C0A812
+8380246"}}
+  [0-0] 2026-02-14T10
+:41:53.230Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[279 
+bytes] checkVisibilit
+y>","awaitPromise":tr
+ue,"arguments":[{"sha
+redId":"f.01B881FADF6
+13CBB2C5C0A8128380246
+.d.2071DD73BEA79E0585
+8CE131FD6661CB.e.58"}
+,{"type":"object","va
+lue":[["withinViewpor
+t",{"type":"boolean",
+"value":false}],["con
+tentVisibilityAuto",{
+"type":"boolean","val
+ue":true}],["opacityP
+roperty",{"type":"boo
+lean","value":true}],
+["visibilityProperty"
+,{"type":"boolean","v
+alue":true}]]}],"targ
+et":{"context":"01B88
+1FADF613CBB2C5C0A8128
+380246"}}
+  [0-0] 2026-02-14T10
+:41:53.248Z INFO 
+webdriver: BIDI 
+RESULT {"id":97,"resu
+lt":{"realm":"7485290
+407469393629.44427450
+28590500104","result"
+:{"type":"object","va
+lue":[["value",{"type
+":"string","value":"b
+lock"}]]},"type":"suc
+cess"},"type":"succes
+s"}
+  [0-0] 2026-02-14T10
+:41:53.249Z INFO 
+webdriver: BIDI 
+RESULT {"id":98,"resu
+lt":{"realm":"7485290
+407469393629.44427450
+28590500104","result"
+:{"type":"boolean","v
+alue":true},"type":"s
+uccess"},"type":"succ
+ess"}
+  [0-0] 2026-02-14T10
+:41:53.250Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"xpath",
+"value":"//h3[text()=
+'Sign in to AIP Dashb
+oard']"},"context":"0
+1B881FADF613CBB2C5C0A
+8128380246"}
+  [0-0] 2026-02-14T10
+:41:53.254Z INFO 
+webdriver: BIDI 
+RESULT {"id":99,"resu
+lt":{"nodes":[{"share
+dId":"f.01B881FADF613
+CBB2C5C0A8128380246.d
+.2071DD73BEA79E05858C
+E131FD6661CB.e.58","t
+ype":"node","value":{
+"attributes":{"class"
+:"tracking-tight 
+text-2xl font-bold te
+xt-card-foreground"},
+"childNodeCount":1,"l
+ocalName":"h3","names
+paceURI":"http://www.
+w3.org/1999/xhtml","n
+odeType":1,"shadowRoo
+t":null}}]},"type":"s
+uccess"}
+  [0-0] 2026-02-14T10
+:41:53.257Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[478 
+bytes] anonymous>","a
+waitPromise":true,"ar
+guments":[{"sharedId"
+:"f.01B881FADF613CBB2
+C5C0A8128380246.d.207
+1DD73BEA79E05858CE131
+FD6661CB.e.58"}],"tar
+get":{"context":"01B8
+81FADF613CBB2C5C0A812
+8380246"}}
+  [0-0] 2026-02-14T10
+:41:53.257Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[279 
+bytes] checkVisibilit
+y>","awaitPromise":tr
+ue,"arguments":[{"sha
+redId":"f.01B881FADF6
+13CBB2C5C0A8128380246
+.d.2071DD73BEA79E0585
+8CE131FD6661CB.e.58"}
+,{"type":"object","va
+lue":[["withinViewpor
+t",{"type":"boolean",
+"value":false}],["con
+tentVisibilityAuto",{
+"type":"boolean","val
+ue":true}],["opacityP
+roperty",{"type":"boo
+lean","value":true}],
+["visibilityProperty"
+,{"type":"boolean","v
+alue":true}]]}],"targ
+et":{"context":"01B88
+1FADF613CBB2C5C0A8128
+380246"}}
+  [0-0] 2026-02-14T10
+:41:53.272Z INFO 
+webdriver: BIDI 
+RESULT {"id":100,"res
+ult":{"realm":"748529
+0407469393629.4442745
+028590500104","result
+":{"type":"object","v
+alue":[["value",{"typ
+e":"string","value":"
+block"}]]},"type":"su
+ccess"},"type":"succe
+ss"}
+  [0-0] 2026-02-14T10
+:41:53.273Z INFO 
+webdriver: BIDI 
+RESULT {"id":101,"res
+ult":{"realm":"748529
+0407469393629.4442745
+028590500104","result
+":{"type":"boolean","
+value":true},"type":"
+success"},"type":"suc
+cess"}
+  [0-0] 2026-02-14T10
+:41:53.276Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"css","v
+alue":"#role"},"conte
+xt":"01B881FADF613CBB
+2C5C0A8128380246"}
+  [0-0] 2026-02-14T10
+:41:53.280Z INFO 
+webdriver: BIDI 
+RESULT {"id":102,"res
+ult":{"nodes":[{"shar
+edId":"f.01B881FADF61
+3CBB2C5C0A8128380246.
+d.2071DD73BEA79E05858
+CE131FD6661CB.e.57","
+type":"node","value":
+{"attributes":{"aria-
+autocomplete":"none",
+"aria-controls":"radi
+x-:r3k:","aria-expand
+ed":"false","aria-lab
+el":"Select your role
+","aria-required":"tr
+ue","class":"flex 
+h-10 items-center 
+justify-between 
+rounded-md border 
+border-input 
+bg-background px-3 
+py-2 text-sm ring-off
+set-background placeh
+older:text-muted-fore
+ground 
+focus:outline-none 
+focus:ring-2 
+focus:ring-ring 
+focus:ring-offset-2 d
+isabled:cursor-not-al
+lowed 
+disabled:opacity-50 [
+&>span]:line-clamp-1 
+w-full","data-placeho
+lder":"","data-state"
+:"closed","dir":"ltr"
+,"id":"role","role":"
+combobox","type":"but
+ton"},"childNodeCount
+":2,"localName":"butt
+on","namespaceURI":"h
+ttp://www.w3.org/1999
+/xhtml","nodeType":1,
+"shadowRoot":null}}]}
+,"type":"success"}
+  [0-0] 2026-02-14T10
+:41:53.283Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[478 
+bytes] anonymous>","a
+waitPromise":true,"ar
+guments":[{"sharedId"
+:"f.01B881FADF613CBB2
+C5C0A8128380246.d.207
+1DD73BEA79E05858CE131
+FD6661CB.e.57"}],"tar
+get":{"context":"01B8
+81FADF613CBB2C5C0A812
+8380246"}}
+  [0-0] 2026-02-14T10
+:41:53.284Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[279 
+bytes] checkVisibilit
+y>","awaitPromise":tr
+ue,"arguments":[{"sha
+redId":"f.01B881FADF6
+13CBB2C5C0A8128380246
+.d.2071DD73BEA79E0585
+8CE131FD6661CB.e.57"}
+,{"type":"object","va
+lue":[["withinViewpor
+t",{"type":"boolean",
+"value":false}],["con
+tentVisibilityAuto",{
+"type":"boolean","val
+ue":true}],["opacityP
+roperty",{"type":"boo
+lean","value":true}],
+["visibilityProperty"
+,{"type":"boolean","v
+alue":true}]]}],"targ
+et":{"context":"01B88
+1FADF613CBB2C5C0A8128
+380246"}}
+  [0-0] 2026-02-14T10
+:41:53.298Z INFO 
+webdriver: BIDI 
+RESULT {"id":103,"res
+ult":{"realm":"748529
+0407469393629.4442745
+028590500104","result
+":{"type":"object","v
+alue":[["value",{"typ
+e":"string","value":"
+flex"}]]},"type":"suc
+cess"},"type":"succes
+s"}
+  [0-0] 2026-02-14T10
+:41:53.298Z INFO 
+webdriver: BIDI 
+RESULT {"id":104,"res
+ult":{"realm":"748529
+0407469393629.4442745
+028590500104","result
+":{"type":"boolean","
+value":true},"type":"
+success"},"type":"suc
+cess"}
+  [0-0] 2026-02-14T10
+:41:53.299Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"css","v
+alue":"#role"},"conte
+xt":"01B881FADF613CBB
+2C5C0A8128380246"}
+  [0-0] 2026-02-14T10
+:41:53.303Z INFO 
+webdriver: BIDI 
+RESULT {"id":105,"res
+ult":{"nodes":[{"shar
+edId":"f.01B881FADF61
+3CBB2C5C0A8128380246.
+d.2071DD73BEA79E05858
+CE131FD6661CB.e.57","
+type":"node","value":
+{"attributes":{"aria-
+autocomplete":"none",
+"aria-controls":"radi
+x-:r3k:","aria-expand
+ed":"false","aria-lab
+el":"Select your role
+","aria-required":"tr
+ue","class":"flex 
+h-10 items-center 
+justify-between 
+rounded-md border 
+border-input 
+bg-background px-3 
+py-2 text-sm ring-off
+set-background placeh
+older:text-muted-fore
+ground 
+focus:outline-none 
+focus:ring-2 
+focus:ring-ring 
+focus:ring-offset-2 d
+isabled:cursor-not-al
+lowed 
+disabled:opacity-50 [
+&>span]:line-clamp-1 
+w-full","data-placeho
+lder":"","data-state"
+:"closed","dir":"ltr"
+,"id":"role","role":"
+combobox","type":"but
+ton"},"childNodeCount
+":2,"localName":"butt
+on","namespaceURI":"h
+ttp://www.w3.org/1999
+/xhtml","nodeType":1,
+"shadowRoot":null}}]}
+,"type":"success"}
+  [0-0] 2026-02-14T10
+:41:53.306Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[478 
+bytes] anonymous>","a
+waitPromise":true,"ar
+guments":[{"sharedId"
+:"f.01B881FADF613CBB2
+C5C0A8128380246.d.207
+1DD73BEA79E05858CE131
+FD6661CB.e.57"}],"tar
+get":{"context":"01B8
+81FADF613CBB2C5C0A812
+8380246"}}
+  [0-0] 2026-02-14T10
+:41:53.307Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[279 
+bytes] checkVisibilit
+y>","awaitPromise":tr
+ue,"arguments":[{"sha
+redId":"f.01B881FADF6
+13CBB2C5C0A8128380246
+.d.2071DD73BEA79E0585
+8CE131FD6661CB.e.57"}
+,{"type":"object","va
+lue":[["withinViewpor
+t",{"type":"boolean",
+"value":false}],["con
+tentVisibilityAuto",{
+"type":"boolean","val
+ue":true}],["opacityP
+roperty",{"type":"boo
+lean","value":true}],
+["visibilityProperty"
+,{"type":"boolean","v
+alue":true}]]}],"targ
+et":{"context":"01B88
+1FADF613CBB2C5C0A8128
+380246"}}
+  [0-0] 2026-02-14T10
+:41:53.322Z INFO 
+webdriver: BIDI 
+RESULT {"id":106,"res
+ult":{"realm":"748529
+0407469393629.4442745
+028590500104","result
+":{"type":"object","v
+alue":[["value",{"typ
+e":"string","value":"
+flex"}]]},"type":"suc
+cess"},"type":"succes
+s"}
+  [0-0] 2026-02-14T10
+:41:53.323Z INFO 
+webdriver: BIDI 
+RESULT {"id":107,"res
+ult":{"realm":"748529
+0407469393629.4442745
+028590500104","result
+":{"type":"boolean","
+value":true},"type":"
+success"},"type":"suc
+cess"}
+  [0-0] 2026-02-14T10
+:41:53.323Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[4336 
+bytes] isElementClick
+able>","awaitPromise"
+:true,"arguments":[{"
+sharedId":"f.01B881FA
+DF613CBB2C5C0A8128380
+246.d.2071DD73BEA79E0
+5858CE131FD6661CB.e.5
+7"}],"target":{"conte
+xt":"01B881FADF613CBB
+2C5C0A8128380246"}}
+  [0-0] 2026-02-14T10
+:41:53.329Z INFO 
+webdriver: BIDI 
+RESULT {"id":108,"res
+ult":{"realm":"748529
+0407469393629.4442745
+028590500104","result
+":{"type":"boolean","
+value":true},"type":"
+success"},"type":"suc
+cess"}
+  [0-0] 2026-02-14T10
+:41:53.330Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"css","v
+alue":"#role"},"conte
+xt":"01B881FADF613CBB
+2C5C0A8128380246"}
+  using WebDriver 
+  Actions API: 
+> WebDriverError: 
+move 
+  target out of 
+bounds
+  At line:1 char:1
+  + & "C:\Program 
+Files
+  \nodejs/node.exe" 
+  "C:\Program 
+  
+Files\nodejs/node_mo 
+  ...
+  + 
+~~~~~~~~~~~~~~~~~~~
+  
+~~~~~~~~~~~~~~~~~~~~~
+  
+~~~~~~~~~~~~~~~~~~~~~
+  ~~~~~~~~
+      + CategoryInfo 
+  
+             : 
+NotSpe  
+    cified: ([0-0] 2 
+  
+   026-02-1...t out  
+  
+   of bounds:Strin   
+ 
+  g) [], RemoteExc   
+ 
+  eption
+      + 
+FullyQualified 
+>    ErrorId : 
+Native  
+>   CommandError
+   
+  [0-0]   (Session 
+  info: 
+chrome=144.0.75
+  59.133) when 
+running 
+  "actions" with 
+  method "POST"!
+  [0-0] 
+Re-attempting 
+  using 
+`Element.scroll
+  IntoView` via Web 
+  API.
+  [0-0] 2026-02-14T10
+:41:55.949Z INFO 
+webdriver: BIDI 
+COMMAND 
+script.callFunction {
+"functionDeclaration"
+:"<Function[154 
+bytes] anonymous>","a
+waitPromise":true,"ar
+guments":[{"sharedId"
+:"f.01B881FADF613CBB2
+C5C0A8128380246.d.207
+1DD73BEA79E05858CE131
+FD6661CB.e.99"},{"typ
+e":"object","value":[
+["block",{"type":"str
+ing","value":"center"
+}]]}],"target":{"cont
+ext":"01B881FADF613CB
+B2C5C0A8128380246"}}
+  [0-0] 2026-02-14T10
+:41:55.959Z INFO 
+webdriver: BIDI 
+RESULT {"id":156,"res
+ult":{"realm":"748529
+0407469393629.4442745
+028590500104","result
+":{"type":"undefined"
+},"type":"success"},"
+type":"success"}
+  [0-0] 2026-02-14T10
+:41:56.973Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"xpath",
+"value":"//h2[contain
+s(., 'User Approvals'
+)]/following-sibling:
+:div//table | 
+//table[contains(., 
+'User Name')] | (//ta
+ble[@class='w-full 
+caption-bottom text-s
+m'])[2]"},"context":"
+01B881FADF613CBB2C5C0
+A8128380246"}
+  [0-0] 2026-02-14T10
+:41:56.983Z INFO 
+webdriver: BIDI 
+RESULT {"id":157,"res
+ult":{"nodes":[]},"ty
+pe":"success"}
+  [0-0] 2026-02-14T10
+:41:56.987Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"xpath",
+"value":"//h2[contain
+s(., 'User Approvals'
+)]/following-sibling:
+:div//table | 
+//table[contains(., 
+'User Name')] | (//ta
+ble[@class='w-full 
+caption-bottom text-s
+m'])[2]"},"context":"
+01B881FADF613CBB2C5C0
+A8128380246"}
+  [0-0] 2026-02-14T10
+:41:56.992Z INFO 
+webdriver: BIDI 
+RESULT {"id":158,"res
+ult":{"nodes":[]},"ty
+pe":"success"}
+  [0-0] 2026-02-14T10
+:41:57.099Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"xpath",
+"value":"//h2[contain
+s(., 'User Approvals'
+)]/following-sibling:
+:div//table | 
+//table[contains(., 
+'User Name')] | (//ta
+ble[@class='w-full 
+caption-bottom text-s
+m'])[2]"},"context":"
+01B881FADF613CBB2C5C0
+A8128380246"}
+  [0-0] 2026-02-14T10
+:41:57.106Z INFO 
+webdriver: BIDI 
+RESULT {"id":159,"res
+ult":{"nodes":[]},"ty
+pe":"success"}
+  [0-0] 2026-02-14T10
+:41:57.195Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"xpath",
+"value":"//h2[contain
+s(., 'User Approvals'
+)]/following-sibling:
+:div//table | 
+//table[contains(., 
+'User Name')] | (//ta
+ble[@class='w-full 
+caption-bottom text-s
+m'])[2]"},"context":"
+01B881FADF613CBB2C5C0
+A8128380246"}
+  [0-0] 2026-02-14T10
+:41:57.199Z INFO 
+webdriver: BIDI 
+RESULT {"id":160,"res
+ult":{"nodes":[]},"ty
+pe":"success"}
+  [0-0] 2026-02-14T10
+:41:57.299Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"xpath",
+"value":"//h2[contain
+s(., 'User Approvals'
+)]/following-sibling:
+:div//table | 
+//table[contains(., 
+'User Name')] | (//ta
+ble[@class='w-full 
+caption-bottom text-s
+m'])[2]"},"context":"
+01B881FADF613CBB2C5C0
+A8128380246"}
+  [0-0] 2026-02-14T10
+:41:57.304Z INFO 
+webdriver: BIDI 
+RESULT {"id":161,"res
+ult":{"nodes":[]},"ty
+pe":"success"}
+  [0-0] 2026-02-14T10
+:41:57.392Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"xpath",
+"value":"//h2[contain
+s(., 'User Approvals'
+)]/following-sibling:
+:div//table | 
+//table[contains(., 
+'User Name')] | (//ta
+ble[@class='w-full 
+caption-bottom text-s
+m'])[2]"},"context":"
+01B881FADF613CBB2C5C0
+A8128380246"}
+  [0-0] 2026-02-14T10
+:41:57.401Z INFO 
+webdriver: BIDI 
+RESULT {"id":162,"res
+ult":{"nodes":[]},"ty
+pe":"success"}
+  [0-0] 2026-02-14T10
+:41:57.502Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.locateNodes {"loca
+tor":{"type":"xpath",
+"value":"//h2[contain
+s(., 'User Approvals'
+)]/following-sibling:
+:div//table | 
+//table[contains(., 
+'User Name')] | (//ta
+ble[@class='w-full 
+caption-bottom text-s
+m'])[2]"},"context":"
+01B881FADF613CBB2C5C0
+A8128380246"}
+  [0-0] 2026-02-14T10
+:42:07.210Z INFO 
+webdriver: BIDI 
+COMMAND browsingConte
+xt.captureScreenshot 
+{"context":"01B881FAD
+F613CBB2C5C0A81283802
+46","origin":"viewpor
+t","format":{"type":"
+image/png"}}
+  [0-0] 2026-02-14T10
+:42:07.393Z INFO 
+webdriver: BIDI 
+RESULT 
+{"data":"Base64 
+string [125288 
+chars]"}
+> [0-0] Error in 
+"Signup and manage 
+approvals.Signup As 
+User and check user 
+rejection flow as 
+Manager"
+> Error: Can't call 
+$$ on element with 
+selector 
+"//h2[contains(., 
+'User Approvals')]/fo
+llowing-sibling::div/
+/table | 
+//table[contains(., 
+'User Name')] | (//ta
+ble[@class='w-full 
+caption-bottom 
+text-sm'])[2]" 
+because element 
+wasn't found
+      at 
+implicitWait (C:\User
+s\subra\OneDrive - 
+ICAD Airports Pvt 
+Ltd\Desktop\AIP 
+Sentinel Automation 0
+5-10-2025\node_module
+s\webdriverio\build\n
+ode.js:663:13)
+>     at async Elemen
+t.elementErrorHandler
+CallbackFn (C:\Users\
+subra\OneDrive - 
+ICAD Airports Pvt 
+Ltd\Desktop\AIP 
+Sentinel Automation 0
+5-10-2025\node_module
+s\webdriverio\build\n
+ode.js:8598:23)
+      at async Elemen
+t.wrapCommandFn (C:\U
+sers\subra\OneDrive 
+- ICAD Airports Pvt 
+Ltd\Desktop\AIP 
+Sentinel Automation 0
+5-10-2025\node_module
+s\@wdio\utils\build\i
+ndex.js:982:23)
+      at async Elemen
+t.wrapCommandFn (C:\U
+sers\subra\OneDrive 
+- ICAD Airports Pvt 
+Ltd\Desktop\AIP 
+Sentinel Automation 0
+5-10-2025\node_module
+s\@wdio\utils\build\i
+ndex.js:982:23)
+      at async Manage
+Page.rejectUsersStart
+ingWithPrefix (C:\Use
+rs\subra\OneDrive - 
+ICAD Airports Pvt 
+Ltd\Desktop\AIP 
+Sentinel Automation 0
+5-10-2025\test\pageob
+jects\manage.page.ts:
+423:24)
+      at async 
+Context.<anonymous> (
+C:\Users\subra\OneDri
+ve - ICAD Airports 
+Pvt Ltd\Desktop\AIP 
+Sentinel Automation 0
+5-10-2025\test\specs\
+SignupPage_test.e2e.t
+s:205:9)
+      at async 
+Context.executeAsync 
+(C:\Users\subra\OneDr
+ive - ICAD Airports 
+Pvt Ltd\Desktop\AIP 
+Sentinel Automation 0
+5-10-2025\node_module
+s\@wdio\utils\build\i
+ndex.js:1108:20)
+      at async Contex
+t.testFrameworkFnWrap
+per (C:\Users\subra\O
+neDrive - ICAD 
+Airports Pvt 
+Ltd\Desktop\AIP 
+Sentinel Automation 0
+5-10-2025\node_module
+s\@wdio\utils\build\i
+ndex.js:1188:14)
+  [0-0] 2026-02-14T10
+:42:07.417Z INFO 
+webdriver: COMMAND 
+deleteSession()
+  [0-0] 2026-02-14T10
+:42:07.417Z INFO 
+webdriver: [DELETE] h
+ttp://localhost:55209
+/session/1abd13ccdc8a
+2393a8c0c9fe48e76433
+  [0-0] 2026-02-14T10
+:42:07.928Z INFO 
+webdriver: RESULT 
+null
+  [0-0] 2026-02-14T10
+:42:07.928Z INFO 
+webdriver: Close 
+Bidi connection to ws
+://127.0.0.1:55209/se
+ssion/1abd13ccdc8a239
+3a8c0c9fe48e76433
+  [0-0] 2026-02-14T10
+:42:07.929Z INFO 
+webdriver: Kill 
+driver process with 
+PID 29640
+  [0-0] FAILED in 
+chrome - file:///C:/U
+sers/subra/OneDrive%2
+0-%20ICAD%20Airports%
+20Pvt%20Ltd/Desktop/A
+IP%20Sentinel%20Autom
+ation%2005-10-2025/te
+st/specs/SignupPage_t
+est.e2e.ts
+  2026-02-14T10:42:08
+.087Z INFO 
+@wdio/cli:launcher: 
+Run onWorkerEnd hook
+  
+   "spec" Reporter:
+  -------------------
+---------------------
+---------------------
+-----
+  [chrome 
+144.0.7559.133 
+windows #0-0] 
+Running: chrome 
+(v144.0.7559.133) on 
+windows
+  [chrome 
+144.0.7559.133 
+windows #0-0] 
+Session ID: 1abd13ccd
+c8a2393a8c0c9fe48e764
+33
+  [chrome 
+144.0.7559.133 
+windows #0-0]
+  [chrome 
+144.0.7559.133 
+windows #0-0] ┬╗ test
+\specs\SignupPage_tes
+t.e2e.ts
+  [chrome 
+144.0.7559.133 
+windows #0-0] Signup 
+and manage approvals
+  [chrome 
+144.0.7559.133 
+windows #0-0]    Γ£û 
+Signup As User and 
+check user rejection 
+flow as Manager
+  [chrome 
+144.0.7559.133 
+windows #0-0]
+  [chrome 
+144.0.7559.133 
+windows #0-0] 1 
+failing (24.9s)
+  [chrome 
+144.0.7559.133 
+windows #0-0]
+  [chrome 
+144.0.7559.133 
+windows #0-0] 1) 
+Signup and manage 
+approvals Signup As 
+User and check user 
+rejection flow as 
+Manager
+  [chrome 
+144.0.7559.133 
+windows #0-0] Can't 
+call $$ on element 
+with selector 
+"//h2[contains(., 
+'User Approvals')]/fo
+llowing-sibling::div/
+/table | 
+//table[contains(., 
+'User Name')] | (//ta
+ble[@class='w-full 
+caption-bottom 
+text-sm'])[2]" 
+because element 
+wasn't found
+> [chrome 
+144.0.7559.133 
+windows #0-0] Error: 
+Can't call $$ on 
+element with 
+selector 
+"//h2[contains(., 
+'User Approvals')]/fo
+llowing-sibling::div/
+/table | 
+//table[contains(., 
+'User Name')] | (//ta
+ble[@class='w-full 
+caption-bottom 
+text-sm'])[2]" 
+because element 
+wasn't found
+  [chrome 
+144.0.7559.133 
+windows #0-0]     at 
+implicitWait (C:\User
+s\subra\OneDrive - 
+ICAD Airports Pvt 
+Ltd\Desktop\AIP 
+Sentinel Automation 0
+5-10-2025\node_module
+s\webdriverio\build\n
+ode.js:663:13)
+> [chrome 
+144.0.7559.133 
+windows #0-0]     at 
+async Element.element
+ErrorHandlerCallbackF
+n (C:\Users\subra\One
+Drive - ICAD 
+Airports Pvt 
+Ltd\Desktop\AIP 
+Sentinel Automation 0
+5-10-2025\node_module
+s\webdriverio\build\n
+ode.js:8598:23)
+  [chrome 
+144.0.7559.133 
+windows #0-0]     at 
+async Element.wrapCom
+mandFn (C:\Users\subr
+a\OneDrive - ICAD 
+Airports Pvt 
+Ltd\Desktop\AIP 
+Sentinel Automation 0
+5-10-2025\node_module
+s\@wdio\utils\build\i
+ndex.js:982:23)
+  [chrome 
+144.0.7559.133 
+windows #0-0]     at 
+async Element.wrapCom
+mandFn (C:\Users\subr
+a\OneDrive - ICAD 
+Airports Pvt 
+Ltd\Desktop\AIP 
+Sentinel Automation 0
+5-10-2025\node_module
+s\@wdio\utils\build\i
+ndex.js:982:23)
+  [chrome 
+144.0.7559.133 
+windows #0-0]     at 
+async ManagePage.reje
+ctUsersStartingWithPr
+efix (C:\Users\subra\
+OneDrive - ICAD 
+Airports Pvt 
+Ltd\Desktop\AIP 
+Sentinel Automation 0
+5-10-2025\test\pageob
+jects\manage.page.ts:
+423:24)
+  [chrome 
+144.0.7559.133 
+windows #0-0]     at 
+async 
+Context.<anonymous> (
+C:\Users\subra\OneDri
+ve - ICAD Airports 
+Pvt Ltd\Desktop\AIP 
+Sentinel Automation 0
+5-10-2025\test\specs\
+SignupPage_test.e2e.t
+s:205:9)
+  [chrome 
+144.0.7559.133 
+windows #0-0]     at 
+async 
+Context.executeAsync 
+(C:\Users\subra\OneDr
+ive - ICAD Airports 
+Pvt Ltd\Desktop\AIP 
+Sentinel Automation 0
+5-10-2025\node_module
+s\@wdio\utils\build\i
+ndex.js:1108:20)
+  [chrome 
+144.0.7559.133 
+windows #0-0]     at 
+async Context.testFra
+meworkFnWrapper (C:\U
+sers\subra\OneDrive 
+- ICAD Airports Pvt 
+Ltd\Desktop\AIP 
+Sentinel Automation 0
+5-10-2025\node_module
+s\@wdio\utils\build\i
+ndex.js:1188:14)
+  
+  
+  Spec Files:	 0 
+passed, 1 failed, 1 
+total (100% 
+completed) in 
+00:00:28  
+  
+  2026-02-14T10:42:08
+.089Z INFO 
+@wdio/local-runner: 
+Shutting down 
+spawned worker
+  2026-02-14T10:42:08
+.342Z INFO 
+@wdio/local-runner: 
+Waiting for 0 to 
+shut down gracefully
+  2026-02-14T10:42:08
+.343Z INFO 
+@wdio/local-runner: 
+shutting down
+  2026-02-14T10:42:08
+.344Z INFO 
+@wdio/cli:launcher: 
+Run onComplete hook
+
+

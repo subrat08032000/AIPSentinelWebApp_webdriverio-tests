@@ -10,7 +10,7 @@ class ManagePage extends Page {
         return $(`//span[text()='Manage']/ancestor::button | //span[text()='Manage']/ancestor::a`);
     }
     public get ManageOrganization() {
-        return $(`//h1[normalize-space()='Manage Organization']`);
+        return $(`//h1[normalize-space()='Manage Organization'] | //*[normalize-space()='My Team'] | //*[normalize-space()='My Teams']`);
     }
 
     public get ManageApprovals() {
@@ -114,6 +114,10 @@ class ManagePage extends Page {
         return this.userApprovalTable.$(`.//tr[contains(., '${text}')]`);
     }
 
+    public getUserTableRowAsManagerByText(text: string) {
+        return this.UserApprovaltable_AsManager.$(`.//tr[contains(., '${text}')]`);
+    }
+
     public getStatusByText(text: string) {
         // Status is the 7th column
         return $(`//table/tbody/tr[contains(., '${text}')]//td[7]`);
@@ -211,7 +215,17 @@ class ManagePage extends Page {
     public get deleteManagerConfirmButton(){
         return $("//button[normalize-space()='Confirm Delete']")
     }
+    public get Myteamsheader_AsManager(){
+        return $("//*[normalize-space()='My Team'] | //*[normalize-space()='My Teams']")
+    }
 
+    public get UserApprovaltable_AsManager(){
+        return $("(//table[@class='w-full caption-bottom text-sm'])[1]")
+    }
+
+    public get usertableRows_AsManager() {
+        return this.UserApprovaltable_AsManager.$$(`tbody tr`);
+    }
 
     /**
      * navigation and interaction methods
@@ -230,6 +244,25 @@ class ManagePage extends Page {
         // Verify manager approval table is displayed
         await this.managerApprovalTable.waitForDisplayed({ timeout: 15000 });
         await expect(this.managerApprovalTable).toBeDisplayed();
+    }
+
+    public async clickManageApprovalsAsManager() {
+        console.log('[DEBUG] Navigating to Manage Approvals as Manager...');
+        await this.ManageButton.waitForClickable({ timeout: 20000 });
+        await this.ManageButton.click();
+        
+        // Support both "My Team" (Manager) and "Manage Organization" (Admin)
+        await this.ManageOrganization.waitForDisplayed({ timeout: 15000 });
+        
+        await this.ManageApprovals.waitForClickable({ timeout: 20000 });    
+        await this.ManageApprovals.click();
+
+        // Managers only see User Approvals
+        await this.UserApproval_header.waitForDisplayed({ timeout: 20000 });
+        await expect(this.UserApproval_header).toBeDisplayed();
+        
+        await this.UserApprovaltable_AsManager.waitForDisplayed({ timeout: 20000 });
+        await expect(this.UserApprovaltable_AsManager).toBeDisplayed();
     }
 
 
@@ -509,6 +542,173 @@ class ManagePage extends Page {
         console.log('==============================');
         
         return rejectedUsers;
+    }
+
+    public async rejectUsersAsManagerStartingWithPrefix(prefix: string, shouldVerifyEmpty: boolean = true) {
+        let iterations = 0;
+        const maxIterations = 50;
+        const rejectedUsers: string[] = [];
+
+        console.log(`[DEBUG] [Manager View] Starting rejection for users with prefix: "${prefix}"`);
+
+        await this.UserApproval_header.scrollIntoView({ block: 'center' });
+        await browser.pause(1000);
+
+        while (iterations < maxIterations) {
+            iterations++;
+            let currentMatchIndex = -1;
+            
+            let rows = await this.usertableRows_AsManager;
+            let rowsCount = await rows.length;
+            
+            if (iterations === 1 && rowsCount === 0) {
+                 console.log(`[DEBUG] [Manager View] No rows found. Refreshing...`);
+                 await browser.refresh();
+                 await this.clickManageApprovalsAsManager();
+                 rows = await this.usertableRows_AsManager;
+                 rowsCount = await rows.length;
+            }
+
+            for (let i = 0; i < rowsCount; i++) {
+                const row = rows[i];
+                if (!(await row.isExisting())) continue;
+                const columns = await row.$$('td');
+                const colCount = await columns.length;
+                if (colCount < 2) continue;
+                const nameText = (await columns[0].getText()).trim();
+                const status = (await columns[colCount - 2].getText()).toLowerCase().trim();
+                if (nameText.toLowerCase().startsWith(prefix.toLowerCase()) && 
+                    (status.includes('pending') || status.includes('renew'))) {
+                    currentMatchIndex = i;
+                    break;
+                }
+            }
+
+            if (currentMatchIndex === -1) break;
+
+            const matchingRow = rows[currentMatchIndex];
+            const matchingNameText = (await (await matchingRow.$$('td'))[0].getText()).trim();
+            
+            const rejectBtn = await this.getRejectButtonInRow(matchingRow);
+            await rejectBtn.scrollIntoView({ block: 'center' });
+            await rejectBtn.click();
+            
+            await this.RejectRequest_popup.waitForDisplayed({ timeout: 10000 });
+            await this.RejectRequest_popup_Reason.setValue('Manager rejection test');
+            await this.RejectRequest_Submit.click();
+            await this.RejectRequest_popup.waitForDisplayed({ timeout: 10000, reverse: true });
+            
+            await browser.pause(2000); // Wait for table refresh
+            console.log(`SUCCESS: Rejected user ${matchingNameText} as Manager`);
+            rejectedUsers.push(matchingNameText);
+        }
+
+        if (shouldVerifyEmpty) {
+            console.log(`[DEBUG] [Manager View] Verifying table status for prefix "${prefix}"...`);
+            const rows = await this.usertableRows_AsManager;
+            for (const row of rows) {
+                const cols = await row.$$('td');
+                const colCount = await cols.length;
+                if (colCount >= 2) {
+                    const name = (await cols[0].getText()).trim();
+                    if (name.toLowerCase().startsWith(prefix.toLowerCase())) {
+                        const status = (await cols[colCount - 2].getText()).toLowerCase();
+                        if (status.includes('pending')) {
+                            throw new Error(`Verification Failed: Found pending user ${name} in Manager view after rejection.`);
+                        }
+                    }
+                }
+            }
+        }
+        return rejectedUsers;
+    }
+
+    public async ApproveUsersAsManagerStartingWithPrefix(prefix: string, shouldVerifyEmpty: boolean = true) {
+        let iterations = 0;
+        const maxIterations = 50;
+        const approvedUsers: string[] = [];
+
+        console.log(`[DEBUG] [Manager View] Starting approval for users with prefix: "${prefix}"`);
+
+        await this.UserApproval_header.scrollIntoView({ block: 'center' });
+        await browser.pause(1000);
+
+        while (iterations < maxIterations) {
+            iterations++;
+            let currentMatchIndex = -1;
+            
+            let rows = await this.usertableRows_AsManager;
+            let rowsCount = await rows.length;
+            
+            if (iterations === 1 && rowsCount === 0) {
+                 console.log(`[DEBUG] [Manager View] No rows found. Refreshing...`);
+                 await browser.refresh();
+                 await this.clickManageApprovalsAsManager();
+                 rows = await this.usertableRows_AsManager;
+                 rowsCount = await rows.length;
+            }
+
+            for (let i = 0; i < rowsCount; i++) {
+                const row = rows[i];
+                if (!(await row.isExisting())) continue;
+                const columns = await row.$$('td');
+                const colCount = await columns.length;
+                if (colCount < 2) continue;
+                const nameText = (await columns[0].getText()).trim();
+                const status = (await columns[colCount - 2].getText()).toLowerCase().trim();
+                if (nameText.toLowerCase().startsWith(prefix.toLowerCase()) && 
+                    (status.includes('pending') || status.includes('renew'))) {
+                    currentMatchIndex = i;
+                    break;
+                }
+            }
+
+            if (currentMatchIndex === -1) break;
+
+            const matchingRow = rows[currentMatchIndex];
+            const matchingColumns = await matchingRow.$$('td');
+            const matchingNameText = (await matchingColumns[0].getText()).trim();
+            const colCount = await matchingColumns.length;
+            
+            const approveBtn = await this.getApproveButtonInRow(matchingRow);
+            await approveBtn.scrollIntoView({ block: 'center' });
+            await approveBtn.click();
+            
+            console.log(`[DEBUG] [Manager View] Waiting for status change for user ${matchingNameText}...`);
+            await browser.waitUntil(async () => {
+                const refreshedRow = await this.getUserTableRowAsManagerByText(matchingNameText);
+                if (!(await refreshedRow.isExisting())) return true;
+                const updatedCols = await refreshedRow.$$('td');
+                const updatedStatus = (await updatedCols[colCount - 2].getText()).toLowerCase();
+                return updatedStatus.includes('approve');
+            }, {
+                timeout: 10000,
+                timeoutMsg: `Status for user ${matchingNameText} did not change to Approved in Manager view.`
+            });
+            
+            await browser.pause(2000); // Wait for table refresh
+            console.log(`SUCCESS: Approved user ${matchingNameText} as Manager`);
+            approvedUsers.push(matchingNameText);
+        }
+
+        if (shouldVerifyEmpty) {
+            console.log(`[DEBUG] [Manager View] Verifying table status for prefix "${prefix}"...`);
+            const rows = await this.usertableRows_AsManager;
+            for (const row of rows) {
+                const cols = await row.$$('td');
+                const colCount = await cols.length;
+                if (colCount >= 2) {
+                    const name = (await cols[0].getText()).trim();
+                    if (name.toLowerCase().startsWith(prefix.toLowerCase())) {
+                        const status = (await cols[colCount - 2].getText()).toLowerCase();
+                        if (status.includes('pending')) {
+                            throw new Error(`Verification Failed: Found pending user ${name} in Manager view after approval.`);
+                        }
+                    }
+                }
+            }
+        }
+        return approvedUsers;
     }
 
     public async approveManager(nameOrEmail: string) {
