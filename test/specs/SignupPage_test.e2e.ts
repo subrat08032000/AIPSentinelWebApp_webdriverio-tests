@@ -87,6 +87,7 @@ describe("Signup and manage approvals", () => {
         console.log("--- START MANAGER APPROVAL ---");
         await managePage.approveManager(testdata.Fullname);
         console.log("--- END MANAGER APPROVAL ---");
+        await managePage.DeleteManagerFromManageOrganization(testdata.Fullname);
         await LoginPage.logout("Admin");
     });
 
@@ -116,6 +117,7 @@ describe("Signup and manage approvals", () => {
         // Finally Approve the specific user we just created
         await managePage.approveUsersStartingWithPrefix(testdata.Fullname, true);
         console.log("--- END MULTI-USER APPROVAL ---");
+        await managePage.DeleteUserFromManageOrganization(testdata.Fullname);
 
         await LoginPage.logout("Admin");
     });
@@ -231,10 +233,10 @@ describe("Signup and manage approvals", () => {
         await managePage.clickManageApprovalsAsManager();
 
         console.log("--- START MULTI-USER APPROVAL (MANAGER) ---");
-        // This will approve users using Manager-view locators
         await managePage.ApproveUsersAsManagerStartingWithPrefix("Test", false);
         await managePage.ApproveUsersAsManagerStartingWithPrefix(testdata.Fullname, true);
         console.log("--- END MULTI-USER APPROVAL (MANAGER) ---");
+        await managePage.DeleteUserFromManageOrganization(testdata.Fullname);
 
         await LoginPage.logout("Manager");
     });
