@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="2" failures="0" errors="0" skipped="0">
+  <testsuite name="Manage Page Approvals Verification" timestamp="2026-02-16T16:58:04" time="5.1" tests="2" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="Manage Page - Approvals Verification"/>
+      <property name="capabilities" value="chrome.144_0_7559_133.windows"/>
+      <property name="file" value="file:///C:/Users/subra/OneDrive%20-%20ICAD%20Airports%20Pvt%20Ltd/Desktop/AIP%20Sentinel%20Automation%2005-10-2025/test/specs/manage.e2e.ts"/>
+    </properties>
+    <testcase classname="chrome.144_0_7559_133.windows.Manage_Page_-_Approvals_Verification" name="Verify that the Manage User Page" time="1.13">
+      <system-out><![CDATA[
+COMMAND: POST /session/bd4051f2469ae97ac934ef0abfb00a66/element/f.5CAB5DE3818E952637BED27A850376E6.d.895CA39690C0E89DA3DD3F1A87EA7A3E.e.22/click - {}
+RESULT: {}
+COMMAND: POST /session/bd4051f2469ae97ac934ef0abfb00a66/element/f.5CAB5DE3818E952637BED27A850376E6.d.895CA39690C0E89DA3DD3F1A87EA7A3E.e.26/click - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.144_0_7559_133.windows.Manage_Page_-_Approvals_Verification" name="Verify that Admin Should able to Approve User" time="1.154">
+      <system-out><![CDATA[
+COMMAND: GET /session/bd4051f2469ae97ac934ef0abfb00a66/element/f.5CAB5DE3818E952637BED27A850376E6.d.895CA39690C0E89DA3DD3F1A87EA7A3E.e.32/rect - {}
+RESULT: {}
+COMMAND: GET /session/bd4051f2469ae97ac934ef0abfb00a66/window/rect - {}
+RESULT: {}
+COMMAND: POST /session/bd4051f2469ae97ac934ef0abfb00a66/actions - {"actions":[{"id":"wheel1","type":"wheel","parameters":{},"actions":[{"type":"scroll","x":-123,"y":-427,"deltaX":0,"deltaY":0,"duration":0,"origin":{"element-6066-11e4-a52e-4f735466cecf":"f.5CAB5DE3818E952637BED27A850376E6.d.895CA39690C0E89DA3DD3F1A87EA7A3E.e.32"}}]}]}
+RESULT: {"actions":[{"id":"wheel1","type":"wheel","parameters":{},"actions":[{"type":"scroll","x":-123,"y":-427,"deltaX":0,"deltaY":0,"duration":0,"origin":{"element-6066-11e4-a52e-4f735466cecf":"f.5CAB5DE3818E952637BED27A850376E6.d.895CA39690C0E89DA3DD3F1A87EA7A3E.e.32"}}]}]}
+COMMAND: DELETE /session/bd4051f2469ae97ac934ef0abfb00a66 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

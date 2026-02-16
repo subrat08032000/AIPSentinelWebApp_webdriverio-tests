@@ -85,32 +85,56 @@ class DashboardPage extends Page {
     public get InfraCat_Header(){
         return $("//h2[normalize-space()='Infrastructure Categories']")
     }
-    public virtulaMachine() {
+    public get virtualMachine() {
         return $(`//h3[contains(normalize-space(), 'Virtual Machines')]`);
     }
-    public virtulaMachine_Count() {
+    public get virtualMachine_Count() {
         return $(`//h3[contains(normalize-space(), 'Virtual Machines')]/following-sibling::div`);
     }
-    public ACE() {
+    public get ACE() {
         return $(`//h3[contains(normalize-space(), 'ACE')]`);
     }
-    public ACE_Count() {
+    public get ACE_Count() {
         return $(`//h3[contains(normalize-space(), 'ACE')]/following-sibling::div`);
     }
-    public MQ() {
+    public get MQ() {
         return $(`//h3[contains(normalize-space(), 'MQ')]`);
     }
-    public MQ_Count() {
+    public get MQ_Count() {
         return $(`//h3[contains(normalize-space(), 'MQ')]/following-sibling::div`);
     }
-    public Physical_Infra() {
+    public get Physical_Infra() {
         return $(`//h3[contains(normalize-space(), 'Physical Infra')]`);
     }
-    public Physical_Infra_Count() {
+    public get Physical_Infra_Count() {
         return $(`//h3[contains(normalize-space(), 'Physical Infra')]/following-sibling::div`);
     }
-    public AllSystem_operational(){
-        return $(`//div[text()="All systems operational"]`)
+    public get AllSystemsOperational() {
+        return $(`//div[text()="All systems operational"]`);
+    }
+    public get AllSystemsOperational_Selector() {
+        return ".//div[normalize-space()='All systems operational']";
+    }
+    public get AdminPanel_header() {
+        return $(`//h3[normalize-space()='Admin Panel']`);
+    }
+    public get AdminPanel_Sub_header() {
+        return $(`//p[normalize-space()='Administrative functions and controls']`);
+    }
+    public get AdminPanel_Buttons_Selector() {
+        return `//div[@class='grid gap-4 md:grid-cols-2']//button`;
+    }
+    public get ManageOrganization_Header() {
+        return $(`//h1[normalize-space()='Manage Organization']`);
+    }
+    public get ManageApprovals_Span() {
+        return $(`//span[text()="Manage Approvals"]`);
+    }
+    public get Settings_Header() {
+        return $(`//h1[normalize-space()='Settings']`);
+    }
+    public get ActivityLogs_Header() {
+        return $(`//h1[normalize-space()='Activity Logs']`);
     }
 
 
@@ -226,10 +250,9 @@ class DashboardPage extends Page {
             }
 
             if (downCount === 0) {
-                // Construct a more robust relative selector. 
                 // We search for the text within the ancestor that likely contains the whole card.
-                const cardContainer = headerElem.parent().parent();
-                const allSysOp = cardContainer.$(`.//div[text()='All systems operational']`);
+                const cardContainer = await headerElem.parentElement().parentElement();
+                const allSysOp = cardContainer.$(this.AllSystemsOperational_Selector);
                 
                 // Check if it exists first to avoid exception logs from waitForDisplayed
                 if (await allSysOp.isExisting()) {
@@ -237,13 +260,12 @@ class DashboardPage extends Page {
                     console.log(`SUCCESS: '${name}' - 'All systems operational' verified within card.`);
                 } else {
                     // Fallback: check if ANY operational message is visible on the page
-                    const globalAllSysOp = $(`//div[text()='All systems operational']`);
+                    const globalAllSysOp = this.AllSystemsOperational;
                     if (await globalAllSysOp.isExisting() && await globalAllSysOp.isDisplayed()) {
                         console.log(`SUCCESS: '${name}' - 'All systems operational' verified (found on page).`);
                     } else {
                          console.warn(`WARNING: '${name}' - 'All systems operational' message NOT found.`);
-                         // We don't throw here to avoid failing if the UI slightly varies, 
-                         // but you can change this to 'await expect(...).toBeDisplayed()' for strictness.
+            
                     }
                 }
             }
@@ -251,7 +273,7 @@ class DashboardPage extends Page {
 
         // Validate Virtual Machines
         const downVMs = apiData.vms || [];
-        await validateCategory('Virtual Machines', this.virtulaMachine(), this.virtulaMachine_Count(), downVMs.length);
+        await validateCategory('Virtual Machines', this.virtualMachine, this.virtualMachine_Count, downVMs.length);
         if (downVMs.length > 0) {
              for (const vm of downVMs) {
                  const vmElement = $(`//span[normalize-space()='${vm.vm_name}']`);
@@ -263,16 +285,64 @@ class DashboardPage extends Page {
         const downApps = apiData.applications || [];
         const downFlows = apiData.messageFlows || [];
         const totalDownACE = downApps.length + downFlows.length;
-        await validateCategory('ACE', this.ACE(), this.ACE_Count(), totalDownACE);
+        await validateCategory('ACE', this.ACE, this.ACE_Count, totalDownACE);
 
         // Validate MQ (Queue Managers)
         const downQMs = apiData.queuemanagers || [];
-        await validateCategory('MQ', this.MQ(), this.MQ_Count(), downQMs.length);
+        await validateCategory('MQ', this.MQ, this.MQ_Count, downQMs.length);
 
         // Validate Physical Infra (Hosts)
         const downHosts = apiData.hosts || [];
-        await validateCategory('Physical Infra', this.Physical_Infra(), this.Physical_Infra_Count(), downHosts.length);
+        await validateCategory('Physical Infra', this.Physical_Infra, this.Physical_Infra_Count, downHosts.length);
     }
+
+    public async validateAdminPanel_Dashboard() {
+        await this.AdminPanel_header.scrollIntoView();
+        await expect(this.AdminPanel_header).toBeDisplayed();
+        await expect(this.AdminPanel_Sub_header).toBeDisplayed();
+        
+        const getButtons = async () => await $$(this.AdminPanel_Buttons_Selector);
+        const allButtons = await getButtons();
+        const buttonsCount = await allButtons.length;
+        console.log(`Found ${buttonsCount} buttons in Admin Panel.`);
+
+        for (let i = 0; i < buttonsCount; i++) {
+            // Re-fetch buttons inside the loop for maximum robustness
+            const currentButtons = await getButtons();
+            const btn = currentButtons[i];
+            const btnText = await btn.getText();
+            
+            console.log(`Clicking Admin Panel button: ${btnText}`);
+            await btn.click();
+            
+            // Define verification logic based on button text using getters
+            if (btnText.includes('User Management')) {
+                await this.ManageOrganization_Header.waitForDisplayed({ timeout: 10000 });
+                await expect(this.ManageOrganization_Header).toBeDisplayed();
+            } 
+            else if (btnText.includes('Account Approvals')) {
+                await this.ManageApprovals_Span.waitForDisplayed({ timeout: 10000 });
+                await expect(this.ManageApprovals_Span).toBeDisplayed();
+            }
+            else if (btnText.includes('Settings')) {
+                await this.Settings_Header.waitForDisplayed({ timeout: 10000 });
+                await expect(this.Settings_Header).toBeDisplayed();
+            }
+            else if (btnText.includes('Audit Logs')) {
+                await this.ActivityLogs_Header.waitForDisplayed({ timeout: 10000 });
+                await expect(this.ActivityLogs_Header).toBeDisplayed();
+                const actualText = await this.ActivityLogs_Header.getText();
+                console.log(`Verified Audit Logs redirect text: ${actualText}`);
+                await expect(actualText).toContain('Activity Logs');
+            }
+
+            console.log(`Validated redirect for: ${btnText}. Navigating back...`);
+            await browser.back();
+            await this.AdminPanel_header.waitForDisplayed({ timeout: 15000 });
+        }
+    }
+
+
 
 
 }

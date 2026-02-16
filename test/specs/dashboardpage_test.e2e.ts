@@ -4,7 +4,7 @@ import { getTestData } from '../utils/dynamicTestData.js';
 
 describe('Dashboard Page Test Suite', () => {
 
-    it('should verify dashboard elements are displayed after login', async () => {
+    it('Verify that dashboard page asthetic are displaying as expected as Admin', async () => {
         const testdata = getTestData();
 
         await LoginPage.open(testdata.URL);
@@ -13,6 +13,7 @@ describe('Dashboard Page Test Suite', () => {
         await DashboardPage.QueueManager();
         await DashboardPage.validateDashboardElementsDisplayed();
         await DashboardPage.InfraCat();
+        await DashboardPage.validateAdminPanel_Dashboard();
     });
 
 });

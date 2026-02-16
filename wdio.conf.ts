@@ -25,8 +25,9 @@ export const config: WebdriverIO.Config = {
     specs: [
         //'./test/specs/**/*.ts',
         //'./test/specs/LoginPage_test.e2e.ts',
-         './test/specs/SignupPage_test.e2e.ts',
+        //'./test/specs/SignupPage_test.e2e.ts',
         // './test/specs/dashboardpage_test.e2e.ts'
+        './test/specs/**/*.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -48,7 +49,7 @@ export const config: WebdriverIO.Config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -58,9 +59,16 @@ export const config: WebdriverIO.Config = {
         browserName: 'chrome',
         acceptInsecureCerts: true,
         'goog:chromeOptions': {
-            args: process.env.HEADLESS === 'true' 
-                ? ['--headless', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage', '--window-size=1920,1080'] 
-                : []
+            args: [
+                // '--headless=new', // Comment out to see the browser
+                '--disable-gpu',
+                '--no-sandbox',
+                '--disable-dev-shm-usage',
+                '--disable-extensions',
+                '--window-size=1920,1080',
+                '--remote-debugging-port=9222',
+                '--user-data-dir=' + (process.env.TEMP || '/tmp') + '/wdio-chrome-profile-' + Date.now()
+            ]
         }
     }],
 
@@ -72,6 +80,7 @@ export const config: WebdriverIO.Config = {
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
     logLevel: 'info',
+    outputDir: './TestResults/logs',
     //
     // Set specific log levels per logger
     // loggers:
@@ -250,7 +259,7 @@ export const config: WebdriverIO.Config = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    afterTest: async function (test, context, { error, result, duration, passed, retries }) {
+    afterTest: async function (test, _context, { error: _error, result: _result, duration: _duration, passed, retries: _retries }) {
         if (!passed) {
             await browser.saveScreenshot(`./TestResults/error_${test.title.replace(/\s+/g, '_')}.png`);
         }

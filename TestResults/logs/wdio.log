@@ -1,0 +1,14 @@
+2026-02-16T12:23:15.675Z INFO @wdio/cli:launcher: Run onPrepare hook
+2026-02-16T12:23:15.678Z INFO @wdio/utils: Setting up browser driver for: chrome@stable
+2026-02-16T12:23:15.679Z INFO @wdio/utils: Setting up browser binaries for: chrome@stable
+2026-02-16T12:23:15.681Z INFO webdriver: Using Chromedriver v144.0.7559.133 from cache directory C:\Users\subra\AppData\Local\Temp
+2026-02-16T12:23:15.682Z INFO @wdio/cli:launcher: Run onWorkerStart hook
+2026-02-16T12:23:15.682Z INFO @wdio/xvfb: XvfbManager.init() called
+2026-02-16T12:23:15.682Z INFO @wdio/xvfb: Xvfb not needed on current platform
+2026-02-16T12:23:15.683Z INFO @wdio/local-runner: Start worker 0-0 with arg: run ./wdio.conf.ts --spec .\test\specs\dashboardpage_test.e2e.ts
+2026-02-16T12:23:15.714Z INFO @wdio/xvfb:ProcessFactory: xvfb-run not found, falling back to regular fork
+2026-02-16T12:23:15.714Z INFO @wdio/xvfb:ProcessFactory: ProcessFactory: shouldRun=false, isAvailable=false
+2026-02-16T12:23:15.714Z INFO @wdio/xvfb:ProcessFactory: Creating worker process with regular fork
+2026-02-16T12:23:29.342Z INFO @wdio/cli:launcher: Run onWorkerEnd hook
+2026-02-16T12:23:29.354Z INFO @wdio/local-runner: Shutting down spawned worker
+2026-02-16T12:23:29.619Z INFO @wdio/local-runner: Waiting for 0 to shut down gracefully

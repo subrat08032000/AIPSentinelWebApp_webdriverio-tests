@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" skipped="0">
+  <testsuite name="API Test Suite" timestamp="2026-02-16T16:57:41" time="5.696" tests="1" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="API Test Suite"/>
+      <property name="capabilities" value="chrome.144_0_7559_133.windows"/>
+      <property name="file" value="file:///C:/Users/subra/OneDrive%20-%20ICAD%20Airports%20Pvt%20Ltd/Desktop/AIP%20Sentinel%20Automation%2005-10-2025/test/specs/api_test.e2e.ts"/>
+    </properties>
+    <testcase classname="chrome.144_0_7559_133.windows.API_Test_Suite" name="should fetch system overview data via API after UI login" time="5.694">
+      <system-out><![CDATA[
+COMMAND: POST /session/c0f613d664e9ad579ee294ad7b219ea2/window/maximize - {}
+RESULT: {}
+COMMAND: POST /session/c0f613d664e9ad579ee294ad7b219ea2/element/f.3D2C68DA131A211C5CFA68425EB607E3.d.8B2AAE0D6E798DA9ABE7BC128A917CD7.e.8/click - {}
+RESULT: {}
+COMMAND: POST /session/c0f613d664e9ad579ee294ad7b219ea2/element/f.3D2C68DA131A211C5CFA68425EB607E3.d.8B2AAE0D6E798DA9ABE7BC128A917CD7.e.12/click - {}
+RESULT: {}
+COMMAND: POST /session/c0f613d664e9ad579ee294ad7b219ea2/element/f.3D2C68DA131A211C5CFA68425EB607E3.d.8B2AAE0D6E798DA9ABE7BC128A917CD7.e.6/clear - {}
+RESULT: {}
+COMMAND: POST /session/c0f613d664e9ad579ee294ad7b219ea2/element/f.3D2C68DA131A211C5CFA68425EB607E3.d.8B2AAE0D6E798DA9ABE7BC128A917CD7.e.6/value - {"text":"aip.admin@niairport.in"}
+RESULT: {"text":"aip.admin@niairport.in"}
+COMMAND: POST /session/c0f613d664e9ad579ee294ad7b219ea2/element/f.3D2C68DA131A211C5CFA68425EB607E3.d.8B2AAE0D6E798DA9ABE7BC128A917CD7.e.7/clear - {}
+RESULT: {}
+COMMAND: POST /session/c0f613d664e9ad579ee294ad7b219ea2/element/f.3D2C68DA131A211C5CFA68425EB607E3.d.8B2AAE0D6E798DA9ABE7BC128A917CD7.e.7/value - {"text":"MSI@Admin123"}
+RESULT: {"text":"MSI@Admin123"}
+COMMAND: GET /session/c0f613d664e9ad579ee294ad7b219ea2/element/f.3D2C68DA131A211C5CFA68425EB607E3.d.8B2AAE0D6E798DA9ABE7BC128A917CD7.e.9/enabled - {}
+RESULT: {}
+COMMAND: GET /session/c0f613d664e9ad579ee294ad7b219ea2/element/f.3D2C68DA131A211C5CFA68425EB607E3.d.8B2AAE0D6E798DA9ABE7BC128A917CD7.e.17/text - {}
+RESULT: {}
+COMMAND: POST /session/c0f613d664e9ad579ee294ad7b219ea2/element/f.3D2C68DA131A211C5CFA68425EB607E3.d.8B2AAE0D6E798DA9ABE7BC128A917CD7.e.9/click - {}
+RESULT: {}
+COMMAND: GET /session/c0f613d664e9ad579ee294ad7b219ea2/element/f.3D2C68DA131A211C5CFA68425EB607E3.d.8B2AAE0D6E798DA9ABE7BC128A917CD7.e.18/text - {}
+RESULT: {}
+COMMAND: GET /session/c0f613d664e9ad579ee294ad7b219ea2/element/f.3D2C68DA131A211C5CFA68425EB607E3.d.8B2AAE0D6E798DA9ABE7BC128A917CD7.e.19/text - {}
+RESULT: {}
+COMMAND: GET /session/c0f613d664e9ad579ee294ad7b219ea2/url - {}
+RESULT: {}
+COMMAND: DELETE /session/c0f613d664e9ad579ee294ad7b219ea2 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>
