@@ -227,41 +227,45 @@ class ManagePage extends Page {
         return this.UserApprovaltable_AsManager.$$(`tbody tr`);
     }
 
+    public getOrganizationCard(name: string) {
+        return $(`//div[contains(@class,'rounded-md')][.//div[contains(normalize-space(),'${name}')]]`);
+    }
+
     /**
      * navigation and interaction methods
      */
     public async clickManageApprovals() {
-        await this.ManageButton.waitForClickable({ timeout: 15000 });
+        await this.ManageButton.waitForClickable();
         await this.ManageButton.click();
-        await this.ManageOrganization.waitForDisplayed({ timeout: 10000 });
-        await this.ManageApprovals.waitForClickable({ timeout: 15000 });    
+        await this.ManageOrganization.waitForDisplayed();
+        await this.ManageApprovals.waitForClickable();    
         await this.ManageApprovals.click();
 
         // Verify Manager Approval header is displayed
-        await this.managerApprovalheader.waitForDisplayed({ timeout: 15000 });
+        await this.managerApprovalheader.waitForDisplayed();
         await expect(this.managerApprovalheader).toBeDisplayed();
         
         // Verify manager approval table is displayed
-        await this.managerApprovalTable.waitForDisplayed({ timeout: 15000 });
+        await this.managerApprovalTable.waitForDisplayed();
         await expect(this.managerApprovalTable).toBeDisplayed();
     }
 
     public async clickManageApprovalsAsManager() {
         console.log('[DEBUG] Navigating to Manage Approvals as Manager...');
-        await this.ManageButton.waitForClickable({ timeout: 20000 });
+        await this.ManageButton.waitForClickable();
         await this.ManageButton.click();
         
         // Support both "My Team" (Manager) and "Manage Organization" (Admin)
-        await this.ManageOrganization.waitForDisplayed({ timeout: 15000 });
+        await this.ManageOrganization.waitForDisplayed();
         
-        await this.ManageApprovals.waitForClickable({ timeout: 20000 });    
+        await this.ManageApprovals.waitForClickable();    
         await this.ManageApprovals.click();
 
         // Managers only see User Approvals
-        await this.UserApproval_header.waitForDisplayed({ timeout: 20000 });
+        await this.UserApproval_header.waitForDisplayed();
         await expect(this.UserApproval_header).toBeDisplayed();
         
-        await this.UserApprovaltable_AsManager.waitForDisplayed({ timeout: 20000 });
+        await this.UserApprovaltable_AsManager.waitForDisplayed();
         await expect(this.UserApprovaltable_AsManager).toBeDisplayed();
     }
 
@@ -287,7 +291,7 @@ class ManagePage extends Page {
 
         // Explicitly scroll to Manager Approval section first
         await this.managerApprovalheader.scrollIntoView({ block: 'center' });
-        await browser.pause(1000);
+
 
         while (iterations < maxIterations) {
             iterations++;
@@ -300,14 +304,14 @@ class ManagePage extends Page {
             if (iterations === 1 && rowsCount === 0) {
                  console.log(`[DEBUG] No manager rows found on first try. Attempting table refresh...`);
                  await browser.refresh();
-                 await this.ManageButton.waitForClickable({ timeout: 15000 });
+                 await this.ManageButton.waitForClickable();
                  await this.ManageButton.click();
-                 await this.ManageOrganization.waitForDisplayed({ timeout: 10000 });
-                 await this.ManageApprovals.waitForClickable({ timeout: 15000 });
+                 await this.ManageOrganization.waitForDisplayed();
+                 await this.ManageApprovals.waitForClickable();
                  await this.ManageApprovals.click();
-                 await this.managerApprovalheader.waitForDisplayed({ timeout: 15000 });
+                 await this.managerApprovalheader.waitForDisplayed();
                  
-                 await browser.pause(2000);
+
                  rows = await this.managertableRows;
                  rowsCount = await rows.length;
             }
@@ -350,14 +354,15 @@ class ManagePage extends Page {
             console.log(`[DEBUG] Action: Rejecting manager "${matchingNameText}"...`);
             const rejectBtn = await this.getRejectButtonInRow(matchingRow);
             await rejectBtn.scrollIntoView({ block: 'center' });
+            await rejectBtn.waitForClickable();
             await rejectBtn.click();
             
-            await this.RejectRequest_popup.waitForDisplayed({ timeout: 10000 });
+            await this.RejectRequest_popup.waitForDisplayed();
             await this.RejectRequest_popup_Reason.setValue('Rejecting for testing purpose');
             await this.RejectRequest_Submit.click();
             
             // Wait for popup to disappear
-            await this.RejectRequest_popup.waitForDisplayed({ timeout: 10000, reverse: true });
+            await this.RejectRequest_popup.waitForDisplayed({ reverse: true });
             
             console.log(`[DEBUG] Waiting for status change for ${matchingNameText}...`);
             await browser.waitUntil(async () => {
@@ -380,7 +385,7 @@ class ManagePage extends Page {
             rejectedUsers.push(matchingNameText);
             
             // Short pause to allow UI to settle before next iteration
-            await browser.pause(1000);
+
         }
 
         if (shouldVerifyEmpty) {
@@ -422,7 +427,7 @@ class ManagePage extends Page {
 
         // Explicitly scroll to User Approval section first
         await this.UserApproval_header.scrollIntoView({ block: 'center' });
-        await browser.pause(1000);
+
 
         while (iterations < maxIterations) {
             iterations++;
@@ -435,14 +440,14 @@ class ManagePage extends Page {
             if (iterations === 1 && rowsCount === 0) {
                  console.log(`[DEBUG] No rows found on first try. Refreshing page...`);
                  await browser.refresh();
-                 await this.ManageButton.waitForClickable({ timeout: 15000 });
+                 await this.ManageButton.waitForClickable();
                  await this.ManageButton.click();
-                 await this.ManageOrganization.waitForDisplayed({ timeout: 10000 });
-                 await this.ManageApprovals.waitForClickable({ timeout: 15000 });
+                 await this.ManageOrganization.waitForDisplayed();
+                 await this.ManageApprovals.waitForClickable();
                  await this.ManageApprovals.click();
-                 await this.UserApproval_header.waitForDisplayed({ timeout: 15000 });
+                 await this.UserApproval_header.waitForDisplayed();
 
-                 await browser.pause(2000);
+
                  rows = await this.usertableRows;
                  rowsCount = await rows.length;
             }
@@ -484,13 +489,14 @@ class ManagePage extends Page {
             console.log(`[DEBUG] Action: Rejecting user "${matchingNameText}"...`);
             const rejectBtn = await this.getRejectButtonInRow(matchingRow);
             await rejectBtn.scrollIntoView({ block: 'center' });
+            await rejectBtn.waitForClickable();
             await rejectBtn.click();
             
-            await this.RejectRequest_popup.waitForDisplayed({ timeout: 10000 });
+            await this.RejectRequest_popup.waitForDisplayed();
             await this.RejectRequest_popup_Reason.setValue('Rejecting for testing purpose');
             await this.RejectRequest_Submit.click();
             
-            await this.RejectRequest_popup.waitForDisplayed({ timeout: 10000, reverse: true });
+            await this.RejectRequest_popup.waitForDisplayed({ reverse: true });
             
             console.log(`[DEBUG] Waiting for status change for user ${matchingNameText}...`);
             await browser.waitUntil(async () => {
@@ -511,7 +517,7 @@ class ManagePage extends Page {
             
             console.log(`SUCCESS: Rejected user ${matchingNameText}`);
             rejectedUsers.push(matchingNameText);
-            await browser.pause(1000);
+
         }
 
         if (shouldVerifyEmpty) {
@@ -552,7 +558,7 @@ class ManagePage extends Page {
         console.log(`[DEBUG] [Manager View] Starting rejection for users with prefix: "${prefix}"`);
 
         await this.UserApproval_header.scrollIntoView({ block: 'center' });
-        await browser.pause(1000);
+
 
         while (iterations < maxIterations) {
             iterations++;
@@ -591,14 +597,28 @@ class ManagePage extends Page {
             
             const rejectBtn = await this.getRejectButtonInRow(matchingRow);
             await rejectBtn.scrollIntoView({ block: 'center' });
+            await rejectBtn.waitForClickable();
             await rejectBtn.click();
             
-            await this.RejectRequest_popup.waitForDisplayed({ timeout: 10000 });
+            await this.RejectRequest_popup.waitForDisplayed();
             await this.RejectRequest_popup_Reason.setValue('Manager rejection test');
             await this.RejectRequest_Submit.click();
-            await this.RejectRequest_popup.waitForDisplayed({ timeout: 10000, reverse: true });
+            await this.RejectRequest_popup.waitForDisplayed({ reverse: true });
             
-            await browser.pause(2000); // Wait for table refresh
+            console.log(`[DEBUG] [Manager View] Waiting for status change for user ${matchingNameText}...`);
+            await browser.waitUntil(async () => {
+                const refreshedRow = await this.getUserTableRowAsManagerByText(matchingNameText);
+                if (!(await refreshedRow.isExisting())) return true;
+                const columns = await refreshedRow.$$('td');
+                const colCount = await columns.length;
+                if (colCount < 2) return false;
+                const currentStatus = (await columns[colCount - 2].getText()).toLowerCase();
+                return currentStatus.includes('reject');
+            }, {
+                timeout: 10000,
+                timeoutMsg: `Status for user ${matchingNameText} did not change to Rejected in Manager view.`
+            });
+
             console.log(`SUCCESS: Rejected user ${matchingNameText} as Manager`);
             rejectedUsers.push(matchingNameText);
         }
@@ -631,7 +651,7 @@ class ManagePage extends Page {
         console.log(`[DEBUG] [Manager View] Starting approval for users with prefix: "${prefix}"`);
 
         await this.UserApproval_header.scrollIntoView({ block: 'center' });
-        await browser.pause(1000);
+
 
         while (iterations < maxIterations) {
             iterations++;
@@ -672,6 +692,7 @@ class ManagePage extends Page {
             
             const approveBtn = await this.getApproveButtonInRow(matchingRow);
             await approveBtn.scrollIntoView({ block: 'center' });
+            await approveBtn.waitForClickable();
             await approveBtn.click();
             
             console.log(`[DEBUG] [Manager View] Waiting for status change for user ${matchingNameText}...`);
@@ -686,7 +707,7 @@ class ManagePage extends Page {
                 timeoutMsg: `Status for user ${matchingNameText} did not change to Approved in Manager view.`
             });
             
-            await browser.pause(2000); // Wait for table refresh
+
             console.log(`SUCCESS: Approved user ${matchingNameText} as Manager`);
             approvedUsers.push(matchingNameText);
         }
@@ -716,7 +737,7 @@ class ManagePage extends Page {
 
         // Explicitly scroll to Manager Approval section first
         await this.managerApprovalheader.scrollIntoView({ block: 'center' });
-        await browser.pause(1000);
+
 
         let row = await this.getManagerTableRowByText(nameOrEmail);
         
@@ -724,14 +745,14 @@ class ManagePage extends Page {
         if (!(await row.isExisting())) {
              console.log(`[DEBUG] Manager row not found on first try. Attempting table refresh...`);
              await browser.refresh();
-             await this.ManageButton.waitForClickable({ timeout: 15000 });
+             await this.ManageButton.waitForClickable();
              await this.ManageButton.click();
-             await this.ManageOrganization.waitForDisplayed({ timeout: 10000 });
-             await this.ManageApprovals.waitForClickable({ timeout: 15000 });
+             await this.ManageOrganization.waitForDisplayed();
+             await this.ManageApprovals.waitForClickable();
              await this.ManageApprovals.click();
-             await this.managerApprovalheader.waitForDisplayed({ timeout: 15000 });
+             await this.managerApprovalheader.waitForDisplayed();
 
-             await browser.pause(2000);
+
              row = await this.getManagerTableRowByText(nameOrEmail);
         }
 
@@ -764,8 +785,8 @@ class ManagePage extends Page {
         }
         
         await approveBtn.scrollIntoView({ block: 'center' });
-        await browser.pause(500);
-        await approveBtn.waitForClickable({ timeout: 10000 });
+
+        await approveBtn.waitForClickable();
         await approveBtn.click();
         console.log(`[DEBUG] Clicked approve button for manager "${nameOrEmail}" (Text: ${btnText})`);
         
@@ -809,14 +830,14 @@ class ManagePage extends Page {
             if (iterations === 1 && rowsCount === 0) {
                  console.log(`[DEBUG] No rows found on first try. Refreshing page...`);
                  await browser.refresh();
-                 await this.ManageButton.waitForClickable({ timeout: 15000 });
+                 await this.ManageButton.waitForClickable();
                  await this.ManageButton.click();
-                 await this.ManageOrganization.waitForDisplayed({ timeout: 10000 });
-                 await this.ManageApprovals.waitForClickable({ timeout: 15000 });
+                 await this.ManageOrganization.waitForDisplayed();
+                 await this.ManageApprovals.waitForClickable();
                  await this.ManageApprovals.click();
-                 await this.UserApproval_header.waitForDisplayed({ timeout: 15000 });
+                 await this.UserApproval_header.waitForDisplayed();
 
-                 await browser.pause(2000);
+
                  rows = await this.usertableRows;
                  rowsCount = await rows.length;
             }
@@ -849,8 +870,8 @@ class ManagePage extends Page {
             console.log(`[DEBUG] Action: Approving user "${matchingNameText}"...`);
             const approveBtn = await this.getApproveButtonInRow(matchingRow);
             await approveBtn.scrollIntoView({ block: 'center' });
-            await browser.pause(500);
-            await approveBtn.waitForClickable({ timeout: 10000 });
+
+            await approveBtn.waitForClickable();
             await approveBtn.click();
             console.log(`[DEBUG] Clicked Approve button for user ${matchingNameText}`);
             
@@ -875,7 +896,7 @@ class ManagePage extends Page {
             
             console.log(`SUCCESS: Approved user ${matchingNameText}`);
             approvedUsers.push(matchingNameText);
-            await browser.pause(1000);
+
         }
 
         if (shouldVerifyEmpty) {
@@ -902,28 +923,27 @@ class ManagePage extends Page {
     }
 
     public async DeleteManagerFromManageOrganization(managerName: string) {
-        await this.ManageButton.waitForClickable({ timeout: 15000 });
+        await this.ManageButton.waitForClickable();
         await this.ManageButton.click();
         
-        await this.ManageOrganization.waitForDisplayed({ timeout: 10000 });
+        await this.ManageOrganization.waitForDisplayed();
         await expect(this.ManageOrganization).toBeDisplayed();
         
         console.log(`[DEBUG] Searching for: "${managerName}" in Manage Organization...`);
 
         // Try to find the card, refresh if not found immediately
-        const getCard = async () => $(`//div[contains(@class,'rounded-md')][.//div[contains(normalize-space(),'${managerName}')]]`);
-        let card = await getCard();
+        let card = this.getOrganizationCard(managerName);
         
         if (!(await card.isDisplayed())) {
             console.log(`[DEBUG] Card for "${managerName}" not found. Refreshing...`);
             await browser.refresh();
-            await this.ManageOrganization.waitForDisplayed({ timeout: 15000 });
-            card = await getCard();
+            await this.ManageOrganization.waitForDisplayed();
+            card = this.getOrganizationCard(managerName);
         }
 
         // Final wait and assertion
         try {
-            await card.waitForDisplayed({ timeout: 15000 });
+            await card.waitForDisplayed();
             await expect(card).toBeDisplayed();
         } catch (error) {
             console.error(`[DEBUG] FAILED to find card for "${managerName}".`);
@@ -935,71 +955,70 @@ class ManagePage extends Page {
         
         console.log(`[DEBUG] Found card for "${managerName}". Clicking Delete...`);
         const deleteBtn = await card.$(`.//button[normalize-space()='Delete']`);
-        await deleteBtn.waitForClickable({ timeout: 5000 });
+        await deleteBtn.waitForClickable();
         await deleteBtn.click();
 
         // Handle deletion popup
         console.log(`[DEBUG] Waiting for Manager deletion popup...`);
         // Using the original locator names for Manager flow
-        await this.DeleteUserConfirmationpop_up.waitForDisplayed({ timeout: 10000 });
+        await this.DeleteUserConfirmationpop_up.waitForDisplayed();
         await expect(this.DeleteUserConfirmationpop_up).toBeDisplayed();
 
-        await this.deleteuserInputBox.waitForDisplayed({ timeout: 5000 });
+        await this.deleteuserInputBox.waitForDisplayed();
         await this.deleteuserInputBox.setValue("Delete Manager");
         
-        await this.deleteuserConfirmButton.waitForClickable({ timeout: 5000 });
+        await this.deleteuserConfirmButton.waitForClickable();
         await this.deleteuserConfirmButton.click();
 
         // Verify card disappearance
-        await card.waitForDisplayed({ reverse: true, timeout: 15000 });
+        await card.waitForDisplayed({ reverse: true });
         await expect(card).not.toBeDisplayed();
         
         console.log(`[DEBUG] Successfully deleted manager: "${managerName}"`);
     }
 
     public async DeleteUserFromManageOrganization(userName: string) {
-        await this.ManageButton.waitForClickable({ timeout: 15000 });
+        await this.ManageButton.waitForClickable();
         await this.ManageButton.click();
         
-        await this.ManageOrganization.waitForDisplayed({ timeout: 10000 });
+        await this.ManageOrganization.waitForDisplayed();
         await expect(this.ManageOrganization).toBeDisplayed();
         
         console.log(`[DEBUG] Searching for User: "${userName}" in Manage Organization...`);
 
         // Try to find the user card, refresh if not found immediately
-        const getCard = async () => $(`//div[contains(@class,'rounded-md')][.//div[contains(normalize-space(),'${userName}')]]`);
-        let card = await getCard();
+        let card = this.getOrganizationCard(userName);
         
         if (!(await card.isDisplayed())) {
             console.log(`[DEBUG] Card for User "${userName}" not found. Refreshing...`);
             await browser.refresh();
-            await this.ManageOrganization.waitForDisplayed({ timeout: 15000 });
-            card = await getCard();
+            await this.ManageOrganization.waitForDisplayed();
+            card = this.getOrganizationCard(userName);
         }
 
         // Final wait and assertion to verify user is displayed
-        await card.waitForDisplayed({ timeout: 15000 });
+        await card.waitForDisplayed();
         await expect(card).toBeDisplayed();
         console.log(`[DEBUG] VERIFIED: User "${userName}" is displaying in Manage Organization.`);
         
         console.log(`[DEBUG] Found card for User "${userName}". Clicking Delete...`);
         const deleteBtn = await card.$(`.//button[normalize-space()='Delete']`);
-        await deleteBtn.waitForClickable({ timeout: 5000 });
+        await deleteBtn.waitForClickable();
         await deleteBtn.click();
 
         // Handle deletion popup
         console.log(`[DEBUG] Waiting for User deletion popup...`);
-        await this.UserDeletionPopUp.waitForDisplayed({ timeout: 10000 });
+        await this.UserDeletionPopUp.waitForDisplayed();
         await expect(this.UserDeletionPopUp).toBeDisplayed();
 
-        await this.UserDeletionInputBox.waitForDisplayed({ timeout: 5000 });
+        await this.UserDeletionInputBox.waitForDisplayed();
         await this.UserDeletionInputBox.setValue("Delete User");
         
-        await this.UserDeletionConfirmButton.waitForClickable({ timeout: 5000 });
+        await this.UserDeletionConfirmButton.waitForClickable();
         await this.UserDeletionConfirmButton.click();
 
         // Verify card disappearance
-        await card.waitForDisplayed({ reverse: true, timeout: 15000 });
+        await card.waitForDisplayed({ reverse: true });
         await expect(card).not.toBeDisplayed();
         
         console.log(`[DEBUG] Successfully deleted User: "${userName}"`);

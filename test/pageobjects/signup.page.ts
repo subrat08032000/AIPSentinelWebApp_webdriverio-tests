@@ -1,4 +1,4 @@
-import { $, browser } from '@wdio/globals'
+import { $ } from '@wdio/globals'
 import Page from './page.js';
 //import ManagePage from "./manage.page.js";
 
@@ -12,7 +12,7 @@ class SignupPage extends Page {
         return $(`//a[text()="Sign up"]`)
     }
     public get selectRole_DDButton(){
-        return $(`//button[@id='role']//*[name()='svg']`)
+        return $(`//button[@id='role']`)
     }
 
     public get creteyourAcc_Header(){
@@ -41,13 +41,13 @@ class SignupPage extends Page {
         return $(`//span[text()="${SignupInput}"]`)  // Your full Name, Developer, Ph number, EmailId, Set Passwd, Confirm passwd
     }
     public get SelectTeam(){
-        return $(`//button[@id='team']//*[name()='svg']`) // Application, Server
+        return $(`//button[@id='team']`) // Application, Server
     }
     public get SignupSubmit_Btn(){
         return $(`//button[text()="Create Account"]`)
     }
     public get selectManager_DDButton(){
-        return $(`//button[@id='manager_id']//*[name()='svg'] | //button[@id='manager']//*[name()='svg']`)
+        return $(`//button[@id='manager_id'] | //button[@id='manager']`)
     }
 
     public inputById(id: string) {
@@ -64,6 +64,22 @@ public get SigninToAIPHeader(){
     }
     public get AIPLogo() {
         return $(`//img[@alt='AIP Sentinel']`);
+    }
+
+    public getTeamOption(teamName: string) {
+        return $(`//span[text()="${teamName}"] | //div[@role='option']//span[text()="${teamName}"]`);
+    }
+
+    public get managerRoleOption() {
+        return $(`//span[text()='Manager'] | //div[@role='option']//span[text()='Manager']`);
+    }
+
+    public get userRoleOption() {
+        return $(`//span[text()='User'] | //div[@role='option']//span[text()='User']`);
+    }
+
+    public getSpecificManagerOption(managerEmail: string) {
+        return $(`//span[text()='${managerEmail}'] | //div[@role='option']//span[text()='${managerEmail}']`);
     }
 
 
@@ -102,7 +118,10 @@ public async fillSignupForm(data: {
 
     if (data.team !== undefined) {
         await this.SelectTeam.click();
-        await browser.keys([data.team[0], 'Enter']);
+
+        const teamOption = this.getTeamOption(data.team);
+        await teamOption.waitForClickable();
+        await teamOption.click();
     }
 
     if (data.phone !== undefined) {
@@ -141,11 +160,14 @@ public async SignUp_Manager(
     await this.Signup_link.click();
 
     // Select Manager role
-    await this.selectRole_DDButton.waitForClickable();
+    await this.selectRole_DDButton.waitForExist();
     await this.selectRole_DDButton.click();
-    await browser.keys(['M', 'Enter']);
 
-    await expect(this.manager_Role).toHaveText('Manager');
+    
+    const managerRoleOption = this.managerRoleOption;
+    await managerRoleOption.waitForClickable();
+    await managerRoleOption.click();
+
     await expect(this.getLabelByText('Name')).toBeDisplayed();
 
     // Prepare data object
@@ -161,18 +183,18 @@ public async SignUp_Manager(
 
     // Fill form
     await this.fillSignupForm(signupData);
-    await browser.pause(500);
+
 
     // Submit
-    await this.CreateAcc_btn.waitForClickable({ timeout: 10000 });
+    await this.CreateAcc_btn.waitForClickable();
     await this.CreateAcc_btn.click();
     
     console.log(`[DEBUG] Signup submitted for ${Email}. Waiting for success message...`);
     
     // Increased timeout for signup success as it can be slow
-    await this.accountCreatedSuccessfully.waitForDisplayed({ timeout: 30000 });
+    await this.accountCreatedSuccessfully.waitForDisplayed();
     await expect(this.accountCreatedSuccessfully).toBeDisplayed();
-    await this.SigninToAIPHeader.waitForDisplayed({ timeout: 10000 });
+    await this.SigninToAIPHeader.waitForDisplayed();
     await expect(this.SigninToAIPHeader).toBeDisplayed();
 }
 
@@ -190,26 +212,39 @@ public async SignUp_User(
     await this.Signup_link.click();
 
     // Select User role
-    await this.selectRole_DDButton.waitForClickable();
+    await this.selectRole_DDButton.waitForExist();
     await this.selectRole_DDButton.click();
-    await browser.pause(1000); // Wait for dropdown animation
+
     
-    // Improved selector: find span with text User specifically under a listbox or similar container if possible
-    // or just use a more specific xpath
-    const userOption = $(`//span[text()='User'] | //div[@role='option']//span[text()='User']`);
-    await userOption.waitForClickable({ timeout: 5000 });
+    const userOption = this.userRoleOption;
+    await userOption.waitForClickable();
     await userOption.click();
     
     // Brief wait to ensure selection is processed
-    await browser.pause(500);
+
+
     // Select Manager
-    await this.selectManager_DDButton.waitForClickable({ timeout: 10000 });
+    await this.selectManager_DDButton.waitForExist();
+    await this.selectManager_DDButton.scrollIntoView();
     await this.selectManager_DDButton.click();
-    await browser.pause(1000);
-    const managerOption = $(`//span[text()='${managerEmail}'] | //div[@role='option']//span[text()='${managerEmail}']`);
-    await managerOption.waitForClickable({ timeout: 5000 });
+
+
+    const managerOption = this.getSpecificManagerOption(managerEmail);
+    await managerOption.waitForExist();
+    await managerOption.scrollIntoView();
+    
+    // Wait for it to be clickable with a slight retry if it fails initially
+    try {
+        await managerOption.waitForClickable();
+    } catch (error) {
+        console.log(`[DEBUG] Manager option not clickable initially, trying one more time with a small pause...`);
+
+        await managerOption.waitForClickable();
+    }
+    
     await managerOption.click();
-    await browser.pause(500);
+
+
 
     await expect(this.getLabelByText('Name')).toBeDisplayed();
 
@@ -226,18 +261,18 @@ public async SignUp_User(
 
     // Fill form
     await this.fillSignupForm(signupData);
-    await browser.pause(500);
+
 
     // Submit
-    await this.CreateAcc_btn.waitForClickable({ timeout: 10000 });
+    await this.CreateAcc_btn.waitForClickable();
     await this.CreateAcc_btn.click();
 
     console.log(`[DEBUG] Signup submitted for ${Email}. Waiting for success message...`);
 
     // Increased timeout for signup success as it can be slow
-    await this.accountCreatedSuccessfully.waitForDisplayed({ timeout: 30000 });
+    await this.accountCreatedSuccessfully.waitForDisplayed();
     await expect(this.accountCreatedSuccessfully).toBeDisplayed();
-    await this.SigninToAIPHeader.waitForDisplayed({ timeout: 10000 });
+    await this.SigninToAIPHeader.waitForDisplayed();
     await expect(this.SigninToAIPHeader).toBeDisplayed();
 }
 

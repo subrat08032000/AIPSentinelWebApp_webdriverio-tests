@@ -137,10 +137,14 @@ class DashboardPage extends Page {
         return $(`//h1[normalize-space()='Activity Logs']`);
     }
 
+    public getVMElement(vmName: string) {
+        return $(`//span[normalize-space()='${vmName}']`);
+    }
+
 
 
     public async QueueManager() {
-        await this.AIPLogo.waitForDisplayed({timeout: 10000});
+        await this.AIPLogo.waitForDisplayed();
         await this.AIPLogo.isDisplayed()
     }
 
@@ -170,7 +174,7 @@ class DashboardPage extends Page {
 
         try {
             // Wait for elements with increased timeout
-            await this.Dashboard_QM_Count.waitForDisplayed({ timeout: 30000 });
+            await this.Dashboard_QM_Count.waitForDisplayed();
             
             // Get Frontend Data
             const qmCount = await this.Dashboard_QM_Count.getText();
@@ -202,7 +206,7 @@ class DashboardPage extends Page {
     }
 
     public async InfraCat() {
-        await this.InfraCat_Header.waitForDisplayed({ timeout: 10000 });
+        await this.InfraCat_Header.waitForDisplayed();
         await expect(this.InfraCat_Header).toBeDisplayed();
 
         let apiData: any = {};
@@ -256,7 +260,7 @@ class DashboardPage extends Page {
                 
                 // Check if it exists first to avoid exception logs from waitForDisplayed
                 if (await allSysOp.isExisting()) {
-                    await allSysOp.waitForDisplayed({ timeout: 2000 });
+                    await allSysOp.waitForDisplayed();
                     console.log(`SUCCESS: '${name}' - 'All systems operational' verified within card.`);
                 } else {
                     // Fallback: check if ANY operational message is visible on the page
@@ -276,7 +280,7 @@ class DashboardPage extends Page {
         await validateCategory('Virtual Machines', this.virtualMachine, this.virtualMachine_Count, downVMs.length);
         if (downVMs.length > 0) {
              for (const vm of downVMs) {
-                 const vmElement = $(`//span[normalize-space()='${vm.vm_name}']`);
+                 const vmElement = this.getVMElement(vm.vm_name);
                  await expect(vmElement).toBeDisplayed();
              }
         }
@@ -317,19 +321,19 @@ class DashboardPage extends Page {
             
             // Define verification logic based on button text using getters
             if (btnText.includes('User Management')) {
-                await this.ManageOrganization_Header.waitForDisplayed({ timeout: 10000 });
+                await this.ManageOrganization_Header.waitForDisplayed();
                 await expect(this.ManageOrganization_Header).toBeDisplayed();
             } 
             else if (btnText.includes('Account Approvals')) {
-                await this.ManageApprovals_Span.waitForDisplayed({ timeout: 10000 });
+                await this.ManageApprovals_Span.waitForDisplayed();
                 await expect(this.ManageApprovals_Span).toBeDisplayed();
             }
             else if (btnText.includes('Settings')) {
-                await this.Settings_Header.waitForDisplayed({ timeout: 10000 });
+                await this.Settings_Header.waitForDisplayed();
                 await expect(this.Settings_Header).toBeDisplayed();
             }
             else if (btnText.includes('Audit Logs')) {
-                await this.ActivityLogs_Header.waitForDisplayed({ timeout: 10000 });
+                await this.ActivityLogs_Header.waitForDisplayed();
                 await expect(this.ActivityLogs_Header).toBeDisplayed();
                 const actualText = await this.ActivityLogs_Header.getText();
                 console.log(`Verified Audit Logs redirect text: ${actualText}`);
@@ -338,7 +342,7 @@ class DashboardPage extends Page {
 
             console.log(`Validated redirect for: ${btnText}. Navigating back...`);
             await browser.back();
-            await this.AdminPanel_header.waitForDisplayed({ timeout: 15000 });
+            await this.AdminPanel_header.waitForDisplayed();
         }
     }
 

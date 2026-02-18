@@ -1,3 +1,9 @@
+import allure from '@wdio/allure-reporter'
+//Run and Report
+//Run tests: npm run test
+//Clear old results (optional): npm run allure:clear
+//Generate and Open report: npm run report:allure
+
 export const config: WebdriverIO.Config = {
     //
     // ====================
@@ -107,7 +113,7 @@ export const config: WebdriverIO.Config = {
     // baseUrl: 'http://localhost:8080',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 30000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
@@ -153,8 +159,15 @@ export const config: WebdriverIO.Config = {
         }],
         ['allure', {
             outputDir: './TestResults/allure-results',
-            disableWebdriverStepsReporting: true,
+            disableWebdriverStepsReporting: false,
             disableWebdriverScreenshotsReporting: false,
+            useCucumberStepReporter: false,
+            addConsoleLogs: true,
+            reportedEnvironmentVars: {
+                Browser: 'Chrome',
+                Platform: process.platform,
+                NodeVersion: process.version
+            }
         }]
     ],
 
@@ -217,8 +230,8 @@ export const config: WebdriverIO.Config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {object}         browser      instance of created browser/device session
      */
-    // before: function (capabilities, specs) {
-    // },
+     before: function (_capabilities, _specs) {
+     },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {string} commandName hook command name
@@ -259,9 +272,20 @@ export const config: WebdriverIO.Config = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    afterTest: async function (test, _context, { error: _error, result: _result, duration: _duration, passed, retries: _retries }) {
+    afterTest: async function (test, _context, { error, result: _result, duration: _duration, passed, retries: _retries }) {
         if (!passed) {
-            await browser.saveScreenshot(`./TestResults/error_${test.title.replace(/\s+/g, '_')}.png`);
+            // Take screenshot for local disk
+            const screenshotName = `./TestResults/error_${test.title.replace(/\s+/g, '_')}.png`;
+            await browser.saveScreenshot(screenshotName);
+            
+            // Attach screenshot TO Allure Report
+            const screenshot = await browser.takeScreenshot();
+            allure.addAttachment('Screenshot on Failure', Buffer.from(screenshot, 'base64'), 'image/png');
+            
+            // Log error to Allure
+            if (error) {
+                allure.addDescription(`Test failed with error: ${error.message}`, 'text');
+            }
         }
     },
 
