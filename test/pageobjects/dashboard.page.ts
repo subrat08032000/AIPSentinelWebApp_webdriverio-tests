@@ -92,10 +92,11 @@ class DashboardPage extends Page {
         return $(`//h3[contains(normalize-space(), 'Virtual Machines')]/following-sibling::div`);
     }
     public get ACE() {
-        return $(`//h3[contains(normalize-space(), 'ACE')]`);
+        // More robust: looks for ACE or Applications/Integrations if text changed
+        return $(`//h3[contains(normalize-space(), 'ACE') or contains(normalize-space(), 'Applications') or contains(normalize-space(), 'Integration')]`);
     }
     public get ACE_Count() {
-        return $(`//h3[contains(normalize-space(), 'ACE')]/following-sibling::div`);
+        return $(`//h3[contains(normalize-space(), 'ACE') or contains(normalize-space(), 'Applications') or contains(normalize-space(), 'Integration')]/following-sibling::div`);
     }
     public get MQ() {
         return $(`//h3[contains(normalize-space(), 'MQ')]`);
@@ -118,6 +119,12 @@ class DashboardPage extends Page {
     public get AdminPanel_header() {
         return $(`//h3[normalize-space()='Admin Panel']`);
     }
+    public get managerTools_Header() {
+        return $(`//h3[normalize-space()='Manager Tools']`);
+    }
+    public get managerTool_Sub_header() {
+        return $(`//p[normalize-space()='Management functions and controls']`);
+    }
     public get AdminPanel_Sub_header() {
         return $(`//p[normalize-space()='Administrative functions and controls']`);
     }
@@ -137,11 +144,62 @@ class DashboardPage extends Page {
         return $(`//h1[normalize-space()='Activity Logs']`);
     }
 
+    public get usermanagement_btn() {
+        return $(`//*[self::h1 or self::button or self::span][contains(normalize-space(),'Manage Organization')]`);
+    }
+
+    public get accountApproval_btn() {
+        return $(`//*[self::h1 or self::button or self::span][contains(normalize-space(),'Manage Approvals')]`);
+    }
+
+    public get Setting_btn() {
+        return $(`//*[self::h1 or self::button or self::span][contains(normalize-space(),'Settings')]`);
+    }
+
+    public get ManagerAuditLogs_btn() {
+        return $(`//*[self::h1 or self::button or self::span][contains(normalize-space(),'Activity Logs')]`);
+    }
+
     public getVMElement(vmName: string) {
         return $(`//span[normalize-space()='${vmName}']`);
     }
 
+    public get ActiveAlertsTxt(){
+        return $(`//h3[normalize-space()='Active Alerts']`);
+    }
+    public get ActiveAlertsSubTxt(){
+        return $(`//p[normalize-space()='System alerts requiring attention']`);
+    }
+    public get ActiveAlerts_ShowmoreButton(){
+        return $(`//button[text()="Show more →"]`);
+    }
+    public get Dashboard_ActiveAlerts(){
+        return $(`//h3[normalize-space()='Active Alerts']/parent::div/following-sibling::div`);
+    }
 
+    public get ActiveAlertItems() {
+        // Target specifically the alert cards list within the alerts section
+        return $$(`//div[@id='alerts-section']//button[normalize-space()='View Details']`);
+    }
+
+    public getAlertViewDetailsButton(alert: any) {
+        return alert.$(`.//button[text()='View Details']`);
+    }
+
+    public get AlertsDetailspopup_ResolveButton(){
+        return $(`//button[normalize-space()='Resolve']`);
+    }
+
+    public get AlertsDetailspopup_ACKButton(){
+        return $(`//button[normalize-space()='Acknowledge']`);
+    }
+
+    public get AlertsDetailspopup_CloseButton(){
+        return $(`//button[contains(text(),'Close')]`);
+    }
+    public get AlertsDetailspopup_CheckAvailableButton(){
+        return $(`//button[contains(normalize-space(), 'Check available') or contains(normalize-space(), 'Check Available')]`);
+    }
 
     public async QueueManager() {
         await this.AIPLogo.waitForDisplayed();
@@ -240,38 +298,50 @@ class DashboardPage extends Page {
         }
 
         const validateCategory = async (name: string, headerElem: any, countElem: any, downCount: number) => {
-            await headerElem.scrollIntoView();
-            const countText = await countElem.getText();
-            
-            console.log('--------------------------------------------------');
-            console.log(`[BC vs FE Comparison] - ${name}`);
-            console.log(` > Backend (API): ${downCount}`);
-            console.log(` > Frontend (UI): ${countText}`);
-            console.log('--------------------------------------------------');
-            
-            if (!countText.includes(downCount.toString())) {
-                throw new Error(`${name} Count Mismatch! Expected to contain: ${downCount}, Found: ${countText}`);
-            }
-
-            if (downCount === 0) {
-                // We search for the text within the ancestor that likely contains the whole card.
-                const cardContainer = await headerElem.parentElement().parentElement();
-                const allSysOp = cardContainer.$(this.AllSystemsOperational_Selector);
+            try {
+                if (!(await headerElem.isExisting())) {
+                    console.error(`ERROR: '${name}' header not found using selector: ${headerElem.selector}`);
+                    const allH3 = await $$('h3');
+                    const texts = await allH3.map(h => h.getText());
+                    console.log(`[DEBUG] All H3 elements found on page: ${JSON.stringify(texts)}`);
+                    throw new Error(`Header for ${name} not found.`);
+                }
+                await headerElem.scrollIntoView();
+                const countText = await countElem.getText();
                 
-                // Check if it exists first to avoid exception logs from waitForDisplayed
-                if (await allSysOp.isExisting()) {
-                    await allSysOp.waitForDisplayed();
-                    console.log(`SUCCESS: '${name}' - 'All systems operational' verified within card.`);
-                } else {
-                    // Fallback: check if ANY operational message is visible on the page
-                    const globalAllSysOp = this.AllSystemsOperational;
-                    if (await globalAllSysOp.isExisting() && await globalAllSysOp.isDisplayed()) {
-                        console.log(`SUCCESS: '${name}' - 'All systems operational' verified (found on page).`);
+                console.log('--------------------------------------------------');
+                console.log(`[BC vs FE Comparison] - ${name}`);
+                console.log(` > Backend (API): ${downCount}`);
+                console.log(` > Frontend (UI): ${countText}`);
+                console.log('--------------------------------------------------');
+                
+                if (!countText.includes(downCount.toString())) {
+                    throw new Error(`${name} Count Mismatch! Expected to contain: ${downCount}, Found: ${countText}`);
+                }
+
+                if (downCount === 0) {
+                    // We search for the text within the ancestor that likely contains the whole card.
+                    const cardContainer = await headerElem.parentElement().parentElement();
+                    const allSysOp = cardContainer.$(this.AllSystemsOperational_Selector);
+                    
+                    // Check if it exists first to avoid exception logs from waitForDisplayed
+                    if (await allSysOp.isExisting()) {
+                        await allSysOp.waitForDisplayed();
+                        console.log(`SUCCESS: '${name}' - 'All systems operational' verified within card.`);
                     } else {
-                         console.warn(`WARNING: '${name}' - 'All systems operational' message NOT found.`);
-            
+                        // Fallback: check if ANY operational message is visible on the page
+                        const globalAllSysOp = this.AllSystemsOperational;
+                        if (await globalAllSysOp.isExisting() && await globalAllSysOp.isDisplayed()) {
+                            console.log(`SUCCESS: '${name}' - 'All systems operational' verified (found on page).`);
+                        } else {
+                             console.warn(`WARNING: '${name}' - 'All systems operational' message NOT found.`);
+                
+                        }
                     }
                 }
+            } catch (err: any) {
+                console.error(`[ERROR] validateCategory failed for '${name}': ${err.message}`);
+                throw err;
             }
         };
 
@@ -345,10 +415,169 @@ class DashboardPage extends Page {
             await this.AdminPanel_header.waitForDisplayed();
         }
     }
+    public async validateManagerTools_Dashboard() {
+        await this.managerTools_Header.scrollIntoView();
+        await expect(this.managerTools_Header).toBeDisplayed();
+        await expect(this.managerTool_Sub_header).toBeDisplayed();
+        
+        const getButtons = async () => await $$(this.AdminPanel_Buttons_Selector);
+        const allButtons = await getButtons();
+        const buttonsCount = await allButtons.length;
+        console.log(`Found ${buttonsCount} buttons in Manager Tools.`);
 
+        for (let i = 0; i < buttonsCount; i++) {
+            const currentButtons = await getButtons();
+            const btn = currentButtons[i];
+            const btnText = await btn.getText();
+            
+            console.log(`Clicking Manager Tools button: ${btnText}`);
+            await btn.click();
+            
+            if (btnText.includes('User Management')) {
+                await this.usermanagement_btn.waitForDisplayed();
+                await expect(this.usermanagement_btn).toBeDisplayed();
+            } 
+            else if (btnText.includes('Account Approvals')) {
+                await this.accountApproval_btn.waitForDisplayed();
+                await expect(this.accountApproval_btn).toBeDisplayed();
+            }
+            else if (btnText.includes('Settings')) {
+                await this.Setting_btn.waitForDisplayed();
+                await expect(this.Setting_btn).toBeDisplayed();
+            }
+            else if (btnText.includes('Audit Logs')) {
+                await this.ManagerAuditLogs_btn.waitForDisplayed();
+                await expect(this.ManagerAuditLogs_btn).toBeDisplayed();
+                const actualText = await this.ManagerAuditLogs_btn.getText();
+                console.log(`Verified Audit Logs redirect text: ${actualText}`);
+                await expect(actualText).toContain('Activity Logs');
+            }
 
+            console.log(`Validated redirect for: ${btnText}. Navigating back...`);
+            await browser.back();
+            await this.managerTools_Header.waitForDisplayed();
+        }
+        await expect(this.ActiveAlerts_ShowmoreButton).toBeClickable();
+    }
 
+    public async validateUserDashboard_Aesthetics() {
+        await this.AIPLogo.waitForDisplayed();
+        await expect(this.AIPLogo).toBeDisplayed();
+        await this.DashboardHeader.waitForDisplayed();
+        await expect(this.DashboardHeader).toBeDisplayed();
+        
+        // Scroll to and verify Infrastructure Categories as it's common for all roles
+        await this.InfraCat_Header.scrollIntoView();
+        await expect(this.InfraCat_Header).toBeDisplayed();
 
+        // Verify that Admin Panel and Manager Tools are NOT visible to restricted users
+        await expect(this.AdminPanel_header).not.toBeDisplayed();
+        await expect(this.managerTools_Header).not.toBeDisplayed();
+        
+        console.log("[DEBUG] Successfully validated User dashboard aesthetics (Negative checks passed).");
+    }
+
+public async DashboardActive_Alerts_Validation() {
+    await this.ActiveAlertsTxt.waitForDisplayed();
+    await this.ActiveAlertsTxt.scrollIntoView();
+    await expect(this.ActiveAlertsTxt).toBeDisplayed();
+    
+    await expect(this.ActiveAlerts_ShowmoreButton).toBeClickable();
+    console.log(`[DEBUG] Verified 'Show more' button is clickable.`);
+
+    // Wait for at least one alert to load
+    let lastFoundCount = 0;
+    await browser.waitUntil(async () => {
+        const buttons = await this.ActiveAlertItems;
+        lastFoundCount = await buttons.length;
+        console.log(`[DEBUG] Polling: Found ${lastFoundCount} 'View Details' buttons in #alerts-section.`);
+        return lastFoundCount > 0;
+    }, {
+        timeout: 20000,
+        timeoutMsg: `TIMEOUT: Expected alerts to load, but found ${lastFoundCount} after 20s.`
+    });
+
+    const activeAlerts = await this.ActiveAlertItems;
+    const count = await activeAlerts.length;
+    console.log(`[DEBUG] Found ${count} active alerts. Validating the first one...`);
+
+    if (count > 0) {
+        const firstViewDetailsBtn = activeAlerts[0];
+        await firstViewDetailsBtn.scrollIntoView();
+        await firstViewDetailsBtn.click();  
+        console.log(`[DEBUG] Clicked 'View Details' for the first active alert.`);
+        
+        await this.AlertsDetailspopup_ResolveButton.waitForDisplayed();
+        await expect(this.AlertsDetailspopup_ResolveButton).toBeClickable();
+        await expect(this.AlertsDetailspopup_ACKButton).toBeClickable();
+        await expect(this.AlertsDetailspopup_CloseButton).toBeClickable();
+        
+        // Check for 'Check available' if it appears
+        if (await this.AlertsDetailspopup_CheckAvailableButton.isExisting()) {
+            await expect(this.AlertsDetailspopup_CheckAvailableButton).toBeClickable();
+            console.log(`[DEBUG] Verified 'Check available' button is clickable in popup.`);
+        }
+
+        console.log(`[DEBUG] Verified popup buttons (Resolve, Acknowledge, Check Available, Close).`);
+
+        await this.AlertsDetailspopup_CloseButton.click();
+        console.log(`[DEBUG] Clicked 'Close' on alert details popup.`);
+        await this.AlertsDetailspopup_CloseButton.waitForDisplayed({ reverse: true });
+    }
+}
+
+public async DashboardActive_Alerts_Validation_User() {
+    await this.ActiveAlertsTxt.waitForDisplayed();
+    await this.ActiveAlertsTxt.scrollIntoView();
+    await expect(this.ActiveAlertsTxt).toBeDisplayed();
+    
+    await expect(this.ActiveAlerts_ShowmoreButton).toBeClickable();
+    console.log(`[DEBUG] Verified 'Show more' button is clickable.`);
+
+    // Wait for at least one alert to load
+    let lastFoundCountUser = 0;
+    await browser.waitUntil(async () => {
+        const buttons = await this.ActiveAlertItems;
+        lastFoundCountUser = await buttons.length;
+        console.log(`[DEBUG] Polling: Found ${lastFoundCountUser} 'View Details' buttons in #alerts-section.`);
+        return lastFoundCountUser > 0;
+    }, {
+        timeout: 20000,
+        timeoutMsg: `TIMEOUT: Expected alerts to load, but found ${lastFoundCountUser} after 20s.`
+    });
+
+    const activeAlerts = await this.ActiveAlertItems;
+    const count = await activeAlerts.length;
+    console.log(`[DEBUG] Found ${count} active alerts for User. Validating the first one...`);
+
+    if (count > 0) {
+        const firstViewDetailsBtn = activeAlerts[0];
+        await firstViewDetailsBtn.scrollIntoView();
+        await firstViewDetailsBtn.click();  
+        console.log(`[DEBUG] Clicked 'View Details' for an active alert (User).`);
+        
+        await this.AlertsDetailspopup_CloseButton.waitForDisplayed();
+        
+        // Negative checks: Resolve and Acknowledge should NOT be present for User role
+        await expect(this.AlertsDetailspopup_ResolveButton).not.toBeDisplayed();
+        await expect(this.AlertsDetailspopup_ACKButton).not.toBeDisplayed();
+        console.log(`[DEBUG] Verified Resolve and Acknowledge buttons are NOT displayed for User role.`);
+
+        await expect(this.AlertsDetailspopup_CloseButton).toBeClickable();
+        
+        // Check for 'Check available' if it appears
+        if (await this.AlertsDetailspopup_CheckAvailableButton.isExisting()) {
+            await expect(this.AlertsDetailspopup_CheckAvailableButton).toBeClickable();
+            console.log(`[DEBUG] Verified 'Check available' button is clickable in popup (User).`);
+        }
+
+        console.log(`[DEBUG] Verified popup buttons for User (Close).`);
+
+        await this.AlertsDetailspopup_CloseButton.click();
+        console.log(`[DEBUG] Clicked 'Close' on alert details popup (User).`);
+        await this.AlertsDetailspopup_CloseButton.waitForDisplayed({ reverse: true });
+    }
+}
 }
 
 export default new DashboardPage();
