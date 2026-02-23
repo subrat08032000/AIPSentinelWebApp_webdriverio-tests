@@ -91,11 +91,11 @@ class DashboardPage extends Page {
     public get virtualMachine_Count() {
         return $(`//h3[contains(normalize-space(), 'Virtual Machines')]/following-sibling::div`);
     }
-    public get ACE() {
+    public get applications() {
         // More robust: looks for ACE or Applications/Integrations if text changed
         return $(`//h3[contains(normalize-space(), 'ACE') or contains(normalize-space(), 'Applications') or contains(normalize-space(), 'Integration')]`);
     }
-    public get ACE_Count() {
+    public get applications_Count() {
         return $(`//h3[contains(normalize-space(), 'ACE') or contains(normalize-space(), 'Applications') or contains(normalize-space(), 'Integration')]/following-sibling::div`);
     }
     public get MQ() {
@@ -355,11 +355,11 @@ class DashboardPage extends Page {
              }
         }
 
-        // Validate ACE (Applications + Message Flows)
+        // Validate Applications (Applications + Message Flows)
         const downApps = apiData.applications || [];
         const downFlows = apiData.messageFlows || [];
-        const totalDownACE = downApps.length + downFlows.length;
-        await validateCategory('ACE', this.ACE, this.ACE_Count, totalDownACE);
+        const totalDownApplications = downApps.length + downFlows.length;
+        await validateCategory('Applications', this.applications, this.applications_Count, totalDownApplications);
 
         // Validate MQ (Queue Managers)
         const downQMs = apiData.queuemanagers || [];

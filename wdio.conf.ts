@@ -55,28 +55,43 @@ export const config: WebdriverIO.Config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 1,
+    maxInstances: 2,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
-    capabilities: [{
-        browserName: 'chrome',
-        acceptInsecureCerts: true,
-        'goog:chromeOptions': {
-            args: [
-                // '--headless=new', // Comment out to see the browser
-                '--disable-gpu',
-                '--no-sandbox',
-                '--disable-dev-shm-usage',
-                '--disable-extensions',
-                '--window-size=1920,1080',
-                '--remote-debugging-port=9222',
-                '--user-data-dir=' + (process.env.TEMP || '/tmp') + '/wdio-chrome-profile-' + Date.now()
-            ]
+    capabilities: [
+        {
+            browserName: 'chrome',
+            acceptInsecureCerts: true,
+            'goog:chromeOptions': {
+                args: [
+                    '--disable-gpu',
+                    '--no-sandbox',
+                    '--disable-dev-shm-usage',
+                    '--disable-extensions',
+                    '--window-size=1920,1080',
+                    '--remote-debugging-port=9222',
+                    '--user-data-dir=' + (process.env.TEMP || '/tmp') + '/wdio-chrome-profile-' + Date.now()
+                ]
+            }
+        },
+        {
+            browserName: 'MicrosoftEdge',
+            acceptInsecureCerts: true,
+            'ms:edgeOptions': {
+                args: [
+                    '--disable-gpu',
+                    '--no-sandbox',
+                    '--disable-dev-shm-usage',
+                    '--disable-extensions',
+                    '--window-size=1920,1080',
+                    '--user-data-dir=' + (process.env.TEMP || '/tmp') + '/wdio-edge-profile-' + Date.now()
+                ]
+            }
         }
-    }],
+    ],
 
     //
     // ===================
@@ -164,7 +179,6 @@ export const config: WebdriverIO.Config = {
             useCucumberStepReporter: false,
             addConsoleLogs: true,
             reportedEnvironmentVars: {
-                Browser: 'Chrome',
                 Platform: process.platform,
                 NodeVersion: process.version
             }
