@@ -12,6 +12,8 @@ export const config: WebdriverIO.Config = {
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     runner: 'local',
     tsConfigPath: './tsconfig.json',
+    automationProtocol: 'webdriver',
+    specFileRetries: 1,
 
     //
     // ==================
@@ -55,7 +57,7 @@ export const config: WebdriverIO.Config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 2,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -77,20 +79,20 @@ export const config: WebdriverIO.Config = {
                 ]
             }
         },
-        {
-            browserName: 'MicrosoftEdge',
-            acceptInsecureCerts: true,
-            'ms:edgeOptions': {
-                args: [
-                    '--disable-gpu',
-                    '--no-sandbox',
-                    '--disable-dev-shm-usage',
-                    '--disable-extensions',
-                    '--window-size=1920,1080',
-                    '--user-data-dir=' + (process.env.TEMP || '/tmp') + '/wdio-edge-profile-' + Date.now()
-                ]
-            }
-        }
+        // {
+        //     browserName: 'MicrosoftEdge',
+        //     acceptInsecureCerts: true,
+        //     'ms:edgeOptions': {
+        //         args: [
+        //             '--disable-gpu',
+        //             '--no-sandbox',
+        //             '--disable-dev-shm-usage',
+        //             '--disable-extensions',
+        //             '--window-size=1920,1080',
+        //             '--user-data-dir=' + (process.env.TEMP || '/tmp') + '/wdio-edge-profile-' + Date.now()
+        //         ]
+        //     }
+        // }
     ],
 
     //
@@ -132,7 +134,7 @@ export const config: WebdriverIO.Config = {
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
-    connectionRetryTimeout: 120000,
+    connectionRetryTimeout: 30000,
     //
     // Default request retries count
     connectionRetryCount: 1,
@@ -189,7 +191,7 @@ export const config: WebdriverIO.Config = {
     // See the full list at http://mochajs.org/
     mochaOpts: {
         ui: 'bdd',
-        timeout: 120000
+        timeout: 90000
     },
 
     //

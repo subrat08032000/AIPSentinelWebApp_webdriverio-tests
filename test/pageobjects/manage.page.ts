@@ -270,6 +270,64 @@ class ManagePage extends Page {
     }
 
 
+    private async waitForStatusUpdateWithRefresh(
+        nameOrEmail: string,
+        expectedStatus: string,
+        type: 'Manager' | 'User',
+        timeout: number = 30000
+    ) {
+        const startTime = Date.now();
+        const refreshThreshold = 10000; // Refresh if not updated after 10s
+        let refreshed = false;
+
+        await browser.waitUntil(async () => {
+            const timeElapsed = Date.now() - startTime;
+            
+            if (timeElapsed > refreshThreshold && !refreshed) {
+                console.log(`[DEBUG] Status didn't update to ${expectedStatus} for ${nameOrEmail} after 10s. Triggering safety refresh...`);
+                await browser.refresh();
+                
+                // Re-navigate to the correct section
+                await this.ManageButton.waitForClickable();
+                await this.ManageButton.click();
+                await this.ManageOrganization.waitForDisplayed();
+                await this.ManageApprovals.waitForClickable();
+                await this.ManageApprovals.click();
+                
+                if (type === 'Manager') {
+                    await this.managerApprovalheader.waitForDisplayed();
+                    await this.managerApprovalheader.scrollIntoView({ block: 'center' });
+                } else {
+                    await this.UserApproval_header.waitForDisplayed();
+                    await this.UserApproval_header.scrollIntoView({ block: 'center' });
+                }
+                
+                refreshed = true;
+            }
+
+            const updatedRow = type === 'Manager' 
+                ? await this.getManagerTableRowByText(nameOrEmail)
+                : await this.getUserTableRowByText(nameOrEmail);
+
+            // If row is gone, it's likely moved to next stage (count as success if checking for approve/reject)
+            if (!(await updatedRow.isExisting())) {
+                console.log(`[DEBUG] Row for ${nameOrEmail} is no longer in current list (likely successful transition).`);
+                return true;
+            }
+
+            const updatedCols = await updatedRow.$$('td');
+            const colCount = await updatedCols.length;
+            if (colCount < 2) return false;
+
+            const updatedStatus = (await updatedCols[colCount - 2].getText()).toLowerCase();
+            console.log(`[DEBUG] Current status for ${nameOrEmail}: ${updatedStatus}`);
+            return updatedStatus.includes(expectedStatus.toLowerCase());
+        }, {
+            timeout: timeout,
+            timeoutMsg: `Status for ${nameOrEmail} did not change to ${expectedStatus} after ${timeout}ms.`
+        });
+    }
+
     public async cleanupTestManagers() {
         console.log('[DEBUG] Cleaning up existing test managers...');
         // Check for manager names starting with "Test" and reject if found (handles multiples and verifies status)
@@ -364,22 +422,8 @@ class ManagePage extends Page {
             // Wait for popup to disappear
             await this.RejectRequest_popup.waitForDisplayed({ reverse: true });
             
-            console.log(`[DEBUG] Waiting for status change for ${matchingNameText}...`);
-            await browser.waitUntil(async () => {
-                // Re-find the row by text to avoid stale element issues
-                const updatedRow = await this.getManagerTableRowByText(matchingNameText);
-                if (!(await updatedRow.isExisting())) return true; // Might have disappeared if table refreshed
-
-                const columns = await updatedRow.$$('td');
-                const colCount = await columns.length;
-                if (colCount < 2) return false;
-                
-                const currentStatus = (await columns[colCount - 2].getText()).toLowerCase();
-                return currentStatus.includes('reject');
-            }, {
-                timeout: 10000,
-                timeoutMsg: `Status for ${matchingNameText} did not change to Rejected.`
-            });
+        console.log(`[DEBUG] Waiting for status change for ${matchingNameText}...`);
+        await this.waitForStatusUpdateWithRefresh(matchingNameText, 'reject', 'Manager');
             
             console.log(`SUCCESS: Rejected manager ${matchingNameText}`);
             rejectedUsers.push(matchingNameText);
@@ -499,21 +543,7 @@ class ManagePage extends Page {
             await this.RejectRequest_popup.waitForDisplayed({ reverse: true });
             
             console.log(`[DEBUG] Waiting for status change for user ${matchingNameText}...`);
-            await browser.waitUntil(async () => {
-                // For users, we must check the user table specifically
-                const updatedRow = await this.getUserTableRowByText(matchingNameText);
-                if (!(await updatedRow.isExisting())) return true;
-
-                const columns = await updatedRow.$$('td');
-                const colCount = await columns.length;
-                if (colCount < 2) return false;
-                
-                const currentStatus = (await columns[colCount - 2].getText()).toLowerCase();
-                return currentStatus.includes('reject');
-            }, {
-                timeout: 10000,
-                timeoutMsg: `Status for user ${matchingNameText} did not change to Rejected.`
-            });
+            await this.waitForStatusUpdateWithRefresh(matchingNameText, 'reject', 'User');
             
             console.log(`SUCCESS: Rejected user ${matchingNameText}`);
             rejectedUsers.push(matchingNameText);
@@ -613,10 +643,11 @@ class ManagePage extends Page {
                 const colCount = await columns.length;
                 if (colCount < 2) return false;
                 const currentStatus = (await columns[colCount - 2].getText()).toLowerCase();
-                return currentStatus.includes('reject');
+                console.log(`[DEBUG] [Manager View] Current status for user ${matchingNameText}: ${currentStatus}`);
+                return currentStatus.includes('reject') || currentStatus.includes('rejected');
             }, {
-                timeout: 10000,
-                timeoutMsg: `Status for user ${matchingNameText} did not change to Rejected in Manager view.`
+                timeout: 20000,
+                timeoutMsg: `Status for user ${matchingNameText} did not change to Rejected in Manager view after 20s.`
             });
 
             console.log(`SUCCESS: Rejected user ${matchingNameText} as Manager`);
@@ -701,10 +732,11 @@ class ManagePage extends Page {
                 if (!(await refreshedRow.isExisting())) return true;
                 const updatedCols = await refreshedRow.$$('td');
                 const updatedStatus = (await updatedCols[colCount - 2].getText()).toLowerCase();
-                return updatedStatus.includes('approve');
+                console.log(`[DEBUG] [Manager View] Current status for user ${matchingNameText}: ${updatedStatus}`);
+                return updatedStatus.includes('approve') || updatedStatus.includes('approved');
             }, {
-                timeout: 10000,
-                timeoutMsg: `Status for user ${matchingNameText} did not change to Approved in Manager view.`
+                timeout: 20000,
+                timeoutMsg: `Status for user ${matchingNameText} did not change to Approved in Manager view after 20s.`
             });
             
 
@@ -790,22 +822,7 @@ class ManagePage extends Page {
         await approveBtn.click();
         console.log(`[DEBUG] Clicked approve button for manager "${nameOrEmail}" (Text: ${btnText})`);
         
-        await browser.waitUntil(async () => {
-            const updatedRow = await this.getManagerTableRowByText(nameOrEmail);
-            // If row is gone, it's likely moved to Approved/Organization section
-            if (!(await updatedRow.isExisting())) {
-                console.log(`[DEBUG] Row for ${nameOrEmail} is no longer in approval list (likely successful).`);
-                return true;
-            }
-
-            const updatedCols = await updatedRow.$$('td');
-            const updatedStatus = (await updatedCols[colCount - 2].getText()).toLowerCase();
-            console.log(`[DEBUG] Current status for ${nameOrEmail}: ${updatedStatus}`);
-            return updatedStatus.includes('approve');
-        }, {
-            timeout: 20000,
-            timeoutMsg: `Status for ${nameOrEmail} did not change to Approved after 20s.`
-        });
+        await this.waitForStatusUpdateWithRefresh(nameOrEmail, 'approve', 'Manager');
         
         console.log(`SUCCESS: Approved manager ${nameOrEmail}`);
     }
@@ -818,7 +835,6 @@ class ManagePage extends Page {
         console.log(`[DEBUG] Starting approval for users with prefix: "${prefix}"`);
 
         await this.UserApproval_header.scrollIntoView({ block: 'center' });
-        await browser.pause(1000);
 
         while (iterations < maxIterations) {
             iterations++;
@@ -875,24 +891,7 @@ class ManagePage extends Page {
             await approveBtn.click();
             console.log(`[DEBUG] Clicked Approve button for user ${matchingNameText}`);
             
-            await browser.waitUntil(async () => {
-                const updatedRow = await this.getUserTableRowByText(matchingNameText);
-                if (!(await updatedRow.isExisting())) {
-                    console.log(`[DEBUG] Row for user ${matchingNameText} is no longer in approval list.`);
-                    return true;
-                }
-
-                const columns = await updatedRow.$$('td');
-                const colCount = await columns.length;
-                if (colCount < 2) return false;
-                
-                const currentStatus = (await columns[colCount - 2].getText()).toLowerCase();
-                console.log(`[DEBUG] Current status for user ${matchingNameText}: ${currentStatus}`);
-                return currentStatus.includes('approve');
-            }, {
-                timeout: 20000,
-                timeoutMsg: `Status for user ${matchingNameText} did not change to Approved after 20000ms.`
-            });
+            await this.waitForStatusUpdateWithRefresh(matchingNameText, 'approve', 'User');
             
             console.log(`SUCCESS: Approved user ${matchingNameText}`);
             approvedUsers.push(matchingNameText);

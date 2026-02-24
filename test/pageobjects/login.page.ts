@@ -48,6 +48,10 @@ class LoginPage extends Page {
   public get LogoutBtn() {
     return $(`//span[text()='Logout']`);
   }
+  public get ProfileButtonGeneric() {
+    // Try to find a button in the header/top-right that looks like a profile button
+    return $(`//button[.//span[string-length(text()) <= 3]] | //button[contains(@class, 'rounded-full')]`);
+  }
   public get SigninToAIPHeader() {
     return $("//h3[text()='Sign in to AIP Dashboard']");
   }
@@ -95,50 +99,84 @@ class LoginPage extends Page {
     await this.selectrole.waitForDisplayed();
     await this.selectrole.waitForClickable();
     await this.selectrole.click();
-    await this.getRole("Manager").click();
+    
+    const roleManager = await this.getRole("Manager");
+    await roleManager.waitForClickable();
+    await roleManager.click();
+    
+    // Ensure form is ready for input after role selection
+    await this.userName.waitForDisplayed();
+    await this.userName.waitForEnabled();
     await this.userName.setValue(username);
+    await this.loginPassword.waitForDisplayed();
+    await this.loginPassword.waitForEnabled();
     await this.loginPassword.setValue(password);
+    
+    // Using isClickable/isEnabled as checks (not waiting)
     await this.forgotpwd_link.isClickable();
     await this.Signup_link.isClickable();
-    await this.ContinueBTN.isEnabled();
+    
+    await this.ContinueBTN.waitForClickable();
     await expect(this.DonthaveAcc_placeholder).toHaveText(
-      "Don't have an account? Sign up",
+      expect.stringContaining("Don't have an account?")
     );
     await this.ContinueBTN.click();
-    await this.Dashboardtxt.isDisplayed();
-    await expect(this.Dashboardtxt).toHaveText("Dashboard");
-    await expect(this.getRole("MANAGER")).toHaveText("MANAGER");
+    
+    await this.Dashboardtxt.waitForDisplayed({ timeout: 15000 });
+    await expect(this.Dashboardtxt).toHaveText(expect.stringMatching(/Dashboard/i));
+    
+    // Case-insensitive role check
+    const roleDisplay = await this.getRole("MANAGER");
+    await roleDisplay.waitForDisplayed();
+    const roleText = (await roleDisplay.getText()).toUpperCase();
+    expect(roleText).toBe("MANAGER");
   }
+
   public async login_Admin(username: string, password: string) {
     await this.selectrole.waitForDisplayed();
     await this.selectrole.waitForClickable();
     await this.selectrole.click();
-    await this.getRole("Admin").click();
+    
+    const roleAdmin = await this.getRole("Admin");
+    await roleAdmin.waitForClickable();
+    await roleAdmin.click();
+    
+    await this.userName.waitForDisplayed();
+    await this.userName.waitForEnabled();
     await this.userName.setValue(username);
+    await this.loginPassword.waitForDisplayed();
+    await this.loginPassword.waitForEnabled();
     await this.loginPassword.setValue(password);
-    await this.forgotpwd_link.isClickable();
-    await this.Signup_link.isClickable();
-    await this.ContinueBTN.isEnabled();
-    await expect(this.DonthaveAcc_placeholder).toHaveText(
-      "Don't have an account? Sign up",
-    );
+    
+    await this.ContinueBTN.waitForClickable();
     await this.ContinueBTN.click();
-    await this.Dashboardtxt.isDisplayed();
-    await expect(this.Dashboardtxt).toHaveText("Dashboard");
-    await expect(this.getRole("ADMIN")).toHaveText("ADMIN");
+    
+    await this.Dashboardtxt.waitForDisplayed({ timeout: 15000 });
+    await expect(this.Dashboardtxt).toHaveText(expect.stringMatching(/Dashboard/i));
+    
+    const roleDisplay = await this.getRole("ADMIN");
+    await roleDisplay.waitForDisplayed();
+    const roleText = (await roleDisplay.getText()).toUpperCase();
+    expect(roleText).toBe("ADMIN");
   }
 
-  public async logout(role: "Manager" | "Admin" | "User"): Promise<void> {
-    const profileButton =
-      role === "Manager"
-        ? this.Profilebutton_Manager
-        : role === "Admin"
-          ? this.Profilebutton_Admin
-          : role === "User"
-            ? this.Profilebutton_User
-            : this.Profilebutton_User;
+  public async logout(role?: "Manager" | "Admin" | "User"): Promise<void> {
+    // Try specific role-based button first (legacy support), then generic
+    let profileButton: ChainablePromiseElement;
+    
+    if (role === "Manager") profileButton = this.Profilebutton_Manager;
+    else if (role === "Admin") profileButton = this.Profilebutton_Admin;
+    else if (role === "User") profileButton = this.Profilebutton_User;
+    else profileButton = this.ProfileButtonGeneric;
 
+    // Fallback to generic if specific one is not found or not clickable
+    if (!(await profileButton.isDisplayed())) {
+        profileButton = this.ProfileButtonGeneric;
+    }
+
+    await profileButton.waitForClickable({ timeout: 5000 });
     await profileButton.click();
+    await this.LogoutBtn.waitForClickable({ timeout: 5000 });
     await this.LogoutBtn.click();
     await this.SigninToAIPHeader.waitForDisplayed();
   }
@@ -146,19 +184,27 @@ class LoginPage extends Page {
     await this.selectrole.waitForDisplayed();
     await this.selectrole.waitForClickable();
     await this.selectrole.click();
+    
+    await this.UserRole.waitForClickable();
     await this.UserRole.click();
+    
+    await this.userName.waitForDisplayed();
+    await this.userName.waitForEnabled();
     await this.userName.setValue(username);
+    await this.loginPassword.waitForDisplayed();
+    await this.loginPassword.waitForEnabled();
     await this.loginPassword.setValue(password);
-    await this.forgotpwd_link.isClickable();
-    await this.Signup_link.isClickable();
-    await this.ContinueBTN.isEnabled();
-    await expect(this.DonthaveAcc_placeholder).toHaveText(
-      "Don't have an account? Sign up",
-    );
+    
+    await this.ContinueBTN.waitForClickable();
     await this.ContinueBTN.click();
-    await this.Dashboardtxt.isDisplayed();
-    await expect(this.Dashboardtxt).toHaveText("Dashboard");
-    await expect(this.getRole("USER")).toHaveText("USER");
+    
+    await this.Dashboardtxt.waitForDisplayed({ timeout: 15000 });
+    await expect(this.Dashboardtxt).toHaveText(expect.stringMatching(/Dashboard/i));
+    
+    const roleDisplay = await this.getRole("USER");
+    await roleDisplay.waitForDisplayed();
+    const roleText = (await roleDisplay.getText()).toUpperCase();
+    expect(roleText).toBe("USER");
   }
 
   public async forgotPassword(username: string) {

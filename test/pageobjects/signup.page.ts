@@ -98,48 +98,81 @@ private signupErrorMap: Record<string, string> = {
     password: 'Password is required',
     confirmPassword: 'Please confirm your password'
 };
-public async fillSignupForm(data: {
-    name?: string;
-    designation?: string;
-    team?: string;
-    phone?: string;
-    email?: string;
-    password?: string;
-    confirmPassword?: string;
-}): Promise<void> {
-
-    if (data.name !== undefined) {
-        await this.inputById('name').setValue(data.name);
+    public async jsClick(element: ChainablePromiseElement) {
+        await element.waitForExist();
+        await browser.execute((el) => (el as HTMLElement).click(), await element);
     }
 
-    if (data.designation !== undefined) {
-        await this.inputById('designation').setValue(data.designation);
-    }
+    public async fillSignupForm(data: {
+        name?: string;
+        designation?: string;
+        team?: string;
+        phone?: string;
+        email?: string;
+        password?: string;
+        confirmPassword?: string;
+    }): Promise<void> {
 
-    if (data.team !== undefined) {
-        await this.SelectTeam.click();
+        if (data.name !== undefined) {
+            const el = this.inputById('name');
+            await el.waitForDisplayed();
+            await el.scrollIntoView({ block: 'center' });
+            await el.waitForEnabled();
+            await el.setValue(data.name);
+        }
 
-        const teamOption = this.getTeamOption(data.team);
-        await teamOption.waitForClickable();
-        await teamOption.click();
-    }
+        if (data.designation !== undefined) {
+            const el = this.inputById('designation');
+            await el.waitForDisplayed();
+            await el.scrollIntoView({ block: 'center' });
+            await el.waitForEnabled();
+            await el.setValue(data.designation);
+        }
 
-    if (data.phone !== undefined) {
-        await this.inputById('phone').setValue(data.phone);
-    }
+        if (data.team !== undefined) {
+            await this.SelectTeam.waitForDisplayed();
+            await this.SelectTeam.scrollIntoView({ block: 'center' });
+            await this.SelectTeam.waitForClickable();
+            await this.SelectTeam.click();
 
-    if (data.email !== undefined) {
-        await this.inputById('email').setValue(data.email);
-    }
+            const teamOption = this.getTeamOption(data.team);
+            await teamOption.waitForDisplayed();
+            await teamOption.waitForClickable();
+            await teamOption.click();
+        }
 
-    if (data.password !== undefined) {
-        await this.inputById('password').setValue(data.password);
-    }
+        if (data.phone !== undefined) {
+            const el = this.inputById('phone');
+            await el.waitForDisplayed();
+            await el.scrollIntoView({ block: 'center' });
+            await el.waitForEnabled();
+            await el.setValue(data.phone);
+        }
 
-    if (data.confirmPassword !== undefined) {
-        await this.inputById('confirmPassword').setValue(data.confirmPassword);
+        if (data.email !== undefined) {
+            const el = this.inputById('email');
+            await el.waitForDisplayed();
+            await el.scrollIntoView({ block: 'center' });
+            await el.waitForEnabled();
+            await el.setValue(data.email);
+        }
+
+        if (data.password !== undefined) {
+            const el = this.inputById('password');
+            await el.waitForDisplayed();
+            await el.scrollIntoView({ block: 'center' });
+            await el.waitForEnabled();
+            await el.setValue(data.password);
+        }
+
+        if (data.confirmPassword !== undefined) {
+            const el = this.inputById('confirmPassword');
+            await el.waitForDisplayed();
+            await el.scrollIntoView({ block: 'center' });
+            await el.waitForEnabled();
+            await el.setValue(data.confirmPassword);
+        }
     }
-}
 public async validateInlineErrors(formData: Record<string, string | undefined>) {
     for (const field in this.signupErrorMap) {
         if (!formData[field]) {
@@ -160,14 +193,17 @@ public async SignUp_Manager(
     await this.Signup_link.click();
 
     // Select Manager role
-    await this.selectRole_DDButton.waitForExist();
+    await this.selectRole_DDButton.waitForClickable();
     await this.selectRole_DDButton.click();
 
     
     const managerRoleOption = this.managerRoleOption;
-    await managerRoleOption.waitForClickable();
-    await managerRoleOption.click();
+    await managerRoleOption.waitForExist();
+    
+    // Using jsClick to avoid interception
+    await this.jsClick(managerRoleOption);
 
+    await this.getLabelByText('Name').waitForDisplayed();
     await expect(this.getLabelByText('Name')).toBeDisplayed();
 
     // Prepare data object
@@ -191,9 +227,13 @@ public async SignUp_Manager(
     
     console.log(`[DEBUG] Signup submitted for ${Email}. Waiting for success message...`);
     
-    // Increased timeout for signup success as it can be slow
-    await this.accountCreatedSuccessfully.waitForDisplayed();
+    // Wait for success message to appear then DISAPPEAR to avoid blocking subsequent interactions
+    await this.accountCreatedSuccessfully.waitForDisplayed({ timeout: 10000 });
     await expect(this.accountCreatedSuccessfully).toBeDisplayed();
+    
+    // Allow the success toast to disappear
+    await this.accountCreatedSuccessfully.waitForDisplayed({ reverse: true, timeout: 10000 });
+    
     await this.SigninToAIPHeader.waitForDisplayed();
     await expect(this.SigninToAIPHeader).toBeDisplayed();
 }
@@ -212,15 +252,18 @@ public async SignUp_User(
     await this.Signup_link.click();
 
     // Select User role
-    await this.selectRole_DDButton.waitForExist();
+    await this.selectRole_DDButton.waitForClickable();
     await this.selectRole_DDButton.click();
 
     
     const userOption = this.userRoleOption;
-    await userOption.waitForClickable();
-    await userOption.click();
+    await userOption.waitForExist();
+    
+    // Using jsClick to avoid interception
+    await this.jsClick(userOption);
     
     // Brief wait to ensure selection is processed
+    await this.selectManager_DDButton.waitForClickable();
 
 
     // Select Manager
@@ -245,7 +288,6 @@ public async SignUp_User(
     await managerOption.click();
 
 
-
     await expect(this.getLabelByText('Name')).toBeDisplayed();
 
     // Prepare data object
@@ -269,9 +311,13 @@ public async SignUp_User(
 
     console.log(`[DEBUG] Signup submitted for ${Email}. Waiting for success message...`);
 
-    // Increased timeout for signup success as it can be slow
-    await this.accountCreatedSuccessfully.waitForDisplayed();
+    // Wait for success message to appear then DISAPPEAR to avoid blocking subsequent interactions
+    await this.accountCreatedSuccessfully.waitForDisplayed({ timeout: 10000 });
     await expect(this.accountCreatedSuccessfully).toBeDisplayed();
+    
+    // Allow the success toast to disappear
+    await this.accountCreatedSuccessfully.waitForDisplayed({ reverse: true, timeout: 10000 });
+
     await this.SigninToAIPHeader.waitForDisplayed();
     await expect(this.SigninToAIPHeader).toBeDisplayed();
 }
