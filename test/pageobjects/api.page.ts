@@ -49,6 +49,14 @@ class ApiPage {
     public async getDownComponents(env: string = 'ALL'): Promise<AxiosResponse> {
         return this.client.get(`/api/v1/dashboard/down_components?env=${env}`);
     }
+
+    /**
+     * Fetches all alerts.
+     * Endpoint: /api/v1/alerts/displayAllAlerts
+     */
+    public async displayAllAlerts(data: any = {}): Promise<AxiosResponse> {
+        return this.client.post('/api/v1/alerts/displayAllAlerts', data);
+    }
 }
 
 export default new ApiPage();

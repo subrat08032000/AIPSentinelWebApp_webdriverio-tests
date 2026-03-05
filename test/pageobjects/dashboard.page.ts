@@ -119,6 +119,9 @@ class DashboardPage extends Page {
     public get AdminPanel_header() {
         return $(`//h3[normalize-space()='Admin Panel']`);
     }
+    public get SystemAlerts_btn() {
+        return $(`//button[contains(normalize-space(),'System Alerts')]`);
+    }
     public get managerTools_Header() {
         return $(`//h3[normalize-space()='Manager Tools']`);
     }
