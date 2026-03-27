@@ -57,6 +57,29 @@ class ApiPage {
     public async displayAllAlerts(data: any = {}): Promise<AxiosResponse> {
         return this.client.post('/api/v1/alerts/displayAllAlerts', data);
     }
+
+    /**
+     * Fetches active QMs data.
+     * Endpoint: /api/v1/mq/getActiveQms?env=ALL
+     */
+    public async getActiveQms(env: string = 'ALL'): Promise<AxiosResponse> {
+        return this.client.get(`/api/v1/mq/getActiveQms?env=${env}`);
+    }
+
+    /**
+     * Fetches all ACE servers data.
+     * Endpoint: /api/v1/ace/getAllServers?env=ALL
+     */
+    public async getAllServers(env: string = 'ALL'): Promise<AxiosResponse> {
+        return this.client.get(`/api/v1/ace/getAllServers?env=${env}`);
+    }
+    /**
+     * Fetches all Custom Applications data.
+     * Endpoint: /api/v1/extapps/getAllJarApplications?env=ALL
+     */
+    public async getAllJarApplications(env: string = 'ALL'): Promise<AxiosResponse> {
+        return this.client.get(`/api/v1/extapps/getAllJarApplications?env=${env}`);
+    }
 }
 
 export default new ApiPage();

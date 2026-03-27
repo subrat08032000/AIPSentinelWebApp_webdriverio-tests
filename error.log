@@ -1,0 +1,211 @@
+
+Execution of 1 workers started at 2026-03-25T07:54:47.769Z
+
+[0-0] RUNNING in chrome - file:///C:/Users/subra/OneDrive%20-%20ICAD%20Airports%20Pvt%20Ltd/Desktop/AIP%20Sentinel%20Automation%2005-10-2025/test/specs/MQ_test.e2e.ts
+[0-0] [DEBUG] ===== Backend vs Frontend Validation =====
+[0-0] [DEBUG] [BE] Base URL: https://10.35.84.85:9443
+[0-0] [DEBUG] [BE] Auth token found, calling getActiveQms API for env=ALL...
+[0-0] [DEBUG] [BE] Total QMs returned from API for ALL: 9
+[0-0] [DEBUG] [BE] First item keys: qmid, qmname, qmstatus, amqpstatus, qmip, mqversion, mqplatform, env, created_at, updated_at, queuesCount, listenersCount, channelsCount
+[0-0] [DEBUG] [FE] Total rows visible on page: 9
+[0-0] [DEBUG] Comparing first 9 rows — BE vs FE for ALL:
+[0-0] [DEBUG] Row   | Field            | Backend (API)        | Frontend (UI)
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 1 | QM Name          | AIPGTWQM             | AIPGTWQM
+[0-0] [DEBUG]       | Environment      | MAINTENANCE          | MAINTENANCE
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | NOT CONFIGURED       | NOT CONFIGURED
+[0-0] [DEBUG]       | Channels         | 23                   | 23
+[0-0] [DEBUG]       | Queues           | 178                  | 178
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 2 | QM Name          | QMGR1                | QMGR1
+[0-0] [DEBUG]       | Environment      | TEST                 | TEST
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | NOT CONFIGURED       | NOT CONFIGURED
+[0-0] [DEBUG]       | Channels         | 16                   | 16
+[0-0] [DEBUG]       | Queues           | 91                   | 91
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 3 | QM Name          | QMGR2                | QMGR2
+[0-0] [DEBUG]       | Environment      | TEST                 | TEST
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | NOT CONFIGURED       | NOT CONFIGURED
+[0-0] [DEBUG]       | Channels         | 15                   | 15
+[0-0] [DEBUG]       | Queues           | 205                  | 205
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 4 | QM Name          | AIPGTWQMP            | AIPGTWQMP
+[0-0] [DEBUG]       | Environment      | PRODUCTION           | PRODUCTION
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | NOT CONFIGURED       | NOT CONFIGURED
+[0-0] [DEBUG]       | Channels         | 19                   | 19
+[0-0] [DEBUG]       | Queues           | 86                   | 86
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 5 | QM Name          | QMGRP1               | QMGRP1
+[0-0] [DEBUG]       | Environment      | PRODUCTION           | PRODUCTION
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | NOT CONFIGURED       | NOT CONFIGURED
+[0-0] [DEBUG]       | Channels         | 14                   | 14
+[0-0] [DEBUG]       | Queues           | 87                   | 87
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 6 | QM Name          | QMGRP2               | QMGRP2
+[0-0] [DEBUG]       | Environment      | PRODUCTION           | PRODUCTION
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | NOT CONFIGURED       | NOT CONFIGURED
+[0-0] [DEBUG]       | Channels         | 15                   | 15
+[0-0] [DEBUG]       | Queues           | 167                  | 167
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 7 | QM Name          | AIPGTWQM             | AIPGTWQM
+[0-0] [DEBUG]       | Environment      | TEST                 | TEST
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | NOT CONFIGURED       | NOT CONFIGURED
+[0-0] [DEBUG]       | Channels         | 19                   | 19
+[0-0] [DEBUG]       | Queues           | 96                   | 96
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 8 | QM Name          | AIPGTWQMDT           | AIPGTWQMDT
+[0-0] [DEBUG]       | Environment      | TEST                 | TEST
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | RUNNING              | RUNNING
+[0-0] [DEBUG]       | Channels         | 28                   | 28
+[0-0] [DEBUG]       | Queues           | 131                  | 131
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 9 | QM Name          | AIPGTWQMDP           | AIPGTWQMDP
+[0-0] [DEBUG]       | Environment      | PRODUCTION           | PRODUCTION
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | RUNNING              | RUNNING
+[0-0] [DEBUG]       | Channels         | 25                   | 25
+[0-0] [DEBUG]       | Queues           | 121                  | 121
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] ===== Backend vs Frontend Validation PASSED for ALL =====
+[0-0] 
+[0-0] [DEBUG] ===== Testing Environment: TEST =====
+[0-0] [DEBUG] ===== Backend vs Frontend Validation for TEST =====
+[0-0] [DEBUG] [BE] Base URL: https://10.35.84.85:9443
+[0-0] [DEBUG] [BE] Auth token found, calling getActiveQms API for env=TEST...
+[0-0] [DEBUG] [BE] Total QMs returned from API for TEST: 4
+[0-0] [DEBUG] [BE] First item keys: qmid, qmname, qmstatus, amqpstatus, qmip, mqversion, mqplatform, env, created_at, updated_at, queuesCount, listenersCount, channelsCount
+[0-0] [DEBUG] [FE] Total rows visible on page for TEST: 4
+[0-0] [DEBUG] Comparing first 4 rows — BE vs FE for TEST:
+[0-0] [DEBUG] Row   | Field            | Backend (API)        | Frontend (UI)
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 1 | QM Name          | QMGR1                | QMGR1
+[0-0] [DEBUG]       | Environment      | TEST                 | TEST
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | NOT CONFIGURED       | NOT CONFIGURED
+[0-0] [DEBUG]       | Channels         | 16                   | 16
+[0-0] [DEBUG]       | Queues           | 91                   | 91
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 2 | QM Name          | QMGR2                | QMGR2
+[0-0] [DEBUG]       | Environment      | TEST                 | TEST
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | NOT CONFIGURED       | NOT CONFIGURED
+[0-0] [DEBUG]       | Channels         | 15                   | 15
+[0-0] [DEBUG]       | Queues           | 205                  | 205
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 3 | QM Name          | AIPGTWQM             | AIPGTWQM
+[0-0] [DEBUG]       | Environment      | TEST                 | TEST
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | NOT CONFIGURED       | NOT CONFIGURED
+[0-0] [DEBUG]       | Channels         | 19                   | 19
+[0-0] [DEBUG]       | Queues           | 96                   | 96
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 4 | QM Name          | AIPGTWQMDT           | AIPGTWQMDT
+[0-0] [DEBUG]       | Environment      | TEST                 | TEST
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | RUNNING              | RUNNING
+[0-0] [DEBUG]       | Channels         | 28                   | 28
+[0-0] [DEBUG]       | Queues           | 131                  | 131
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] ===== Backend vs Frontend Validation PASSED for TEST =====
+[0-0] 
+[0-0] [DEBUG] ===== Testing Environment: MAINTENANCE =====
+[0-0] [DEBUG] ===== Backend vs Frontend Validation for MAINTENANCE =====
+[0-0] [DEBUG] [BE] Base URL: https://10.35.84.85:9443
+[0-0] [DEBUG] [BE] Auth token found, calling getActiveQms API for env=MAINTENANCE...
+[0-0] [DEBUG] [BE] Total QMs returned from API for MAINTENANCE: 1
+[0-0] [DEBUG] [BE] First item keys: qmid, qmname, qmstatus, amqpstatus, qmip, mqversion, mqplatform, env, created_at, updated_at, queuesCount, listenersCount, channelsCount
+[0-0] [DEBUG] [FE] Total rows visible on page for MAINTENANCE: 1
+[0-0] [DEBUG] Comparing first 1 rows — BE vs FE for MAINTENANCE:
+[0-0] [DEBUG] Row   | Field            | Backend (API)        | Frontend (UI)
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 1 | QM Name          | AIPGTWQM             | AIPGTWQM
+[0-0] [DEBUG]       | Environment      | MAINTENANCE          | MAINTENANCE
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | NOT CONFIGURED       | NOT CONFIGURED
+[0-0] [DEBUG]       | Channels         | 23                   | 23
+[0-0] [DEBUG]       | Queues           | 178                  | 178
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] ===== Backend vs Frontend Validation PASSED for MAINTENANCE =====
+[0-0] 
+[0-0] [DEBUG] ===== Testing Environment: PRODUCTION =====
+[0-0] [DEBUG] ===== Backend vs Frontend Validation for PRODUCTION =====
+[0-0] [DEBUG] [BE] Base URL: https://10.35.84.85:9443
+[0-0] [DEBUG] [BE] Auth token found, calling getActiveQms API for env=PRODUCTION...
+[0-0] [DEBUG] [BE] Total QMs returned from API for PRODUCTION: 4
+[0-0] [DEBUG] [BE] First item keys: qmid, qmname, qmstatus, amqpstatus, qmip, mqversion, mqplatform, env, created_at, updated_at, queuesCount, listenersCount, channelsCount
+[0-0] [DEBUG] [FE] Total rows visible on page for PRODUCTION: 4
+[0-0] [DEBUG] Comparing first 4 rows — BE vs FE for PRODUCTION:
+[0-0] [DEBUG] Row   | Field            | Backend (API)        | Frontend (UI)
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 1 | QM Name          | AIPGTWQMP            | AIPGTWQMP
+[0-0] [DEBUG]       | Environment      | PRODUCTION           | PRODUCTION
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | NOT CONFIGURED       | NOT CONFIGURED
+[0-0] [DEBUG]       | Channels         | 19                   | 19
+[0-0] [DEBUG]       | Queues           | 86                   | 86
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 2 | QM Name          | QMGRP1               | QMGRP1
+[0-0] [DEBUG]       | Environment      | PRODUCTION           | PRODUCTION
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | NOT CONFIGURED       | NOT CONFIGURED
+[0-0] [DEBUG]       | Channels         | 14                   | 14
+[0-0] [DEBUG]       | Queues           | 87                   | 87
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 3 | QM Name          | QMGRP2               | QMGRP2
+[0-0] [DEBUG]       | Environment      | PRODUCTION           | PRODUCTION
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | NOT CONFIGURED       | NOT CONFIGURED
+[0-0] [DEBUG]       | Channels         | 15                   | 15
+[0-0] [DEBUG]       | Queues           | 167                  | 167
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] Row 4 | QM Name          | AIPGTWQMDP           | AIPGTWQMDP
+[0-0] [DEBUG]       | Environment      | PRODUCTION           | PRODUCTION
+[0-0] [DEBUG]       | Status           | RUNNING              | RUNNING
+[0-0] [DEBUG]       | AMQP Status      | RUNNING              | RUNNING
+[0-0] [DEBUG]       | Channels         | 25                   | 25
+[0-0] [DEBUG]       | Queues           | 121                  | 121
+[0-0] [DEBUG]       | Listeners        | 2                    | 2
+[0-0] [DEBUG] ----------------------------------------------------------------------
+[0-0] [DEBUG] ===== Backend vs Frontend Validation PASSED for PRODUCTION =====
+[0-0] PASSED in chrome - file:///C:/Users/subra/OneDrive%20-%20ICAD%20Airports%20Pvt%20Ltd/Desktop/AIP%20Sentinel%20Automation%2005-10-2025/test/specs/MQ_test.e2e.ts
+
+ "spec" Reporter:
+------------------------------------------------------------------
+[chrome 146.0.7680.164 windows #0-0] Running: chrome (v146.0.7680.164) on windows
+[chrome 146.0.7680.164 windows #0-0] Session ID: a37b0a66a057f9b5c0396216ecb80f07
+[chrome 146.0.7680.164 windows #0-0]
+[chrome 146.0.7680.164 windows #0-0] » test\specs\MQ_test.e2e.ts
+[chrome 146.0.7680.164 windows #0-0] Verify MQ Page
+[chrome 146.0.7680.164 windows #0-0]    ✓ Should navigate to MQ page via Dashboard 'Show more' button
+[chrome 146.0.7680.164 windows #0-0]    ✓ Should verify MQ page data by filtering environments
+[chrome 146.0.7680.164 windows #0-0]
+[chrome 146.0.7680.164 windows #0-0] 2 passing (15.7s)
+
+
+Spec Files:	 1 passed, 1 total (100% completed) in 00:00:21  
+

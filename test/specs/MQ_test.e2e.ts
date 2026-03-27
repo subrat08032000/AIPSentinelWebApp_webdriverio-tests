@@ -18,7 +18,7 @@ describe("Verify MQ Page", () => {
     await MQPage.verifyMQPage();
   });
 
-  it.only("Verify MQ PAGE as MANAGER and check the data with API", async () => {
+  it("Verify MQ PAGE as MANAGER and check the data with API", async () => {
     const testdata = getTestData();
     
     // 1. Login as Admin

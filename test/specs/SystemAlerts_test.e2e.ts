@@ -13,7 +13,6 @@ describe("Verify System Alerts Page", () => {
       testdata.Admin_Username,
       testdata.Admin_Password
     );
-
     // 2. Perform navigation and verification via Page Object
     await SystemAlertsPage.verifyNavigationFromDashboard();
 

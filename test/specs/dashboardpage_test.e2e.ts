@@ -4,7 +4,7 @@ import { getTestData } from '../utils/dynamicTestData.js';
 
 describe('Dashboard Page Test Suite', () => {
 
-    it('Verify that dashboard page asthetic are displaying as expected as Admin', async () => {
+    it.only('Verify that dashboard page asthetic are displaying as expected as Admin', async () => {
         const testdata = getTestData();
 
         await LoginPage.open(testdata.URL);

@@ -204,6 +204,16 @@ class DashboardPage extends Page {
         return $(`//button[contains(normalize-space(), 'Check available') or contains(normalize-space(), 'Check Available')]`);
     }
 
+    public get Apps_IntegrationServer(){
+        return $(`//h1[normalize-space()='Apps']`);
+    }
+    public get VCmont(){
+        return $("//h1[normalize-space()='vCenter Monitoring']")
+    }
+    public get PhysicalServers(){
+        return $("//p[normalize-space()='Physical Servers']")
+    }
+
     public async QueueManager() {
         await this.AIPLogo.waitForDisplayed();
         await this.AIPLogo.isDisplayed()
@@ -243,6 +253,55 @@ class DashboardPage extends Page {
             const intServerCount = await this.Dashboard_IntegrationServer_Count.getText();
             const msgFlowCount = await this.Dashboard_messageFlow_Count.getText();
             const vmsCount = await this.Dashboard_TotalVMs_Count.getText();
+            // Navigating to Queue Managers
+            await expect(this.Dashboard_QM_Count).toBeClickable();
+            await this.Dashboard_QM_Count.click();
+            await this.QueueManager_Header.waitForDisplayed();
+            await expect(this.QueueManager_Header).toBeDisplayed();
+            await browser.back();
+            await this.DashboardHeader.waitForDisplayed();
+
+            // Navigating to Total Queues (Queue Managers)
+            await expect(this.Dashboard_TotalQueue_Count).toBeClickable();
+            await this.Dashboard_TotalQueue_Count.click();
+            await this.QueueManager_Header.waitForDisplayed();
+            await expect(this.QueueManager_Header).toBeDisplayed();
+            await browser.back();
+            await this.DashboardHeader.waitForDisplayed();
+
+            // Navigating to Integration Servers
+            await expect(this.Dashboard_IntegrationServer_Count).toBeClickable();
+            await this.Dashboard_IntegrationServer_Count.click();
+            await this.Apps_IntegrationServer.waitForDisplayed();
+            await expect(this.Apps_IntegrationServer).toBeDisplayed();
+            await browser.back();
+            await this.DashboardHeader.waitForDisplayed();
+
+            // Navigating to Message Flows
+            await expect(this.Dashboard_messageFlow_Count).toBeClickable();
+            await this.Dashboard_messageFlow_Count.click();
+            await this.Apps_IntegrationServer.waitForDisplayed();
+            await expect(this.Apps_IntegrationServer).toBeDisplayed();
+            await browser.back();
+            await this.DashboardHeader.waitForDisplayed();
+
+            // Navigating to Total VMs
+            await expect(this.Dashboard_TotalVMs_Count).toBeClickable();
+            await this.Dashboard_TotalVMs_Count.click();
+            await this.VCmont.waitForDisplayed();
+            await expect(this.VCmont).toBeDisplayed();
+            await browser.back();
+            await this.DashboardHeader.waitForDisplayed();
+
+            // Navigating to Physical Servers
+            await expect(this.PhysicalServers).toBeClickable();
+            await this.PhysicalServers.click();
+            await this.VCmont.waitForDisplayed();
+            await expect(this.VCmont).toBeDisplayed();
+            await browser.back();
+            await this.DashboardHeader.waitForDisplayed();
+        
+        
 
             // Log Comparison
             console.log('--------------------------------------------------');

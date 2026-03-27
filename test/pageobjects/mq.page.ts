@@ -41,10 +41,19 @@ class MQPage extends Page {
 
     console.log("[DEBUG] ===== Backend vs Frontend Validation =====");
     const apiData = await this.fetchApiQms('ALL');
-    const uiRows = await this.TableRows;
+    const uiRowsElements = await this.TableRows;
+    const uiRows = [...uiRowsElements];
     console.log(`[DEBUG] [FE] Total rows visible on page: ${uiRows.length}`);
     
-    await this.compareBackendToFrontend(apiData, [...uiRows], 'ALL');
+    if (uiRows.length > 0) {
+      console.log(`[DEBUG] [FE] Verifying each row is clickable...`);
+      for (const row of uiRows) {
+        await expect(row).toBeClickable();
+      }
+      console.log(`[DEBUG] [FE] Validated all ${uiRows.length} rows are clickable.`);
+    }
+
+    await this.compareBackendToFrontend(apiData, uiRows, 'ALL');
   }
 
   public async verifyMQPage_ByEnvironment() {
@@ -83,10 +92,18 @@ class MQPage extends Page {
 
       console.log(`[DEBUG] ===== Backend vs Frontend Validation for ${env} =====`);
       const apiData = await this.fetchApiQms(env);
-      const uiRows = await this.TableRows;
+      const uiRowsElements = await this.TableRows;
+      const uiRows = [...uiRowsElements];
       console.log(`[DEBUG] [FE] Total rows visible on page for ${env}: ${uiRows.length}`);
       
-      await this.compareBackendToFrontend(apiData, [...uiRows], env);
+      if (uiRows.length > 0) {
+        console.log(`[DEBUG] [FE] Verifying each row is clickable for ${env}...`);
+        for (const row of uiRows) {
+          await expect(row).toBeClickable();
+        }
+      }
+
+      await this.compareBackendToFrontend(apiData, uiRows, env);
     }
   }
 
