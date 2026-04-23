@@ -14,7 +14,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                sh 'npm ci'
             }
         }
 
@@ -27,8 +27,8 @@ pipeline {
 
     post {
         always {
-            junit 'test_logs/junit/*.xml'
-            allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+            junit 'TestResults/junit/*.xml'
+            allure includeProperties: false, jdk: '', results: [[path: 'TestResults/allure-results']]
         }
     }
 }

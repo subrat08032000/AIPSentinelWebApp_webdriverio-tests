@@ -3,8 +3,8 @@ import SignupPage from "../pageobjects/signup.page.js";
 import managePage from "../pageobjects/manage.page.js";
 import { getTestData } from "../utils/dynamicTestData.js";
 
-describe("Signup and manage approvals", () => {
-    it("Signup As Manager and check manager rejection flow as Admin", async () => {
+describe("[Signup007]Signup and manage approvals", () => {
+    it("[01]Signup As Manager and check manager rejection flow as Admin", async () => {
         const testdata = getTestData();
         
         await LoginPage.open(testdata.URL);
@@ -34,7 +34,7 @@ describe("Signup and manage approvals", () => {
         await LoginPage.logout("Admin");
     });
 
-    it("Signup As User and check user rejection flow as Admin", async () => {
+    it("[02]Signup As User and check user rejection flow as Admin", async () => {
         const testdata = getTestData();
         await LoginPage.open(testdata.URL);
         await browser.maximizeWindow();
@@ -65,7 +65,7 @@ describe("Signup and manage approvals", () => {
         await LoginPage.logout("Admin");
     });
 
-    it("Signup As Manager and check manager approval flow as Admin", async () => {
+    it("[03]Signup As Manager and check manager approval flow as Admin", async () => {
         const testdata = getTestData();
         await LoginPage.open(testdata.URL);
         await browser.maximizeWindow();
@@ -91,7 +91,7 @@ describe("Signup and manage approvals", () => {
         await LoginPage.logout("Admin");
     });
 
-    it("Signup As User and check user approval flow as Admin", async () => {
+    it("[04]Signup As User and check user approval flow as Admin", async () => {
         const testdata = getTestData();
         await LoginPage.open(testdata.URL);
         await browser.maximizeWindow();
@@ -122,7 +122,7 @@ describe("Signup and manage approvals", () => {
         await LoginPage.logout("Admin");
     });
 
-    it("Signup As Manager and check manager approval flow and delete manager functionality as Admin", async () => {
+    it("[05]Signup As Manager and check manager approval flow and delete manager functionality as Admin", async () => {
         const testdata = getTestData();
         await LoginPage.open(testdata.URL);
         await browser.maximizeWindow();
@@ -151,7 +151,7 @@ describe("Signup and manage approvals", () => {
         await LoginPage.logout("Admin");
     });
 
-    it("Signup As User and check user approval flow and delete User functionality as Admin", async () => {
+    it("[06]Signup As User and check user approval flow and delete User functionality as Admin", async () => {
         const testdata = getTestData();
         await LoginPage.open(testdata.URL);
         await browser.maximizeWindow();
@@ -181,7 +181,7 @@ describe("Signup and manage approvals", () => {
         await managePage.DeleteUserFromManageOrganization(testdata.Fullname);
         await LoginPage.logout("Admin");
     });
-    it("Signup As User and check user rejection flow as Manager", async () => {
+    it("[07]Signup As User and check user rejection flow as Manager", async () => {
         const testdata = getTestData();
         await LoginPage.open(testdata.URL);
         await browser.maximizeWindow();
@@ -211,7 +211,7 @@ describe("Signup and manage approvals", () => {
         await LoginPage.logout("Manager");
     });
 
-    it("Signup As User and check user approval flow as Manager", async () => {
+    it("[08]Signup As User and check user approval flow as Manager", async () => {
         const testdata = getTestData();
         await LoginPage.open(testdata.URL);
         await browser.maximizeWindow();

@@ -69,6 +69,7 @@ export const config: WebdriverIO.Config = {
             acceptInsecureCerts: true,
             'goog:chromeOptions': {
                 args: [
+                    ...(process.env.HEADLESS === 'true' ? ['--headless=new'] : []),
                     '--disable-gpu',
                     '--no-sandbox',
                     '--disable-dev-shm-usage',

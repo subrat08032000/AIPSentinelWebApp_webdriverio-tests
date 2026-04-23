@@ -2,8 +2,8 @@ import MQPage from "../pageobjects/mq.page.js";
 import LoginPage from "../pageobjects/login.page.js";
 import { getTestData } from "../utils/dynamicTestData.js";
 
-describe("Verify MQ Page", () => {
-  it("Verify MQ PAGE as admin and check the data with API", async () => {
+describe("[MQ006]Verify MQ Page", () => {
+  it("[01]Verify MQ PAGE as admin and check the data with API", async () => {
     const testdata = getTestData();
     
     // 1. Login as Admin
@@ -18,7 +18,7 @@ describe("Verify MQ Page", () => {
     await MQPage.verifyMQPage();
   });
 
-  it("Verify MQ PAGE as MANAGER and check the data with API", async () => {
+  it("[02]Verify MQ PAGE as MANAGER and check the data with API", async () => {
     const testdata = getTestData();
     
     // 1. Login as Admin
@@ -34,7 +34,7 @@ describe("Verify MQ Page", () => {
     await MQPage.verifyMQPage_ByEnvironment();
   });
 
-  it("Should verify MQ page data by filtering environments as Admin", async () => {
+  it("[03]Should verify MQ page data by filtering environments as Admin", async () => {
     // 3. Perform environment dropdown filter validation and check with API
     await MQPage.verifyMQPage_ByEnvironment();
   });

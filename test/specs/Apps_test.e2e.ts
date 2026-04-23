@@ -2,8 +2,8 @@ import AppsPage from "../pageobjects/apps.page.ts";
 import LoginPage from "../pageobjects/login.page.js";
 import { getTestData } from "../utils/dynamicTestData.js";
 
-describe("Verify Apps Page", () => {
-  it.only("Verify Apps Page as admin and check the data with API", async () => {
+describe("[APP002]Verify Apps Page", () => {
+  it("[01]Verify Apps Page as admin and check the data with API", async () => {
     const testdata = getTestData();
     
     // 1. Login as Admin
@@ -18,7 +18,7 @@ describe("Verify Apps Page", () => {
     await AppsPage.verifyCustomAppsPage_ByEnvironment();
   });
 
-  it("Verify Apps PAGE as MANAGER and check the data with API", async () => {
+  it("[02]Verify Apps PAGE as MANAGER and check the data with API", async () => {
     const testdata = getTestData();
     // 1. Login as Manager
     await LoginPage.open(testdata.URL);
@@ -33,12 +33,12 @@ describe("Verify Apps Page", () => {
     await AppsPage.verifyAppsPage_ByEnvironment();
   });
 
-  it("Should verify Apps page data by filtering environments as Admin", async () => {
+  it("[03]Should verify Apps page data by filtering environments as Admin", async () => {
     // 3. Perform environment dropdown filter validation and check with API
     await AppsPage.verifyAppsPage_ByEnvironment();
   });
 
-  it("Should verify Custom Apps page data by filtering environments", async () => {
+  it("[04]Should verify Custom Apps page data by filtering environments", async () => {
     // 4. Perform Custom Apps dropdown filter validation and check with API
     await AppsPage.verifyCustomAppsPage_ByEnvironment();
   });

@@ -1,0 +1,108 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+    <meta charset="utf-8">
+    <title>AIP Sentinel Automation Framework Documentation</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>100</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+        body { font-family: 'Calibri', 'Segoe UI', Arial, sans-serif; padding: 20px; line-height: 1.5; color: #333333; }
+        h1 { color: #2C3E50; border-bottom: 2px solid #34495E; padding-bottom: 5px; font-size: 24pt;}
+        h2 { color: #2980B9; margin-top: 20px; font-size: 18pt;}
+        h3 { color: #16A085; font-size: 14pt;}
+        table { border-collapse: collapse; width: 100%; margin-top: 10px; margin-bottom: 20px;}
+        th, td { border: 1px solid #DDDDDD; padding: 8px; text-align: left; font-size: 11pt;}
+        th { background-color: #F2F2F2; font-weight: bold;}
+        code { font-family: Consolas, monospace; background-color: #F8F9FA; padding: 2px 4px; border-radius: 3px; font-size: 10.5pt;}
+        pre { font-family: Consolas, monospace; background-color: #F8F9FA; color: #333333; padding: 10px; border: 1px solid #DDDDDD; border-radius: 5px; font-size: 10pt; white-space: pre-wrap;}
+    </style>
+</head>
+<body>
+    <h1>AIP Sentinel Automation Framework Documentation</h1>
+    
+    <h2>1. Overview</h2>
+    <p>The <strong>AIP Sentinel Test Automation Framework</strong> is a robust, scalable, and highly maintainable end-to-end framework built leveraging modern automation standards. It is constructed using <strong>WebdriverIO (v9.x)</strong> with <strong>TypeScript</strong>, utilizing the <strong>Mocha</strong> testing framework for a behavior-driven development (BDD) style approach.</p>
+    <p>The framework supports cross-layer testing, seamlessly combining Frontend UI Automation via WebdriverIO with Backend API validations using <code>axios</code> to ensure comprehensive data integrity across the platform.</p>
+
+    <h2>2. Architecture & Tech Stack</h2>
+    <table>
+        <tr><th>Component</th><th>Technology / Tool</th></tr>
+        <tr><td><strong>Core Language</strong></td><td>TypeScript</td></tr>
+        <tr><td><strong>Test Runner</strong></td><td>WebdriverIO (WDIO)</td></tr>
+        <tr><td><strong>Test Framework</strong></td><td>Mocha JS</td></tr>
+        <tr><td><strong>Design Pattern</strong></td><td>Page Object Model (POM)</td></tr>
+        <tr><td><strong>API Testing</strong></td><td>Axios (HTTP client)</td></tr>
+        <tr><td><strong>Visual Regression</strong></td><td><code>@wdio/visual-service</code></td></tr>
+        <tr><td><strong>Reporting</strong></td><td>Allure Reporter & JUnit</td></tr>
+        <tr><td><strong>CI/CD</strong></td><td>Jenkins</td></tr>
+    </table>
+
+    <h2>3. Architecture Components</h2>
+    <ul>
+        <li><strong>Test Specifications (<code>test/specs/</code>)</strong>: Contains logical test case sequences. Consumes page objects and test data.</li>
+        <li><strong>Page Objects (<code>test/pageobjects/</code>)</strong>: Contains UI select locators and action methods for reusability.</li>
+        <li><strong>Test Data & Utils (<code>test/utils/</code>)</strong>: Feeds dynamic data configurations into specs.</li>
+        <li><strong>Web Browser Engine</strong>: Google Chrome executes UI instructions.</li>
+        <li><strong>API Client</strong>: Axios makes direct backend system state validations alongside UI steps.</li>
+        <li><strong>Reporters</strong>: Generates Allure HTML Dashboard and JUnit XML files for Jenkins.</li>
+    </ul>
+
+    <h2>4. Framework Directory Structure</h2>
+    <pre>
+├── .github/                 # GitHub specific rules
+├── TestResults/             # Output artifacts
+│   ├── allure-results/      # Raw JSON data for Allure
+│   ├── junit/               # JUnit XML reports for Jenkins
+│   └── logs/                # Framework execution logs
+├── test/
+│   ├── pageobjects/         # Page Elements and Action Methods
+│   ├── specs/               # E2E Test Scenarios
+│   └── utils/               # Configurations & dynamic test data
+├── wdio.conf.ts             # Master WebdriverIO Configuration
+├── package.json             # NPM dependencies & scripts
+├── Jenkinsfile              # Jenkins CI/CD Pipeline
+└── run-test.cjs             # Standalone runner
+    </pre>
+
+    <h2>5. Execution Commands</h2>
+    <p>The framework integrates seamlessly with NPM scripts for easy execution.</p>
+    
+    <h3>Prerequisites</h3>
+    <ul>
+        <li><strong>Node.js</strong> Version <code>22.18.0</code> or higher</li>
+        <li><strong>NPM</strong> (Node Package Manager)</li>
+    </ul>
+
+    <h3>Installation</h3>
+    <pre>npm install</pre>
+
+    <h3>Running Tests</h3>
+    <table>
+        <tr><th>Purpose</th><th>Execution Command</th></tr>
+        <tr><td>Run the complete test suite</td><td><code>npm run wdio</code> (or <code>npm run test</code>)</td></tr>
+        <tr><td>Run a specific test</td><td><code>npx wdio run ./wdio.conf.ts --spec test/specs/Apps_test.e2e.ts</code></td></tr>
+        <tr><td>Run tests headless (CI)</td><td>Handled automatically in Jenkins or via <code>--headless=new</code> flag</td></tr>
+    </table>
+
+    <h3>Generating Reports</h3>
+    <table>
+        <tr><th>Purpose</th><th>Execution Command</th></tr>
+        <tr><td>Create and open Allure Report</td><td><code>npm run report:allure</code></td></tr>
+        <tr><td>Clear old test reports</td><td><code>npm run allure:clear</code></td></tr>
+    </table>
+
+    <h2>6. Key Features & Workflows</h2>
+    <ol>
+        <li><strong>Integrated E2E and API Validations:</strong> Tests interact with the UI, parse table data, and query APIs simultaneously to ensure the database matches the frontend.</li>
+        <li><strong>Dynamic Test Data Injection:</strong> Test credentials and logic are maintained in <code>dynamicTestData.ts</code> and <code>testdata.json</code>.</li>
+        <li><strong>Automated Error Logging:</strong> Whenever a test fails, it auto-captures screenshots and directly attaches them into the Allure Report.</li>
+        <li><strong>Visual Testing:</strong> Powered by <code>@wdio/visual-service</code> to pinpoint visual pixel regressions.</li>
+    </ol>
+</body>
+</html>

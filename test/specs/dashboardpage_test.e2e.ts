@@ -2,9 +2,9 @@ import LoginPage from '../pageobjects/login.page.js';
 import DashboardPage from '../pageobjects/dashboard.page.js';
 import { getTestData } from '../utils/dynamicTestData.js';
 
-describe('Dashboard Page Test Suite', () => {
+describe('[Dashboard003]Dashboard Page Test Suite', () => {
 
-    it.only('Verify that dashboard page asthetic are displaying as expected as Admin', async () => {
+    it('[01]Verify that dashboard page asthetic are displaying as expected as Admin', async () => {
         const testdata = getTestData();
 
         await LoginPage.open(testdata.URL);
@@ -16,7 +16,7 @@ describe('Dashboard Page Test Suite', () => {
         await DashboardPage.validateAdminPanel_Dashboard();
         await DashboardPage.DashboardActive_Alerts_Validation();
     });
-    it('Verify that dashboard page asthetic are displaying as expected as Manager', async () => {
+    it('[02]Verify that dashboard page asthetic are displaying as expected as Manager', async () => {
         const testdata = getTestData();
 
         await LoginPage.open(testdata.URL);
@@ -28,7 +28,7 @@ describe('Dashboard Page Test Suite', () => {
         await DashboardPage.validateManagerTools_Dashboard();
         await DashboardPage.DashboardActive_Alerts_Validation();
     });
-    it('Verify that dashboard page asthetic are displaying as expected as User', async () => {
+    it('[03]Verify that dashboard page asthetic are displaying as expected as User', async () => {
         const testdata = getTestData();
 
         await LoginPage.open(testdata.URL);

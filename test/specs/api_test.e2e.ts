@@ -2,7 +2,7 @@ import LoginPage from '../pageobjects/login.page.js';
 import ApiPage from '../pageobjects/api.page.js';
 import { getTestData } from '../utils/dynamicTestData.js';
 
-describe('API Test Suite', () => {
+describe('[API001]API Test Suite', () => {
 
     it('should fetch system overview data via API after UI login', async () => {
         const testdata = getTestData();
