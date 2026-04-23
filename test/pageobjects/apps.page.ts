@@ -323,7 +323,6 @@ class AppsPage extends Page {
         const uiPing = cells[6] ? await cells[6].getText() : 'N/A';
         
         const api = apiData[i];
-        
         // Backend API keys: appname, ip, description, env, status, jms_status, mail_status, ping_status
         const apiApp = api ? String(api.appname || 'N/A') : 'N/A';
         const apiIp  = api ? String(api.ip || 'N/A') : 'N/A';
