@@ -1,46 +1,45 @@
 // import { expect } from '@wdio/globals'
-import loginPage from "../pageobjects/login.page.js";
 import LoginPage from "../pageobjects/login.page.js";
 // import SecurePage from '../pageobjects/secure.page.js'
-import testdata from "../pageobjects/testdata.json";
+import testdata from "../pageobjects/testdata.json" with { type: "json" };
 
 describe("[Login004] Verify the Login page", () => {
-  it("[01]Manager should able to login with valid credentials", async () => {
+  it("[TC009]Manager should able to login with valid credentials", async () => {
     await LoginPage.open(testdata.URL);
     await browser.maximizeWindow();
     await LoginPage.login_Manager(
       testdata.manager_username,
       testdata.Manager_password,
     );
-    await loginPage.logout("Manager");
+    await LoginPage.logout("Manager");
   });
 
-  it("[02]Admin should able to login with valid credentials", async () => {
+  it("[TC010]Admin should able to login with valid credentials", async () => {
     await LoginPage.open(testdata.URL);
     await browser.maximizeWindow();
     await LoginPage.login_Admin(
       testdata.Admin_Username,
       testdata.Admin_Password,
     );
-    await loginPage.logout("Admin");
+    await LoginPage.logout("Admin");
   });
 
-  it("[03]User should able to login with valid credentials", async () => {
+  it("[TC011]User should able to login with valid credentials", async () => {
     await LoginPage.open(testdata.URL);
     await browser.maximizeWindow();
     await LoginPage.login_User(testdata.User_Username, testdata.User_Password);
-    await loginPage.logout("User");
+    await LoginPage.logout("User");
   });
   //validation required assertions
-  it("[04]Verify the functionality of Forgot password link and page asthetics of forgot password page.", async () => {
+  it("[TC012]Verify the functionality of Forgot password link and page asthetics of forgot password page.", async () => {
     await LoginPage.open(testdata.URL);
     await browser.maximizeWindow();
-    await loginPage.forgotPassword(testdata.Admin_Username);
+    await LoginPage.forgotPassword(testdata.Admin_Username);
   });
 
-  it("[05]Verify that user enter unregistered email for forgot password", async () => {
+  it("[TC013]Verify that user enter unregistered email for forgot password", async () => {
     await LoginPage.open(testdata.URL);
     await browser.maximizeWindow();
-    await loginPage.forgotPassword_Unreg_Email(testdata.UnregisteredEmail);
+    await LoginPage.forgotPassword_Unreg_Email(testdata.UnregisteredEmail);
   });
 });

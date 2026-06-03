@@ -1,4 +1,4 @@
-import testdata from "../pageobjects/testdata.json";
+import testdata from "../pageobjects/testdata.json" with { type: "json" };
 
 export const getTestData = () => {
   const timestamp = Date.now();

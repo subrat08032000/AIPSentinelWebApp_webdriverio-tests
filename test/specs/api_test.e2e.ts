@@ -4,7 +4,7 @@ import { getTestData } from '../utils/dynamicTestData.js';
 
 describe('[API001]API Test Suite', () => {
 
-    it('should fetch system overview data via API after UI login', async () => {
+    it('[TC001]should fetch system overview data via API after UI login', async () => {
         const testdata = getTestData();
 
         // 1. Login via UI to establish session

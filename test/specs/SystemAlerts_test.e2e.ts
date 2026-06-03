@@ -3,7 +3,7 @@ import LoginPage from "../pageobjects/login.page.js";
 import { getTestData } from "../utils/dynamicTestData.js";
 
 describe("[SystemAlert008]Verify System Alerts Page", () => {
-  it("[01]Should navigate to System Alerts page via Dashboard 'Show more' button", async () => {
+  it("[TC027]Should navigate to System Alerts page via Dashboard 'Show more' button", async () => {
     const testdata = getTestData();
     
     // 1. Login as Admin

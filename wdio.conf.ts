@@ -69,7 +69,7 @@ export const config: WebdriverIO.Config = {
             acceptInsecureCerts: true,
             'goog:chromeOptions': {
                 args: [
-                    ...(process.env.HEADLESS === 'true' ? ['--headless=new'] : []),
+                    ...(process.env.HEADLESS !== 'false' ? ['--headless=new'] : []),
                     '--disable-gpu',
                     '--no-sandbox',
                     '--disable-dev-shm-usage',
@@ -347,8 +347,123 @@ export const config: WebdriverIO.Config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {<Object>} results object containing test results
      */
-    // onComplete: function(exitCode, config, capabilities, results) {
-    // },
+    onComplete: async function(exitCode: number, _config: any, _capabilities: any, results: any) {
+        const failedCases: { name: string; classname: string; error: string }[] = [];
+        let totalTests = 0;
+        let totalFailures = 0;
+        let totalErrors = 0;
+        let totalSkipped = 0;
+        let totalTime = 0;
+        let parsedXml = false;
+
+        // Merge JUnit reports into a single consolidated XML file
+        try {
+            const fs = await import('fs');
+            const path = await import('path');
+            const junitDir = path.join(process.cwd(), 'TestResults', 'junit');
+            if (fs.existsSync(junitDir)) {
+                const files = fs.readdirSync(junitDir).filter(file => file.startsWith('results-') && file.endsWith('.xml'));
+                if (files.length > 0) {
+                    parsedXml = true;
+                    let testsuites: string[] = [];
+
+                    for (const file of files) {
+                        const filePath = path.join(junitDir, file);
+                        const content = fs.readFileSync(filePath, 'utf-8');
+                        
+                        // Extract <testsuite> elements (ignoring <testsuites>)
+                        const suiteRegex = /<testsuite\b[\s\S]*?<\/testsuite>/g;
+                        const matches = content.match(suiteRegex);
+                        if (matches) {
+                            for (const suite of matches) {
+                                testsuites.push(suite);
+                                
+                                // Parse counts from the individual testsuite tag
+                                const testsMatch = suite.match(/tests="(\d+)"/);
+                                const failuresMatch = suite.match(/failures="(\d+)"/);
+                                const errorsMatch = suite.match(/errors="(\d+)"/);
+                                const skippedMatch = suite.match(/skipped="(\d+)"/);
+                                const timeMatch = suite.match(/time="([\d.]+)"/);
+
+                                if (testsMatch) totalTests += parseInt(testsMatch[1], 10);
+                                if (failuresMatch) totalFailures += parseInt(failuresMatch[1], 10);
+                                if (errorsMatch) totalErrors += parseInt(errorsMatch[1], 10);
+                                if (skippedMatch) totalSkipped += parseInt(skippedMatch[1], 10);
+                                if (timeMatch) totalTime += parseFloat(timeMatch[1]);
+
+                                // Parse failed test cases from within this test suite
+                                const caseRegex = /<testcase\b[\s\S]*?<\/testcase>/g;
+                                const cases = suite.match(caseRegex);
+                                if (cases) {
+                                    for (const tc of cases) {
+                                        if (/<(error|failure)\b/.test(tc)) {
+                                            const classnameM = tc.match(/classname="([^"]+)"/);
+                                            const nameM = tc.match(/\bname="([^"]+)"/);
+                                            
+                                            const tcClassname = classnameM ? classnameM[1] : 'UnknownClass';
+                                            const tcName = nameM ? nameM[1] : 'UnknownTest';
+                                            
+                                            let tcError = '';
+                                            const errAttr = tc.match(/<(error|failure)\b[\s\S]*?message="([^"]+)"/);
+                                            if (errAttr) {
+                                                tcError = errAttr[2];
+                                            } else {
+                                                const errCdata = tc.match(/<!\[CDATA\[([\s\S]*?)\]\]>/);
+                                                if (errCdata) {
+                                                    tcError = errCdata[1].trim().split('\n')[0];
+                                                }
+                                            }
+                                            failedCases.push({ name: tcName, classname: tcClassname, error: tcError || 'Unknown Error' });
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    const mergedXml = `<?xml version="1.0" encoding="UTF-8"?>\n<testsuites tests="${totalTests}" failures="${totalFailures}" errors="${totalErrors}" skipped="${totalSkipped}" time="${totalTime.toFixed(4)}">\n${testsuites.join('\n')}\n</testsuites>`;
+                    const outputPath = path.join(junitDir, 'combined-results.xml');
+                    fs.writeFileSync(outputPath, mergedXml, 'utf-8');
+                    console.log(`[JUNIT] Combined JUnit XML report generated at: ${outputPath}`);
+                }
+            }
+        } catch (e: any) {
+            console.error('Error merging JUnit reports:', e.message);
+        }
+
+        console.log('\n==================================================');
+        console.log('            CONSOLIDATED TEST RUN SUMMARY        ');
+        console.log('==================================================');
+        if (parsedXml) {
+            const totalFailed = totalFailures + totalErrors;
+            const totalPassed = totalTests - totalFailed - totalSkipped;
+            console.log(`  Total Executed Test Cases:  ${totalTests}`);
+            console.log(`  Passed Test Cases:          ${totalPassed}`);
+            console.log(`  Failed Test Cases:          ${totalFailed}`);
+            console.log(`  Skipped Test Cases:         ${totalSkipped}`);
+        } else if (results) {
+            console.log(`  Passed Specs/Tests:    ${results.passed || 0}`);
+            console.log(`  Failed Specs/Tests:    ${results.failed || 0}`);
+            console.log(`  Total Executed Specs:  ${results.finished || 0}`);
+        } else {
+            console.log(`  Exit Code: ${exitCode}`);
+        }
+        console.log('==================================================\n');
+
+        // Print failed test details if any failed
+        if (failedCases.length > 0) {
+            console.log('--------------------------------------------------');
+            console.log('              FAILED TEST DETAILS                 ');
+            console.log('--------------------------------------------------');
+            failedCases.forEach((tc, idx) => {
+                console.log(`  ${idx + 1}. [${tc.classname}]`);
+                console.log(`     Test Name: ${tc.name}`);
+                console.log(`     Reason:    ${tc.error}`);
+                console.log('--------------------------------------------------');
+            });
+            console.log('');
+        }
+    },
     /**
     * Gets executed when a refresh happens.
     * @param {string} oldSessionId session ID of the old session
